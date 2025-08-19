@@ -219,6 +219,9 @@ export async function cargarMovimientos() {
             });
         });
 
+    // 🔹 Ordenamos alfabéticamente por nombre
+    movesData.sort((a, b) => a.nombre.toLowerCase().localeCompare(b.nombre));
+
     // Llenar cada select
     moveSelects.forEach(select => {
       select.innerHTML = `<option value="">-- Selecciona movimiento --</option>`;
@@ -281,15 +284,27 @@ export async function cargarHabilidades(speciesDatalist, pokedex) {
   // Limpiamos el select antes de llenarlo
   abilitySelect.innerHTML = `<option value="">-- Selecciona habilidad --</option>`;
 
-  querySnapshot.forEach((docSnap) => {
-    const data = docSnap.data();
 
-    // Si el documento tiene un nombre de pokémon, lo añadimos al datalist
-    if (data.nombre) {
-      const option = document.createElement("option");
-      option.value = data.nombre;
-      option.textContent = data.nombre;
-      abilitySelect.appendChild(option);
-    }
-  });
+  //Array de habilidades de pokémon 
+const abilitiesData = [];  
+
+    //Por cada habilidad obtenida, lo añadimos al array de habilidades (No son muchas)
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+        abilitiesData.push({
+                id: doc.id,
+                nombre: data.nombre,
+            });
+        });
+
+    // 🔹 Ordenamos alfabéticamente por nombre
+    abilitiesData.sort((a, b) => a.nombre.toLowerCase().localeCompare(b.nombre));
+
+      //Creamos un option para cada habilidad
+      abilitiesData.forEach(ability => {
+        const option = document.createElement("option");
+        option.value = ability.id;    //Valor del option
+        option.textContent = ability.nombre;  //Nombre a mostrar en el select
+        abilitySelect.appendChild(option);
+      });
 }

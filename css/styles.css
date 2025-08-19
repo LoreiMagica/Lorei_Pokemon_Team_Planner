@@ -1,3 +1,4 @@
+/*Formato de cajas pokémon*/
 .box-grid {
   display: grid;
   grid-template-columns: repeat(6, 50px);
@@ -8,6 +9,8 @@
   border: 2px solid #999;
   border-radius: 8px;
 }
+
+/*slot de una caja que está vacío*/
 .slot {
   width: 50px;
   height: 50px;
@@ -16,7 +19,15 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+/*Fondo de las cajas donde hay un pokémon ocupado*/
 .slot.filled {
   background-color: #ffcb05; /* Amarillo Pokémon */
   border: 2px solid #3b4cca;
+}
+
+/* Estilo para opciones deshabilitadas en los selects de movimientos */
+select option:disabled {
+  background-color: #f8d7da; /* rojo clarito */
+  color: #721c24; /* texto en rojo oscuro */
 }

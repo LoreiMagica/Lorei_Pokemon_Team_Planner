@@ -147,13 +147,27 @@ export function actualizarImagenPokemon() {
     return;
   }
 
-  // 🔹 Si tienes imágenes con formato nombre_forma.png
-  let imageFile = pokedex[speciesName];
+  // Verifica si el nombre del Pokémon existe en el pokedex
+  if (pokedex[speciesName]) {
+
+    // 🔹 Si tiene imágenes con formato nombre_forma.png
+      let imageFile = pokedex[speciesName];
   if (formValue) {
+    // Si hay una forma seleccionada, añadimos el sufijo de la forma
     imageFile += `${formValue.toLowerCase()}`;
   }
+
+  //Lo mostramos por consola para verlo, y tras eso lo seteamos
   console.log(`Cargando imagen para: ${speciesName} con forma: ${formValue}: ${imageFile}.png`);
   pokemonImage.src = `images/pokemon-model/${imageFile}.png`;
+
+  }else{
+  
+    //Si el usuario escribe el nombre mal, lo notifica, y pone la imagen por defecto
+    console.error(`No se encontró la imagen para el Pokémon: ${speciesName}`);
+    pokemonImage.src = "images/pokemon-model/0.png";
+  }
+
 }
 
 
