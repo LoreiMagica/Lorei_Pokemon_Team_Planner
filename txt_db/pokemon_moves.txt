@@ -1,0 +1,919 @@
+Destructor
+Golpe kárate
+Doble bofetón
+Puño cometa
+Megapuño
+Día de pago
+Puño fuego
+Puño hielo
+Puño trueno
+Arañazo
+Agarre
+Guillotina
+Viento cortante
+Danza espada
+Corte
+Tornado
+Ataque ala
+Remolino
+Vuelo
+Atadura
+Atizar
+Látigo cepa
+Pisotón
+Doble patada
+Megapatada
+Patada salto
+Patada giro
+Ataque arena
+Golpe cabeza
+Cornada
+Ataque furia
+Perforador
+Placaje
+Golpe cuerpo
+Constricción
+Derribo
+Saña
+Doble filo
+Látigo
+Picotazo veneno
+Doble ataque
+Pin misil
+Malicioso
+Mordisco
+Gruñido
+Rugido
+Canto
+Supersónico
+Bomba sónica
+Anulación
+Ácido
+Ascuas
+Lanzallamas
+Neblina
+Pistola agua
+Hidrobomba
+Surf
+Rayo hielo
+Ventisca
+Psicorrayo
+Rayo burbuja
+Rayo aurora
+Hiperrayo
+Picotazo
+Pico taladro
+Sumisión
+Patada baja
+Contraataque
+Sísmico
+Fuerza
+Absorber
+Megaagotar
+Drenadoras
+Desarrollo
+Hoja afilada
+Rayo solar
+Polvo veneno
+Paralizador
+Somnífero
+Danza pétalo
+Disparo demora
+Furia dragón
+Giro fuego
+Impactrueno
+Rayo
+Onda trueno
+Trueno
+Lanzarrocas
+Terremoto
+Fisura
+Excavar
+Tóxico
+Confusión
+Psíquico
+Hipnosis
+Meditación
+Agilidad
+Ataque rápido
+Furia
+Teletransporte
+Tinieblas
+Mimético
+Chirrido
+Doble equipo
+Recuperación
+Fortaleza
+Reducción
+Pantalla de humo
+Rayo confuso
+Refugio
+Rizo defensa
+Barrera
+Pantalla de luz
+Niebla
+Reflejo
+Foco energía
+Venganza
+Metrónomo
+Espejo
+Autodestrucción
+Bomba huevo
+Lengüetazo
+Polución
+Residuos
+Hueso palo
+Llamarada
+Cascada
+Tenaza
+Meteoros
+Cabezazo
+Clavo cañón
+Restricción
+Amnesia
+Kinético
+Ovocuración
+Patada salto alta
+Deslumbrar
+Comesueños
+Gas venenoso
+Bombardeo
+Chupavidas
+Beso amoroso
+Ataque aéreo
+Transformación
+Burbuja
+Puño mareo
+Espora
+Destello
+Psicoonda
+Salpicadura
+Armadura ácida
+Martillazo
+Explosión
+Golpes furia
+Huesomerang
+Descanso
+Avalancha
+Hipercolmillo
+Afilar
+Conversión
+Triataque
+Superdiente
+Cuchillada
+Sustituto
+Forcejeo
+Esquema
+Triple patada
+Ladrón
+Telaraña
+Telépata
+Pesadilla
+Rueda fuego
+Ronquido
+Maldición
+Azote
+Conversión2
+Aerochorro
+Esporagodón
+Inversión
+Rencor
+Nieve polvo
+Protección
+Ultrapuño
+Cara susto
+Finta
+Beso dulce
+Tambor
+Bomba lodo
+Bofetón lodo
+Pulpocañón
+Púas
+Electrocañón
+Profecía
+Mismo destino
+Canto mortal
+Viento hielo
+Detección
+Ataque óseo
+Fijar blanco
+Enfado
+Tormenta de arena
+Gigadrenado
+Aguante
+Encanto
+Rodar
+Falso tortazo
+Contoneo
+Batido
+Chispa
+Corte furia
+Ala de acero
+Mal de ojo
+Atracción
+Sonámbulo
+Cascabel cura
+Retribución
+Presente
+Frustración
+Velo sagrado
+Divide dolor
+Fuego sagrado
+Magnitud
+Puño dinámico
+Megacuerno
+Dragoaliento
+Relevo
+Otra vez
+Persecución
+Giro rápido
+Dulce aroma
+Cola férrea
+Garra metal
+Llave vital
+Sol matinal
+Síntesis
+Luz lunar
+Poder oculto
+Tajo cruzado
+Ciclón
+Danza lluvia
+Día soleado
+Triturar
+Manto espejo
+Autosugestión
+Velocidad extrema
+Poder pasado
+Bola sombra
+Premonición
+Golpe roca
+Torbellino
+Paliza
+Sorpresa
+Alboroto
+Reserva
+Escupir
+Tragar
+Onda ígnea
+Granizo
+Tormento
+Camelo
+Fuego fatuo
+Legado
+Imagen
+Puño certero
+Estímulo
+Señuelo
+Adaptación
+Carga
+Mofa
+Refuerzo
+Truco
+Imitación
+Deseo
+Ayuda
+Arraigo
+Fuerza bruta
+Capa mágica
+Reciclaje
+Desquite
+Demolición
+Bostezo
+Desarme
+Esfuerzo
+Estallido
+Intercambio
+Sellar
+Alivio
+Rabia
+Robo
+Daño secreto
+Buceo
+Empujón
+Camuflaje
+Luminicola
+Resplandor
+Bola neblina
+Danza pluma
+Danza caos
+Patada ígnea
+Chapoteo lodo
+Bola hielo
+Brazo pincho
+Relajo
+Vozarrón
+Colmillo veneno
+Garra brutal
+Anillo ígneo
+Hidrocañón
+Puño meteoro
+Impresionar
+Meteorobola
+Aromaterapia
+Llanto falso
+Aire afilado
+Sofoco
+Rastreo
+Tumba rocas
+Viento plata
+Eco metálico
+Silbato
+Cosquillas
+Masa cósmica
+Salpicar
+Rayo señal
+Puño sombra
+Paranormal
+Gancho alto
+Bucle arena
+Frío polar
+Agua lodosa
+Semilladora
+Golpe aéreo
+Carámbano
+Defensa férrea
+Bloqueo
+Aullido
+Garra dragón
+Planta feroz
+Corpulencia
+Bote
+Disparo lodo
+Cola veneno
+Antojo
+Placaje eléctrico
+Hoja mágica
+Hidrochorro
+Paz mental
+Hoja aguda
+Danza dragón
+Pedrada
+Onda voltio
+Hidropulso
+Deseo oculto
+Psicoataque
+Respiro
+Gravedad
+Gran ojo
+Espabila
+Machada
+Giro bola
+Deseo cura
+Salmuera
+Don natural
+Amago
+Picoteo
+Viento afín
+Acupresión
+Represión metal
+Ida y vuelta
+A bocajarro
+Vendetta
+Buena baza
+Embargo
+Lanzamiento
+Psicocambio
+As oculto
+Anticura
+Estrujón
+Truco fuerza
+Bilis
+Conjuro
+Yo primero
+Copión
+Cambiafuerza
+Cambiadefensa
+Castigo
+Última baza
+Abatidoras
+Golpe bajo
+Púas tóxicas
+Cambiaalmas
+Acua aro
+Levitón
+Envite ígneo
+Palmeo
+Esfera aural
+Pulimento
+Puya nociva
+Pulso umbrío
+Tajo umbrío
+Acua cola
+Bomba germen
+Tajo aéreo
+Tijera X
+Zumbido
+Pulso dragón
+Carga dragón
+Joya de luz
+Puño drenaje
+Onda vacío
+Onda certera
+Energibola
+Pájaro osado
+Tierra viva
+Trapicheo
+Gigaimpacto
+Maquinación
+Puño bala
+Alud
+Esquirla helada
+Garra umbría
+Colmillo rayo
+Colmillo hielo
+Colmillo ígneo
+Sombra vil
+Bomba fango
+Psicocorte
+Cabezazo zen
+Disparo espejo
+Foco resplandor
+Treparrocas
+Despejar
+Espacio raro
+Cometa draco
+Chispazo
+Humareda
+Lluevehojas
+Latigazo
+Romperrocas
+Veneno X
+Lanzamugre
+Cabeza de hierro
+Bomba imán
+Roca afilada
+Seducción
+Trampa rocas
+Hierba lazo
+Cháchara
+Sentencia
+Picadura
+Rayo carga
+Mazazo
+Acua jet
+Al ataque
+A defender
+Auxilio
+Testarazo
+Doble golpe
+Distorsión
+Corte vacío
+Danza lunar
+Agarrón
+Lluvia ígnea
+Brecha negra
+Fulgor semilla
+Viento aciago
+Golpe umbrío
+Afilagarras
+Vasta guardia
+Isoguardia
+Isofuerza
+Zona extraña
+Psicocarga
+Carga tóxica
+Aligerar
+Polvo ira
+Telequinesis
+Zona mágica
+Antiaéreo
+Llave corsé
+Pirotecnia
+Onda tóxica
+Danza aleteo
+Cuerpo pesado
+Sincrorruido
+Bola voltio
+Empapar
+Nitrocarga
+Enrosque
+Puntapié
+Bomba ácida
+Juego sucio
+Onda simple
+Danza amiga
+Cede paso
+Canon
+Eco voz
+Guardia baja
+Niebla clara
+Poder reserva
+Anticipo
+Cambio de banda
+Escaldar
+Rompecoraza
+Pulso cura
+Infortunio
+Caída libre
+Cambio de marcha
+Llave giro
+Calcinación
+Último lugar
+Acróbata
+Clonatipo
+Represalia
+Sacrificio
+Ofrenda
+Infierno
+Voto agua
+Voto fuego
+Voto planta
+Voltiocambio
+Estoicismo
+Terratemblor
+Vaho gélido
+Cola dragón
+Avivar
+Electrotela
+Voltio cruel
+Taladradora
+Golpe bis
+Arrumaco
+Asta drenaje
+Espada santa
+Concha filo
+Golpe calor
+Ciclón de hojas
+Rodillo de púas
+Rizo algodón
+Pulso noche
+Onda mental
+Plumerazo
+Vendaval
+Ariete
+Rueda doble
+Bomba ígnea
+Tecno shock
+Canto arcaico
+Sable místico
+Mundo gélido
+Ataque fulgor
+Llama azul
+Danza llama
+Rayo gélido
+Llama gélida
+Alarido
+Chuzos
+V de fuego
+Llama fusión
+Rayo fusión
+Plancha voladora
+Escudo tatami
+Eructo
+Fertilizante
+Red viscosa
+Aguijón letal
+Golpe fantasma
+Halloween
+Rugido de guerra
+Cortina plasma
+Carga parábola
+Condena silvana
+Tormenta floral
+Liofilización
+Voz cautivadora
+Última palabra
+Reversión
+Beso drenaje
+Truco defensa
+Defensa floral
+Campo de hierba
+Campo de niebla
+Electrificación
+Carantoña
+Viento feérico
+Fuerza lunar
+Estruendo
+Cerrojo feérico
+Escudo real
+Camaradería
+Confidencia
+Tormenta de diamantes
+Chorro de vapor
+Paso dimensional
+Shuriken de agua
+Llama embrujada
+Barrera espinosa
+Niebla aromática
+Onda anómala
+Trampa venenosa
+Polvo explosivo
+Geocontrol
+Aura magnética
+Paga extra
+Campo eléctrico
+Brillo mágico
+Celebración
+Manos juntas
+Ojitos tiernos
+Moflete estático
+Clemencia
+Acoso
+Puño incremento
+Ala mortífera
+Mil flechas
+Mil temblores
+Fuerza telúrica
+Luz aniquiladora
+Pulso primigenio
+Filo del abismo
+Ascenso draco
+Cerco dimensión
+Carrera arrolladora bORRA
+Borra
+Ráfaga demoledora bORRA
+Borra
+Picado supersónico bORRA
+Borra
+Diluvio corrosivo bORRA
+Borra
+Barrena telúrica bORRA
+Borra
+Aplastamiento gigalítico bORRA
+Borra
+Guadaña sedosa bORRA
+Borra
+Presa espectral bORRA
+Borra
+Hélice trepanadora bORRA
+Borra
+Hecatombe pírica bORRA
+BorrA
+Hidrovórtice abisal bORRA
+bORRA
+Megatón floral bORRA
+bORRA
+Gigavoltio destructor bORRA
+bORRA
+Disruptor psíquico bORRA
+bORRA
+Crioaliento despiadado bORRA
+bORRA
+Dracoaliento devastador bORRA
+bORRA
+Agujero negro aniquilador bORRA
+bORRA
+Arrumaco sideral bORRA
+bORRA
+Pikavoltio letal bORRA
+Recogearena
+Escaramuza
+Búnker
+Puntada sombría
+Lariat oscuro
+Aria burbuja
+Martillo hielo
+Cura floral
+Fuerza equina
+Absorbefuerza
+Cuchilla solar
+Follaje
+Foco
+Hilo venenoso
+Aguzar
+Piñón auxiliar
+Golpe mordaza
+Bola de polen
+Anclaje
+Campo psíquico
+Plancha
+Látigo ígneo
+Chulería
+Llama final
+Cambiavelocidad
+Cuerno certero
+Purificación
+Danza despertar
+Núcleo castigo
+Patada tropical
+Mandato
+Pico cañón
+Fragor escamas
+Martillo dragón
+Giro vil
+Velo aurora
+Aluvión de flechas sombrías
+Hiperplancha oscura
+Sinfonía de la diva marina
+Cólera del guardián
+Constelación robaalmas
+Surfeo galvánico
+Arrojo intempestivo
+Novena potencia
+Supernova original
+Coraza trampa
+Cañón floral
+Psicocolmillo
+Pataleta
+Hueso sombrío
+Roca veloz
+Hidroariete
+Láser prisma
+Robasombra
+Meteoimpacto
+Rayo umbrío
+Ojos llorosos
+Electropunzada
+Furia natural
+Multiataque
+Gigarrayo fulminante
+Cabeza sorpresa
+Puños plasma
+Géiser fotónico
+Fotodestrucción apocalíptica
+Embestida solar
+Deflagración lunar
+Somanta amistosa
+Tempestad rocosa
+Estruendo implacable
+Pikaturbo
+Salpikasurf
+Pikapicado
+Pikatormenta
+Vapodrenaje
+Joltioparálisis
+Flarembestida
+Espeaura
+Umbreozona
+Leafitobombas
+Glaceoprisma
+Sylveotornado
+Eevimpacto
+Ferropuño doble
+Maxibarrera
+Cañón Dinamax
+Disparo certero
+Presa maxilar
+Atiborramiento
+Bastión final
+Alquitranazo
+Polvo mágico
+Dracoflechas
+Hora del té
+Octopresa
+Electropico
+Branquibocado
+Cambio de cancha
+Maxignición bORRA
+Maxinsecto bORRA
+Maxitormenta bORRA
+Maxiataque bORRA
+Maxipuño bORRA
+Maxiespectro bORRA
+Maxihelada bORRA
+Maxiácido bORRA
+Maxichorro bORRA
+Maxiciclón bORRA
+Maxiestela bORRA
+Maxidraco bORRA
+Maxionda bORRA
+Maxilito bORRA
+Maxitemblor bORRA
+Maxisombra bORRA
+Maxiflora bORRA
+Maximetal bORRA
+Estruendo escama
+Plancha corporal
+Decoración
+Batería asalto
+Cepo
+Balón ígneo
+Tajo supremo
+Embate supremo
+Rueda aural
+Vasto impacto
+Punzada rama
+Amplificador
+Ácido málico
+Fuerza G
+Choque anímico
+Cautivapor
+Gota vital
+Obstrucción
+Irreverencia
+Asalto estelar
+Rayo infinito
+Metaláser
+Vasta fuerza
+Allanador férreo
+Ráfaga escamas
+Rayo meteórico
+Moluscañón
+Bruma explosiva
+Fitoimpulso
+Alto voltaje
+Pulso de campo
+Golpe rastrero
+Envidia ardiente
+Desahogo
+Poltergeist
+Gas corrosivo
+Motivación
+Viraje
+Triple axel
+Ala bis
+Arenas ardientes
+Cura selvática
+Golpe oscuro
+Azote torrencial
+Electrojaula
+Dracoenergía
+Mirada heladora
+Furia candente
+Patada relámpago
+Lanza glacial
+Orbes espectro
+Conjuro funesto
+Garra nociva
+Asalto barrera
+Cambiapoder
+Hachazo pétreo
+Ciclón primavera
+Poder místico
+Erupción de ira
+Envite acuático
+Clorofiláser
+Viento carámbano
+Danza triunfal
+Arremetida
+Mil púas tóxicas
+Ala aural
+Rencor reprimido
+Retracción
+Triple flecha
+Marcha espectral
+Tajo metralla
+Vendaval gélido
+Electormenta
+Simún de arena
+Plegaria lunar
+Bálsamo osado
+Teraexplosión
+Telatrampa
+Patada hacha
+Homenaje póstumo
+Fotocolisión
+Oído cocina
+Puño jet
+Extracto picante
+Quemarrueda
+Proliferación
+Pirueta helada
+Asalto espadón
+Plegaria vital
+Salazón
+Triple inmersión
+Giro mortífero
+Decalcomanía
+Deslome
+Genufendiente
+Truco floral
+Canto ardiente
+Danza acuática
+Furia taurina
+Fiebre dorada
+Psicohojas
+Hidrovapor
+Calamidad
+Nitrochoque
+Electroderrape
+Autotomía
+Fría acogida
+Limpieza general
+Paisaje nevado
+Brinco
+Abrecaminos
+Agua fría
+Hipertaladro
+Láser doble
+Puño furia
+Cañón armadura
+Espada lamento
+Electropalmas
+Martillo colosal
+Resarcimiento
+Tajo acuático
+Pirochoque
+Ominochoque
+Ponzochoque
+Pugnachoque
+Feerichoque
+Luna roja
+Cañón batidor
+Bomba caramelo
+Garrote liana
+Electrorrayo
+Teraclúster
+Láser veleidoso
+Llama protectora
+Relámpago súbito
+Filo potente
+Tajo taquión
+Prensa metálica
+Bramido dragón
+Canto encantador
+Cólera ardiente
+Plancha voltaica
+Psicorruido
+Palma rauda
+Cadena virulenta

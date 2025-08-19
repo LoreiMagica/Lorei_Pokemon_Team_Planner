@@ -1,0 +1,22 @@
+.box-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 50px);
+  grid-template-rows: repeat(5, 50px);
+  gap: 5px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 2px solid #999;
+  border-radius: 8px;
+}
+.slot {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.slot.filled {
+  background-color: #ffcb05; /* Amarillo Pokémon */
+  border: 2px solid #3b4cca;
+}

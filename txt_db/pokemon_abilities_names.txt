@@ -1,0 +1,23 @@
+Absorbe Agua
+Absorbe electricidad
+Absorbe fuego
+Armadura prisma 
+Colector
+Electromotor
+Filtro 
+Herbívoro
+Levitación
+Pararrayos
+Roca sólida
+Sebo
+Ignífugo
+Piel seca
+Superguarda
+Peluche
+Geofagia
+Sal purificadora
+Pompa
+Cuerpo horneado
+Ráfaga delta ( if Volador)
+Tierra del ocaso
+Mar del albor

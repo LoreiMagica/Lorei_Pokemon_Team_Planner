@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Título e icono de la página -->
+  <title>Lorei Team Planner</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+  <!-- Estilos de Bootstrap y CSS personalizado -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+
+</head>
+
+<body class="container-fluid p-4">
+  <div class="row">
+    <!-- Columna izquierda: Caja Pokémon -->
+    <div class="col-md-8">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <button id="prevBox" class="btn btn-outline-secondary">&larr;</button>
+        
+        <input type="text" id="boxName" class="form-control text-center mx-2" style="max-width:200px;" value="Caja 1">
+        
+        <button id="nextBox" class="btn btn-outline-secondary">&rarr;</button>
+      </div>
+      <div class="box-grid" id="boxGrid"></div>
+      <div class="mt-3">
+        <button id="addBox" class="btn btn-success">+ Agregar Caja</button>
+
+      </div>
+    </div>
+
+    <!-- Columna derecha: Formulario -->
+    <div class="col-md-4">
+      <h4>Crear Pokémon</h4>
+      <form id="pokemonForm">
+
+        <!-- Imagen del Pokémon elegido -->
+        <div class="mb-2 text-center">
+          <img id="pokemonImage" src="images/pokemon-model/0.png" 
+              alt="Imagen del Pokémon" 
+              style="width:100px; height:100px; object-fit:contain; border:1px solid #ccc; border-radius:8px;">
+        </div>
+
+        <!-- Selector de especie pokémon y forma -->
+        <div class="mb-3">
+            <label for="speciesInput" class="form-label">Especie</label>
+            <div class="d-flex gap-2">
+                <!-- Input text con autocompletado -->
+                <input class="form-control" list="speciesList" id="speciesInput" placeholder="Nombre" required>
+                <datalist id="speciesList"></datalist>
+
+                <!-- Select para las formas del pokémon elegido -->
+                <select id="formasSelect" class="form-select" style="max-width: 200px;">
+                  <option value="">-- Formas --</option>
+                </select>
+              </div>
+          
+        </div>
+
+
+    <!-- Selects para los movimientos del Pokémon -->
+    <div class="mb-3">
+      <label class="form-label">Movimientos</label>
+  <div class="d-flex flex-wrap gap-3 align-items-center">
+    <div class="d-flex align-items-center gap-2">
+      <select id="move1" class="form-select" required></select>
+      <img id="icon1" src="images/types/mystery.svg" alt="tipo" class="type-icon" style="width:32px; height:32px;">
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <select id="move2" class="form-select" ></select>
+      <img id="icon2" src="images/types/mystery.svg" alt="tipo" class="type-icon" style="width:32px; height:32px;">
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <select id="move3" class="form-select" ></select>
+      <img id="icon3" src="images/types/mystery.svg" alt="tipo" class="type-icon" style="width:32px; height:32px;">
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <select id="move4" class="form-select" ></select>
+      <img id="icon4" src="images/types/mystery.svg" alt="tipo" class="type-icon" style="width:32px; height:32px;">
+    </div>
+  </div>
+    </div>
+
+    <!-- Select para elegir la habilidad del Pokémon -->
+    <div class="mb-3">
+      <label for="ability" class="form-label">Habilidad</label>
+      <select class="form-select" id="ability">
+        <option>Electricidad Estática</option>
+        <option>Mar Llamas</option>
+        <option>Torrente</option>
+        <option>Espesura</option>
+      </select>
+    </div>
+
+    <!-- Botón para agregar el nuevo/editado pokémon -->
+        <button type="submit" class="btn btn-primary">Añadir a la Caja</button>
+      </form>
+    </div>
+  </div>
+
+
+    <!-- Scripts -->
+  <script type="module" src="js/firebaseConfig.js"></script>
+  <script type="module" src="js/firebaseDatos.js"></script>
+  <script type="module" src="js/cajasPc.js"></script>
+
+  <script type="module">
+    //Cargamos las funciones de firebaseDatos para llenar el formulario
+    import { cargarPokedex, cargarFormas, cargarMovimientos, cargarHabilidades, subirMovimientos, subirHabilidades } from "./js/firebaseDatos.js";
+    import { actualizarImagenPokemon, pokedex  } from "./js/cajasPc.js"
+
+    // Cuando el usuario elige un pokémon, se cargan las formas disponibles de este pokémon
+    speciesInput.addEventListener("change", () => {
+      const pokemonName = speciesInput.value;
+      cargarFormas(pokemonName, pokedex, formasSelect);
+    });
+
+    
+    // Al cargar la página, carga los nombres de pokémon en el formulario
+    window.addEventListener("DOMContentLoaded", () => {
+      cargarPokedex(speciesList, pokedex);
+      cargarMovimientos();
+      cargarHabilidades();
+      //subirMovimientos();
+      //subirHabilidades();
+
+      speciesInput.addEventListener("change", actualizarImagenPokemon);
+      formasSelect.addEventListener("change", actualizarImagenPokemon);
+    });
+  </script>
+</body>
+</html>
