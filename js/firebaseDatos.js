@@ -263,7 +263,7 @@ function actualizarOpciones() {
 }
 
 // 🔹 Función para actualizar el icono al lado del movimiento seleccionado
-function actualizarIcono(index, moveId) {
+export function actualizarIcono(index, moveId) {
 
   //Buscamos el movimiento en el array de movimientos
   const move = movesData.find(m => m.id === moveId);

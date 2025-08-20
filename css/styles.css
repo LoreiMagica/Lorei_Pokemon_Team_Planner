@@ -1,8 +1,8 @@
 /*Formato de cajas pokémon*/
 .box-grid {
   display: grid;
-  grid-template-columns: repeat(6, 50px);
-  grid-template-rows: repeat(5, 50px);
+  grid-template-columns: repeat(6, 80px);
+  grid-template-rows: repeat(5, 80px);
   gap: 5px;
   background-color: #f0f0f0;
   padding: 10px;
@@ -12,18 +12,30 @@
 
 /*slot de una caja que está vacío*/
 .slot {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 6px;
   cursor: pointer;
 }
 
+/* Estilo para el slot de la caja que el usuario ha pulsado */
+.slot.selected {
+  border: 3px solid red;
+  box-shadow: 0 0 5px black;
+}
+
 /*Fondo de las cajas donde hay un pokémon ocupado*/
 .slot.filled {
-  background-color: #ffcb05; /* Amarillo Pokémon */
+  background-color: #fef07f; /* Amarillo Pikachu */
   border: 2px solid #3b4cca;
+}
+
+/* Color gris de placeholder por defecto) */
+.form-control::placeholder {
+  color: #6c757d; /* gris Bootstrap */
+  opacity: 1;     /* aseguramos que no sea transparente */
 }
 
 /* Estilo para opciones deshabilitadas en los selects de movimientos */
@@ -31,3 +43,68 @@ select option:disabled {
   background-color: #f8d7da; /* rojo clarito */
   color: #721c24; /* texto en rojo oscuro */
 }
+
+/* 🎨 Tema oscuro */
+.dark-theme {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+/*Tema oscuro para el formato de cajas pokémon*/
+.dark-theme .box-grid {
+  background-color: #1e1e1e; /* gris muy oscuro */
+  border: 2px solid #555;   /* gris oscuro para diferenciar */
+}
+
+/*Tema oscuro para el slot de una caja que está vacío*/
+.dark-theme .slot {
+  background: #1e1e1e;
+  border: 1px solid #444;
+}
+
+/* Estilo oscuro para el slot de la caja que el usuario ha pulsado */
+.dark-theme .slot.selected {
+  border: 3px solid #ff4444;
+  box-shadow: 0 0 8px #000;
+}
+
+/*Fondo de las cajas donde hay un pokémon ocupado*/
+.dark-theme .slot.filled {
+  background-color: #fcb816; /* Amarillo Pikachu shiny */
+  border: 2px solid #3b4cca;
+}
+
+/* Estilo oscuro para los cuadros del formulario */
+.dark-theme .form-control,
+.dark-theme .form-select {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  border: 1px solid #444;
+  
+}
+
+/* Color gris de placeholder con el tema oscuro) */
+.dark-theme .form-control::placeholder {
+  color: #adadad; /* gris claro */
+  opacity: 1;
+}
+
+/* Estilo oscuro para los botones */
+.dark-theme .btn {
+  border-color: #888;
+}
+
+/* Estilo oscuro para los botones primarios */
+
+.dark-theme .btn-primary {
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+
+/* Estilo oscuro para los botones rojos */
+.dark-theme .btn-danger {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+
