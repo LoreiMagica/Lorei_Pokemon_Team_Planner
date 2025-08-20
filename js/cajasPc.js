@@ -19,10 +19,10 @@ const limpiarFormularioBtn = document.getElementById("limpiarFormularioBtn"); //
 const deleteBtn = document.getElementById("deletePokemon"); //Botón de eliminar el pokémon
 
 
-let selectedSlotIndex = null; // índice del slot seleccionado
+export let selectedSlotIndex = null; // índice del slot seleccionado
 export let pokedex = {}; //Array de nombres e IDs de pokémon para luego buscar sus formas
-let boxes = []; //Array para almacenar las cajas de Pokémon
-let currentBoxIndex = 0; //Caja que se está mostrando ahora mismo
+export let boxes = []; //Array para almacenar las cajas de Pokémon
+export let currentBoxIndex = 0; //Caja que se está mostrando ahora mismo
 
 
 // Y ahora obtenemos los iconos de los movimientos para que quede más "aesthetic"
@@ -121,7 +121,7 @@ nextBoxBtn.addEventListener("click", () => {
   }
 });
 
-// Añadir Pokémon
+// Añadir/Editar Pokémon
 pokemonForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -148,7 +148,6 @@ const moveNames = ["move1", "move2", "move3", "move4"]
     return sel.value ? sel.options[sel.selectedIndex].text : null;
   })
   .filter(Boolean); // quita nulls
-
 
   //Id de habilidad aprendida
   const ability = document.getElementById("ability").value;

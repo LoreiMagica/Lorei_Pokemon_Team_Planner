@@ -44,6 +44,61 @@ select option:disabled {
   color: #721c24; /* texto en rojo oscuro */
 }
 
+
+.recuadroEquipo {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background-color: #f0f0f0;
+}
+
+.recuadroEquipo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.recuadroEquipo button {
+  width: 100%;
+}
+
+.recuadroEquipo .ataque {
+  width: 100%;
+  padding: 4px 8px;
+  margin: 2px 0;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* clases de colores para cada tipo de movimiento Pokémon */
+.Normal_type { background-color: #A8A77A; color: #fff; }
+.Fire_type { background-color: #EE8130; color: #fff; }
+.Water_type { background-color: #6390F0; color: #fff; }
+.Grass_type { background-color: #7AC74C; color: #fff; }
+.Electric_type { background-color: #F7D02C; color: #fff; }
+.Ice_type { background-color: #96D9D6; color: #000; }
+.Fighting_type { background-color: #C22E28; color: #fff; }
+.Poison_type { background-color: #A33EA1; color: #fff; }
+.Ground_type { background-color: #E2BF65; color: #000; }
+.Flying_type { background-color: #A98FF3; color: #fff; }
+.Psychic_type { background-color: #F95587; color: #fff; }
+.Bug_type { background-color: #A6B91A; color: #fff; }
+.Rock_type { background-color: #B6A136; color: #fff; }
+.Ghost_type { background-color: #735797; color: #fff; }
+.Dragon_type { background-color: #6F35FC; color: #fff; }
+.Dark_type { background-color: #705746; color: #fff; }
+.Steel_type { background-color: #B7B7CE; color: #000; }
+.Fairy_type { background-color: #D685AD; color: #fff; }
+.mystery_type { background-color: #70a494; color: #fff; }
+
+
+
 /* 🎨 Tema oscuro */
 .dark-theme {
   background-color: #121212;
@@ -87,6 +142,19 @@ select option:disabled {
 .dark-theme .form-control::placeholder {
   color: #adadad; /* gris claro */
   opacity: 1;
+}
+
+/* Estilo oscuro para los cuadros de equipo actual */
+.dark-theme .recuadroEquipo {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background-color: #1e1e1e;
 }
 
 /* Estilo oscuro para los botones */

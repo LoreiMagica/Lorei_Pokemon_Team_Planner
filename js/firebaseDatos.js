@@ -1,6 +1,7 @@
 // Imports de firebase
 import { db } from "./firebaseConfig.js";
 import { collection, doc, setDoc, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { Movimiento } from "./DataModel/Movimiento.js";
 
 // Obtenemos los movimientos del formulario
 const moveSelects = [
@@ -19,7 +20,7 @@ const moveIcons = [
 ];
 
 //Array de movimientos de pokémon 
-const movesData = [];  
+export const movesData = [];  
 
 // Obtenemos el select de habilidades del html
 const abilitySelect = document.getElementById("ability");
@@ -211,12 +212,13 @@ export async function cargarMovimientos() {
     //Por cada movimiento obtenido, lo añadimos al array de movimientos
     snapshot.forEach((doc) => {
       const data = doc.data();
-        movesData.push({
-                id: doc.id,
-                nombre: data.nombre,
-                tipo: data.tipo,
-                categoria: data.categoria
-            });
+        movesData.push( new Movimiento(
+                doc.id,
+                data.nombre,
+                data.tipo,
+                data.categoria
+          )
+  );
         });
 
     // 🔹 Ordenamos alfabéticamente por nombre
