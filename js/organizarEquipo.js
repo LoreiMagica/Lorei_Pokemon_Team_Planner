@@ -194,20 +194,37 @@ function generarTablaColores() {
     equipoTabla.forEach(pokemon => {
     let esEfectivo = pokemon.moves.some(mov => {
       let movimiento = movesData.find(m => m.id === mov);
+
+        // Ignoramos movimientos de tipo Status
+      if (!movimiento || movimiento.categoria === "Status") return false;
+
+      //Agregamos la excepción de Liofinización, que es un ataque tipo hielo fuerte contra agua
+      if (movimiento.id == 573 && tipoFila == "Water") return 2
+
       return calcularEfectividad(movimiento.tipo, tipoFila) > 1;
     });
 
-      let esNeutro = pokemon.moves.some(mov => 
+      let esNeutro = pokemon.moves.some(mov =>  {
+        let movimiento = movesData.find(m => m.id === mov);
+
+         // Ignoramos movimientos de tipo Status
+        if (!movimiento || movimiento.categoria === "Status") return false;
         calcularEfectividad(movesData.find(m => m.id === mov).tipo, tipoFila) === 1
-      );
+    });
 
     let esResistente = pokemon.moves.some(mov => {
       let movimiento = movesData.find(m => m.id === mov);
+
+        // Ignoramos movimientos de tipo Status
+      if (!movimiento || movimiento.categoria === "Status") return false;
       return calcularEfectividad(movimiento.tipo, tipoFila) < 1 && calcularEfectividad(movimiento.tipo, tipoFila) > 0;
     });
 
     let esInmune = pokemon.moves.some(mov => {
       let movimiento = movesData.find(m => m.id === mov);
+
+        // Ignoramos movimientos de tipo Status
+      if (!movimiento || movimiento.categoria === "Status") return false;
       return calcularEfectividad(movimiento.tipo, tipoFila) === 0;
     });
       //console.log(esEfectivo, + " "+ esInmune);
@@ -226,6 +243,7 @@ function generarTablaColores() {
         if (esEfectivo) {
           icono = `<i class="bi bi-check-circle ataqueEfectivo"></i></i>`;
         }
+        
         
       html += `<td>${icono}</td>`;
     })
