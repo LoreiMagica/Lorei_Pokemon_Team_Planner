@@ -68,7 +68,7 @@
     <!-- Selects para los movimientos del Pokémon -->
     <div class="mb-3">
       <label class="form-label">Movimientos</label>
-  <div class="d-flex flex-wrap gap-3 align-items-center">
+  <div class="moves-grid">
     <div class="d-flex align-items-center gap-2">
       <select id="move1" class="form-select" required></select>
       <img id="icon1" src="images/types/mystery.svg" alt="tipo movimiento 1" class="type-icon" style="width:32px; height:32px;">
@@ -111,10 +111,26 @@
   </div>
 
   <!-- Contenedor de recuadros para añadir Pokémon seleccionados -->
-  <h4 class="mt-5">Equipo Pokémon</h4>
-    <div id="recuadrosEquipoContainer" class="d-flex flex-wrap gap-3">
+
+  <div class="equipo-container text-center mt-5">
+  <h4>Equipo Pokémon</h4>
+  <div id="recuadrosEquipoContainer" class="d-flex flex-wrap gap-3 justify-content-center">
     <!-- Los recuadros se generarán con javascript -->
+  </div>
+  </div>
+
+<div class="tipo-tablas mt-5">
+  <div class="tablas-container">
+    <div class="tabla-col">
+      <h4 class="text-start mb-3">Efectividad de Movimientos</h4>
+      <div id="tablaColoresContainer"></div>
     </div>
+    <div class="tabla-col">
+      <h4 class="text-start mb-3">Resistencia de Pokémon</h4>
+      <div id="tablaNumerosContainer"></div>
+    </div>
+  </div>
+</div>
 
     <!-- Scripts -->
   <script type="module" src="js/firebaseConfig.js"></script>
@@ -145,7 +161,8 @@
       //subirMovimientos();
       //subirHabilidades();
 
-      speciesInput.addEventListener("change", actualizarImagenPokemon);
+      // Actualizar la imagen del Pokémon al cambiar la especie o forma
+      speciesInput.addEventListener("change", actualizarImagenPokemon); 
       formasSelect.addEventListener("change", actualizarImagenPokemon);
 
     });

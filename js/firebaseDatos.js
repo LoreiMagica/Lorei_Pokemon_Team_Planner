@@ -1,7 +1,9 @@
 // Imports de firebase
 import { db } from "./firebaseConfig.js";
 import { collection, doc, setDoc, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-import { Movimiento } from "./DataModel/Movimiento.js";
+import { Movimiento } from "./DataModel/Movimiento.js";  //Objeto para los movimientos de pokémon
+import { PokemonForma } from "./DataModel/PokemonForma.js"; //Objeto para guardar las formas de los pokémon
+
 
 // Obtenemos los movimientos del formulario
 const moveSelects = [
@@ -21,6 +23,9 @@ const moveIcons = [
 
 //Array de movimientos de pokémon 
 export const movesData = [];  
+
+//Array de formas de pokémon
+export const pokemonFormas = []; // Array global de formas
 
 // Obtenemos el select de habilidades del html
 const abilitySelect = document.getElementById("ability");
@@ -124,7 +129,7 @@ export async function subirMovimientos() {
 export async function readFileLines(path) {
   const respuesta = await fetch(path);
   const texto = await respuesta.text();
-  console.log(`Leyendo fichero: `+ texto.split("\n").map(l => l.trim()));
+  //console.log(`Leyendo fichero: `+ texto.split("\n").map(l => l.trim()));
   return texto.split("\n").map(l => l.trim());
 }
 
@@ -175,7 +180,12 @@ export async function cargarPokedex(speciesDatalist, pokedex) {
       const option = document.createElement("option");
       option.value = data.nombre;
       speciesDatalist.appendChild(option);
-      pokedex[data.nombre] = parseInt(docSnap.id);
+      pokedex.push({
+        id: parseInt(docSnap.id),
+        nombre: data.nombre,
+        tipo1: data.tipo1,
+        tipo2: data.tipo2
+      });
     }
   });
 }
@@ -183,7 +193,13 @@ export async function cargarPokedex(speciesDatalist, pokedex) {
 // 🔹 Función para cargar formas de un pokémon en el formulario
 export async function cargarFormas(pokemonName, pokedex, formSelect) {
   formSelect.innerHTML = '<option value="">-- Formas --</option>';
-  const no = pokedex[pokemonName];
+  //Buscamos el pokémon en el array
+  const entry = pokedex.find(p => p.nombre === pokemonName);
+  
+  //Obtenemos el id del pokémon
+  const no = entry ? entry.id : null;
+  
+  //Si no encuentra id, sale del método
   if (!no) return;
 
   //Comparamos el número del pokémon elegido por el usuario con las formas en la colección "pokedex_forms"
@@ -192,6 +208,15 @@ export async function cargarFormas(pokemonName, pokedex, formSelect) {
 
   querySnapshot.forEach((docSnap) => {
     const data = docSnap.data();
+
+    // 🔹 Almacenar objeto PokemonForma en su array
+    pokemonFormas.push( new PokemonForma(
+      data.no,
+      data.forma,
+      data.tipo1 || "",
+      data.tipo2 || ""
+    ));
+    //console.log(pokemonFormas);
 
     // Si el documento tiene un nombre de forma, lo añadimos al select
     if (data.nombre) {

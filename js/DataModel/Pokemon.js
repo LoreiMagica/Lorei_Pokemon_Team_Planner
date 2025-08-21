@@ -1,7 +1,9 @@
 export class Pokemon {
-  constructor(id = 0, species, forma = "", moves = [], moveNames = [], ability = "", abilityName = "") {
+  constructor(id = 0, species, forma = "", tipo1 = "", tipo2 = "", moves = [], moveNames = [], ability = "", abilityName = "") {
     this.id = id; // ID del Pokémon
     this.species = species; // Nombre del Pokémon
+    this.tipo1 = tipo1; // Tipo 1 del Pokémon
+    this.tipo2 = tipo2; // Tipo 2 del Pokémon (opcional)
     this.forma = forma; // Forma del Pokémon (opcional)
     this.moves = moves; // Array de IDs de movimientos
     this.moveNames = moveNames; // Array de nombres de movimientos
@@ -11,11 +13,13 @@ export class Pokemon {
 
   // 🖼️ Devuelve el nombre del archivo de imagen
   getImageFile(pokedex) {
-    if (!pokedex[this.species]) return "0";
-    let file = pokedex[this.species];
+    const entry = pokedex.find(p => p.nombre === this.species);
+    if (!entry) return "0";
+    let file = entry.id;
     if (this.forma) file += this.forma.toLowerCase();
     return file;
   }
+
 
   // 🎨 Genera un <img> listo para insertar en un slot
   renderImage(pokedex) {

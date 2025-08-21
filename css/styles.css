@@ -1,3 +1,4 @@
+/* === Estilo para las cajas donde se guardan los pokémon === */
 /*Formato de cajas pokémon*/
 .box-grid {
   display: grid;
@@ -32,10 +33,20 @@
   border: 2px solid #3b4cca;
 }
 
+
+
+/* === Estilos para el formulario de creación de Pokémon === */
 /* Color gris de placeholder por defecto) */
 .form-control::placeholder {
   color: #6c757d; /* gris Bootstrap */
   opacity: 1;     /* aseguramos que no sea transparente */
+}
+
+/* Grid 2x2 para selects de movimientos */
+.moves-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* dos columnas iguales */
+  gap: 10px 15px; /* espacio entre filas y columnas */
 }
 
 /* Estilo para opciones deshabilitadas en los selects de movimientos */
@@ -45,6 +56,10 @@ select option:disabled {
 }
 
 
+
+/* ===  Estilos para el contenedor de los recuadros del equipo ===*/
+
+/*El div donde se muestran los pokémon del equipo actual*/
 .recuadroEquipo {
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -57,16 +72,19 @@ select option:disabled {
   background-color: #f0f0f0;
 }
 
+/* Imágenes de cada pokémon en el equipo*/
 .recuadroEquipo img {
   width: 100px;
   height: 100px;
   object-fit: contain;
 }
 
+/*Botón de agregar un pokémon al equipo*/
 .recuadroEquipo button {
   width: 100%;
 }
 
+/* Diseño para los ataques del Pokémon */
 .recuadroEquipo .ataque {
   width: 100%;
   padding: 4px 8px;
@@ -76,7 +94,18 @@ select option:disabled {
   font-weight: 500;
 }
 
-/* clases de colores para cada tipo de movimiento Pokémon */
+/* Diseño para la habilidad del pokémon */
+.recuadroEquipo .habilidad {
+  margin-top: auto;          /* la empuja al fondo del recuadro */
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  border: 2px solid black;   /* borde negro como los ataques */
+}
+
+/* clases de colores para cada tipo de movimiento Pokémon en el cuadro de equipo actual */
 .Normal_type { background-color: #A8A77A; color: #fff; }
 .Fire_type { background-color: #EE8130; color: #fff; }
 .Water_type { background-color: #6390F0; color: #fff; }
@@ -99,12 +128,93 @@ select option:disabled {
 
 
 
-/* 🎨 Tema oscuro */
+/* === Estilos para las tablas de tipos de Pokémon === */
+/* Diseño de las tablas de tipos */
+.tablas-container {
+  display: flex;
+  justify-content: center; /* centra las dos tablas en la página */
+  gap: 250px; /* espacio entre columnas */
+  flex-wrap: wrap; /* permite que se muevan a otra fila en pantallas pequeñas */
+}
+
+/*Columnas donde se dibujan las tablas de tipos*/
+.tabla-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra la tabla dentro de cada columna */
+}
+
+/* Tablas para mostrar debilidades y fortalezas */
+.tipo-tablas table {
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* Encabezados de la tabla */
+.tipo-tablas th, .tipo-tablas td {
+  border: 1px solid #414141;
+  padding: 5px;
+  width: 70px;
+  height: 30px;
+    text-align: center;
+  vertical-align: middle;
+}
+
+/* Fondo de los encabezados (columnas y filas) */
+.tipo-tablas th {
+  background-color: #cccccc; /* gris claro para cabeceras */
+}
+
+/* Imágenes en cabecera de columnas */
+.tipo-tablas th.imgEquipoTablas img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Imágenes en cabecera de filas */
+.tipo-tablas th.imgTipoTablas img {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* Colores de icono para las celdas de la tabla de colores*/
+.ataqueEfectivo { 
+  color: #4CAF50; /* verde */
+  font-size: 1rem;   /* un poco más grande */
+  text-shadow: 1px 0 currentColor, -1px 0 currentColor, 0 1px currentColor, 0 -1px currentColor;
+  margin: -100px;
+
+} 
+.ataqueResistente {
+  color: #df7700; /* naranja */
+    text-shadow: 1px 0 currentColor, -1px 0 currentColor, 0 1px currentColor, 0 -1px currentColor;
+
+  transform: scaleX(-1);
+  display: inline-block;
+
+}.ataqueInmune { 
+  color: #6e6e6e; /* gris */
+  text-shadow: 1px 0 currentColor, -1px 0 currentColor, 0 1px currentColor, 0 -1px currentColor;
+}  
+
+/* Colores de fondo para las celdas de la tabla de resistencias*/
+.pokemonSuperdebil{ background-color:  #a81a1a; } /* rojo */
+.pokemonDebil{ background-color:  #f83939; } /* rojo claro*/
+.pokemonResistente {background-color: #fcae56; }/* naranja */ 
+.pokemonSuperResistente {background-color:  #4CAF50;  } /* verde */
+.pokemonInmune { background-color:#cccccc; }  /* gris claro */
+.pokemonNeutro { background-color:#f0f0f0; }  /* blanquillo para color neutro */
+
+
+
+/* ///// 🎨 Tema oscuro ////*/
 .dark-theme {
   background-color: #121212;
   color: #f1f1f1;
 }
 
+/* === Estilo para las cajas donde se guardan los pokémon === */
 /*Tema oscuro para el formato de cajas pokémon*/
 .dark-theme .box-grid {
   background-color: #1e1e1e; /* gris muy oscuro */
@@ -129,6 +239,9 @@ select option:disabled {
   border: 2px solid #3b4cca;
 }
 
+
+
+/* === Estilos para el formulario de creación de Pokémon === */
 /* Estilo oscuro para los cuadros del formulario */
 .dark-theme .form-control,
 .dark-theme .form-select {
@@ -144,6 +257,26 @@ select option:disabled {
   opacity: 1;
 }
 
+/* Estilo oscuro para los botones */
+.dark-theme .btn {
+  border-color: #888;
+}
+
+/* Estilo oscuro para los botones primarios */
+.dark-theme .btn-primary {
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+
+/* Estilo oscuro para los botones rojos */
+.dark-theme .btn-danger {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+
+
+/* ===  Estilos para el contenedor de los recuadros del equipo ===*/
 /* Estilo oscuro para los cuadros de equipo actual */
 .dark-theme .recuadroEquipo {
   border: 1px solid #ccc;
@@ -157,22 +290,24 @@ select option:disabled {
   background-color: #1e1e1e;
 }
 
-/* Estilo oscuro para los botones */
-.dark-theme .btn {
-  border-color: #888;
+
+/* === Estilos para la tabla de tipos === */
+/* Encabezados de la tabla */
+.dark-theme .tipo-tablas th, .tipo-tablas td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 70px;
+  height: 30px;
+    text-align: center;
+  vertical-align: middle;
 }
 
-/* Estilo oscuro para los botones primarios */
-
-.dark-theme .btn-primary {
-  background-color: #1976d2;
-  border-color: #1976d2;
+/* Fondo de los encabezados (columnas y filas) */
+.dark-theme .tipo-tablas th {
+  background-color: #1e1e1e; /* gris claro para cabeceras */
 }
 
-/* Estilo oscuro para los botones rojos */
-.dark-theme .btn-danger {
-  background-color: #d32f2f;
-  border-color: #d32f2f;
-}
+/* Fondo de las celdas de datos cuando es neutro */
+.dark-theme .pokemonNeutro { background-color:#3b3b3b; }  /* gris claro */
 
 

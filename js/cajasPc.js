@@ -1,6 +1,7 @@
 //Función para actualizar el icono del movimiento al clickar un pokémon
 import { actualizarIcono } from "./firebaseDatos.js";
 import { Pokemon } from "./DataModel/Pokemon.js"; // Importamos la clase Pokemon
+import { pokemonFormas } from "./firebaseDatos.js";
 
 
 //Buscamos todos los elementos html de index.html
@@ -20,7 +21,7 @@ const deleteBtn = document.getElementById("deletePokemon"); //Botón de eliminar
 
 
 export let selectedSlotIndex = null; // índice del slot seleccionado
-export let pokedex = {}; //Array de nombres e IDs de pokémon para luego buscar sus formas
+export let pokedex = []; //Array de nombres e IDs de pokémon para luego buscar sus formas
 export let boxes = []; //Array para almacenar las cajas de Pokémon
 export let currentBoxIndex = 0; //Caja que se está mostrando ahora mismo
 
@@ -71,7 +72,7 @@ function renderBox() {
 
       // Si hay un Pokémon, rellenamos el formulario
       if (pokemon) {
-        console.log(`Seleccionado Pokémon: ${pokemon.species} en la ranura ${i}`);
+        //console.log(`Seleccionado Pokémon: ${pokemon.species} en la ranura ${i}`);
         pokemon.fillForm(actualizarIcono);
         crearPokemonBtn.textContent = "Editar Pokémon"; // Cambiar texto del botón
 
@@ -127,10 +128,30 @@ pokemonForm.addEventListener("submit", (e) => {
 
   //Nombre del pokémon
   const species = document.getElementById("speciesInput").value;
-  const idPokemon = pokedex[species];
+  
+  //Buscamos el pokémon en el array
+  const entry = pokedex.find(p => p.nombre === species);
+  
+  //Obtenemos el id del pokémon
+  const idPokemon = entry ? entry.id : null;
 
   // Forma del Pokémon
   const forma = formSelect.value; 
+
+  //Tipos del pokémon
+  let tipo1 = "";
+  let tipo2 = "";
+  // 🔹 Si existe una forma que sobrescribe tipos, la aplicamos
+const formaMatch = pokemonFormas.find(f => f.no === idPokemon && f.forma === forma);
+if (formaMatch) {
+  tipo1 = formaMatch.tipo1 || "";
+  tipo2 = formaMatch.tipo2 || "";
+} else {
+  // Si no, usamos los tipos del pokémon base
+  tipo1 = entry?.tipo1 || "";
+  tipo2 = entry?.tipo2 || "";
+}
+  
 
   // Ids de movimientos que conoce ahora mismo
   const moveIds = [
@@ -164,7 +185,8 @@ const moveNames = ["move1", "move2", "move3", "move4"]
 
     // Si hay espacio en la caja, añadimos el Pokémon
   if (targetIndex  !== -1) {
-currentBox.slots[targetIndex] = new Pokemon(idPokemon, species, forma, moveIds, moveNames, ability, abilityName);
+  currentBox.slots[targetIndex] = new Pokemon(idPokemon, species, forma, tipo1, tipo2, moveIds, moveNames, ability, abilityName);
+    console.log( currentBox.slots[targetIndex])
     renderBox();
   } else {
     // Si no hay espacio, mostramos un mensajede error
@@ -178,6 +200,7 @@ currentBox.slots[targetIndex] = new Pokemon(idPokemon, species, forma, moveIds, 
     icono.src = `images/types/mystery.svg`; // Reiniciar iconos de movimientos
   }) 
   crearPokemonBtn.textContent = "Añadir a la Caja"; // Reiniciar texto del botón
+  selectedSlotIndex = null;
 
 });
 
@@ -190,6 +213,7 @@ limpiarFormularioBtn.addEventListener("click", () =>  {
     
   })
   crearPokemonBtn.textContent = "Añadir a la Caja"; // Reiniciar texto del botón 
+
 })
 
 //Función para borrar un pokémon guardado en la caja
@@ -243,19 +267,15 @@ export function actualizarImagenPokemon() {
   }
 
   // Verifica si el nombre del Pokémon existe en el pokedex
-  if (pokedex[speciesName]) {
-
     // 🔹 Si tiene imágenes con formato nombre_forma.png
-      let imageFile = pokedex[speciesName];
-  if (formValue) {
-    // Si hay una forma seleccionada, añadimos el sufijo de la forma
-    imageFile += `${formValue.toLowerCase()}`;
-  }
+    const entry = pokedex.find(p => p.nombre === speciesName);
 
+    
   //Lo mostramos por consola para verlo, y tras eso lo seteamos
-  console.log(`Cargando imagen para: ${speciesName} con forma: ${formValue}: ${imageFile}.png`);
-  pokemonImage.src = `images/pokemon-model/${imageFile}.png`;
-
+  // Si hay una forma seleccionada, añadimos el sufijo de la forma
+  console.log(`Cargando imagen para: ${speciesName} con forma: ${formValue}: images/pokemon-model/${entry.id}${formValue?.toLowerCase() || ""}.png`);
+  if (entry) {
+    pokemonImage.src = `images/pokemon-model/${entry.id}${formValue?.toLowerCase() || ""}.png`;
   }else{
   
     //Si el usuario escribe el nombre mal, lo notifica, y pone la imagen por defecto
