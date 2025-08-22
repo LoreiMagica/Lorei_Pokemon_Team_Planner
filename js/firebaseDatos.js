@@ -1,8 +1,9 @@
 // Imports de firebase
 import { db } from "./firebaseConfig.js";
 import { collection, doc, setDoc, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-import { Movimiento } from "./DataModel/Movimiento.js";  //Objeto para los movimientos de pokémon
 import { PokemonForma } from "./DataModel/PokemonForma.js"; //Objeto para guardar las formas de los pokémon
+import { Movimiento } from "./DataModel/Movimiento.js";  //Objeto para los movimientos de pokémon
+import { Habilidad } from "./DataModel/Habilidad.js";  //Objeto para crear habilidades
 
 
 // Obtenemos los movimientos del formulario
@@ -21,11 +22,16 @@ const moveIcons = [
   document.getElementById("icon4"),
 ];
 
-//Array de movimientos de pokémon 
-export const movesData = [];  
 
 //Array de formas de pokémon
 export const pokemonFormas = []; // Array global de formas
+
+//Array de movimientos de pokémon 
+export const movesData = [];  
+
+// Array global de habilidades
+export const abilitiesData = [];
+
 
 // Obtenemos el select de habilidades del html
 const abilitySelect = document.getElementById("ability");
@@ -312,26 +318,27 @@ export async function cargarHabilidades(speciesDatalist, pokedex) {
   abilitySelect.innerHTML = `<option value="">-- Selecciona habilidad --</option>`;
 
 
-  //Array de habilidades de pokémon 
-const abilitiesData = [];  
+  //Por cada habilidad obtenida, lo añadimos al array de habilidades (No son muchas)
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
 
-    //Por cada habilidad obtenida, lo añadimos al array de habilidades (No son muchas)
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-        abilitiesData.push({
-                id: doc.id,
-                nombre: data.nombre,
-            });
-        });
+    abilitiesData.push(new Habilidad(
+        doc.id,
+        data.nombre,
+        data.resistencia || [],
+        data.debilidad || [],
+        data.inmunidad || []
+      ));
+  });
 
-    // 🔹 Ordenamos alfabéticamente por nombre
-    abilitiesData.sort((a, b) => a.nombre.toLowerCase().localeCompare(b.nombre));
+  // 🔹 Ordenamos alfabéticamente por nombre
+  abilitiesData.sort((a, b) => a.nombre.toLowerCase().localeCompare(b.nombre));
 
-      //Creamos un option para cada habilidad
-      abilitiesData.forEach(ability => {
-        const option = document.createElement("option");
-        option.value = ability.id;    //Valor del option
-        option.textContent = ability.nombre;  //Nombre a mostrar en el select
-        abilitySelect.appendChild(option);
-      });
+    //Creamos un option para cada habilidad
+    abilitiesData.forEach(ability => {
+    const option = document.createElement("option");
+    option.value = ability.id;    //Valor del option
+    option.textContent = ability.nombre;  //Nombre a mostrar en el select
+    abilitySelect.appendChild(option);
+  });
 }

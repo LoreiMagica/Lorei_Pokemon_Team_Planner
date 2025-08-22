@@ -30,7 +30,7 @@
 /*Fondo de las cajas donde hay un pokémon ocupado*/
 .slot.filled {
   background-color: #fef07f; /* Amarillo Pikachu */
-  border: 2px solid #3b4cca;
+  border: 2px solid #3b4cca52;
 }
 
 
@@ -146,7 +146,11 @@ select option:disabled {
 
 /* Tablas para mostrar debilidades y fortalezas */
 .tipo-tablas table {
-  border-collapse: collapse;
+  border-collapse: separate;   
+  border-spacing: 0;          
+  border-radius: 10px;         /* borde redondeado */
+  overflow: hidden;         
+  border: 2px solid #414141;
   text-align: center;
 }
 
@@ -156,7 +160,7 @@ select option:disabled {
   padding: 5px;
   width: 70px;
   height: 30px;
-    text-align: center;
+  text-align: center;
   vertical-align: middle;
 }
 
@@ -198,6 +202,47 @@ select option:disabled {
   text-shadow: 1px 0 currentColor, -1px 0 currentColor, 0 1px currentColor, 0 -1px currentColor;
 }  
 
+
+
+/* Colores contador total efectividades y resistencias */
+.contadorEfectivos {
+  font-weight: bold;
+  background-color: #f8f8f8;
+  border-left: 2px solid #999;
+}
+.contadorEfectivosTotal1 {
+  font-weight: bold;
+  background-color:  #72ff77; 
+  border-left: 2px solid #999; } /* verde mu claro */
+.contadorEfectivosTotal2 {  
+  font-weight: bold;
+  background-color:  #65d368;
+  border-left: 2px solid #999;  } /* verde claro*/
+.contadorEfectivosTotal3 {  
+  font-weight: bold;
+  background-color:  #4CAF50;
+  border-left: 2px solid #999;  } /* verde */
+
+/* Colores contador total efectividades y resistencias */
+.contadorEfectivos {
+  font-weight: bold;
+  background-color: #f8f8f8;
+  border-left: 2px solid #999;
+}
+.contadorDebilidadesTotal1 {
+  font-weight: bold;
+  background-color:  #f74e4e; 
+  border-left: 2px solid #999; } /* rojo mu claro */
+.contadorDebilidadesTotal2 {  
+  font-weight: bold;
+  background-color:  #d83636;
+  border-left: 2px solid #999;  } /* rojo claro*/
+.contadorDebilidadesTotal3 {  
+  font-weight: bold;
+  background-color:  #a81a1a;
+  border-left: 2px solid #999;  } /* rojo */
+
+
 /* Colores de fondo para las celdas de la tabla de resistencias*/
 .pokemonSuperdebil{ background-color:  #a81a1a; } /* rojo */
 .pokemonDebil{ background-color:  #f83939; } /* rojo claro*/
@@ -230,13 +275,13 @@ select option:disabled {
 /* Estilo oscuro para el slot de la caja que el usuario ha pulsado */
 .dark-theme .slot.selected {
   border: 3px solid #ff4444;
-  box-shadow: 0 0 8px #000;
+  box-shadow: 0 0 8px #dfdfdf;
 }
 
 /*Fondo de las cajas donde hay un pokémon ocupado*/
 .dark-theme .slot.filled {
   background-color: #fcb816; /* Amarillo Pikachu shiny */
-  border: 2px solid #3b4cca;
+  border: 2px solid #3b4cca52;
 }
 
 
@@ -303,6 +348,16 @@ select option:disabled {
 
 
 /* === Estilos para la tabla de tipos === */
+/* Diseño de las tablas de tipos */
+.tipo-tablas table {
+  border-collapse: separate;   
+  border-spacing: 0;          
+  border-radius: 10px;         /* borde redondeado */
+  overflow: hidden;         
+  border: 2px solid #ccc;
+  text-align: center;
+}
+
 /* Encabezados de la tabla */
 .dark-theme .tipo-tablas th, .tipo-tablas td {
   border: 1px solid #ccc;
@@ -316,6 +371,12 @@ select option:disabled {
 /* Fondo de los encabezados (columnas y filas) */
 .dark-theme .tipo-tablas th {
   background-color: #1e1e1e; /* gris claro para cabeceras */
+}
+
+.dark-theme .contadorEfectivos {
+  font-weight: bold;
+  background-color: #3b3b3b; /* gris claro */
+  border-left: 2px solid #999;
 }
 
 /* Fondo de las celdas de datos cuando es neutro */
