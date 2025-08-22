@@ -383,3 +383,26 @@ select option:disabled {
 .dark-theme .pokemonNeutro { background-color:#3b3b3b; }  /* gris claro */
 
 
+/* === Diseño para formulario de login === */
+.dark-theme .modal-content {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+.dark-theme .modal-content .form-control {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border: 1px solid #444;
+}
+
+.dark-theme .modal-content .form-control:focus {
+  background-color: #333;
+  border-color: #0d6efd; /* azul Bootstrap */
+  box-shadow: none;
+}
+
+.dark-theme .modal-content .btn-close {
+  filter: invert(1);
+}
+
+

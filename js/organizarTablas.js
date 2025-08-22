@@ -1,4 +1,4 @@
-import { movesData, abilitiesData } from "./firebaseDatos.js"; //Array de movimientos y habilidades
+import { movesData, abilitiesData } from "./firebaseCargarDatos.js"; //Array de movimientos y habilidades
 import { equipoTabla } from "./organizarEquipo.js";  //Equipo actual 
 import { pokedex } from "./cajasPc.js"; //Lista de pokémon completa
 
@@ -80,7 +80,7 @@ export function generarTablaColores() {
 
     //Calculamos la coincidencia con cada pokémon
     equipoTabla.forEach(pokemon => {
-    let esEfectivo = pokemon.moves.some(mov => {
+    let esEfectivo = pokemon.moveIds.some(mov => {
       let movimiento = movesData.find(m => m.id === mov);
 
         // Ignoramos movimientos de tipo Status
@@ -92,7 +92,7 @@ export function generarTablaColores() {
       return calcularEfectividad(movimiento.tipo, tipoFila) > 1;
     });
 
-      let esNeutro = pokemon.moves.some(mov =>  {
+      let esNeutro = pokemon.moveIds.some(mov =>  {
         let movimiento = movesData.find(m => m.id === mov);
 
          // Ignoramos movimientos de tipo Status
@@ -100,7 +100,7 @@ export function generarTablaColores() {
         calcularEfectividad(movesData.find(m => m.id === mov).tipo, tipoFila) === 1
     });
 
-    let esResistente = pokemon.moves.some(mov => {
+    let esResistente = pokemon.moveIds.some(mov => {
       let movimiento = movesData.find(m => m.id === mov);
 
         // Ignoramos movimientos de tipo Status
@@ -108,7 +108,7 @@ export function generarTablaColores() {
       return calcularEfectividad(movimiento.tipo, tipoFila) < 1 && calcularEfectividad(movimiento.tipo, tipoFila) > 0;
     });
 
-    let esInmune = pokemon.moves.some(mov => {
+    let esInmune = pokemon.moveIds.some(mov => {
       let movimiento = movesData.find(m => m.id === mov);
 
         // Ignoramos movimientos de tipo Status

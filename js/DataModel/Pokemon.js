@@ -1,11 +1,14 @@
+import { cargarFormas } from "../firebaseCargarDatos.js";
+import { pokedex } from "../cajasPc.js"; //Lista de pokémon completa
+
 export class Pokemon {
-  constructor(id = 0, species, forma = "", tipo1 = "", tipo2 = "", moves = [], moveNames = [], ability = "", abilityName = "") {
+  constructor(id = 0, species, forma = "", tipo1 = "", tipo2 = "", moveIds = [], moveNames = [], ability = "", abilityName = "") {
     this.id = id; // ID del Pokémon
     this.species = species; // Nombre del Pokémon
     this.tipo1 = tipo1; // Tipo 1 del Pokémon
     this.tipo2 = tipo2; // Tipo 2 del Pokémon (opcional)
     this.forma = forma; // Forma del Pokémon (opcional)
-    this.moves = moves; // Array de IDs de movimientos
+    this.moveIds = moveIds; // Array de IDs de movimientos
     this.moveNames = moveNames; // Array de nombres de movimientos
     this.ability = ability; // ID de la habilidad
     this.abilityName = abilityName; // Nombre de la habilidad
@@ -16,7 +19,7 @@ export class Pokemon {
     const entry = pokedex.find(p => p.nombre === this.species);
     if (!entry) return "0";
     let file = entry.id;
-    if (this.forma) file += this.forma.toLowerCase();
+    if (this.forma) file += this.forma;
     return file;
   }
 
@@ -35,10 +38,16 @@ export class Pokemon {
   // 📝 Rellena el formulario con los datos del Pokémon
   fillForm(actualizarIcono) {
     document.getElementById("speciesInput").value = this.species;
+
+    // Esperar que se carguen las formas del Pokémon seleccionado
+    cargarFormas(this.species, pokedex, document.getElementById("formasSelect")).then(() => {
+    // Ahora sí podemos asignar la forma
     document.getElementById("formasSelect").value = this.forma || "";
+  });
+
     document.getElementById("ability").value = this.ability;
 
-    const [m1, m2, m3, m4] = this.moves;
+    const [m1, m2, m3, m4] = this.moveIds;
     document.getElementById("move1").value = m1 || "";
     document.getElementById("move2").value = m2 || "";
     document.getElementById("move3").value = m3 || "";

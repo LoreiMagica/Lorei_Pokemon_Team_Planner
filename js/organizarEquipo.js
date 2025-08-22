@@ -1,7 +1,7 @@
 //Importamos el slot y caja seleccionado para leer el Pokémon
 import { selectedSlotIndex, boxes, currentBoxIndex, pokedex } from "./cajasPc.js";
 import { Pokemon } from "./DataModel/Pokemon.js";
-import { movesData } from "./firebaseDatos.js";
+import { movesData } from "./firebaseCargarDatos.js";
 import { generarTablaColores, generarTablaNumeros } from "./organizarTablas.js";
 
 
@@ -65,9 +65,9 @@ for (let i = 0; i < numRecuadros; i++) {
     let tipoMovimiento = []; //Array para almacenar los tipos de movimientos y mostrar el background de su color
 
     //Buscamos los tipos de movimientos del Pokémon 
-    for (let i = 0; i < pokemon.moves.length; i++) {
+    for (let i = 0; i < pokemon.moveIds.length; i++) {
         // Buscar dentro del array movesData
-        let movimiento = movesData.find(m => m.id === pokemon.moves[i]);
+        let movimiento = movesData.find(m => m.id === pokemon.moveIds[i]);
 
         if (movimiento) {
             tipoMovimiento.push(movimiento.tipo);
