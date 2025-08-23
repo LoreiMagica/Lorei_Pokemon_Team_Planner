@@ -231,20 +231,26 @@ select option:disabled {
 }
 .contadorDebilidadesTotal1 {
   font-weight: bold;
-  background-color:  #f74e4e; 
-  border-left: 2px solid #999; } /* rojo mu claro */
+  background-color:  #f74e4e; /* rojo mu claro */
+  border-left: 2px solid #999; 
+  color: #000;
+} 
 .contadorDebilidadesTotal2 {  
   font-weight: bold;
-  background-color:  #d83636;
-  border-left: 2px solid #999;  } /* rojo claro*/
+  background-color:  #d83636; /* rojo claro*/
+  border-left: 2px solid #999;  
+  color: #000;
+} 
 .contadorDebilidadesTotal3 {  
   font-weight: bold;
   background-color:  #a81a1a;
-  border-left: 2px solid #999;  } /* rojo */
+  border-left: 2px solid #999; /* rojo */
+  color: #fff;
+  } 
 
 
 /* Colores de fondo para las celdas de la tabla de resistencias*/
-.pokemonSuperdebil{ background-color:  #a81a1a; } /* rojo */
+.pokemonSuperdebil{ color: #fff; background-color:  #a81a1a; } /* rojo */
 .pokemonDebil{ background-color:  #f83939; } /* rojo claro*/
 .pokemonResistente {background-color: #fcae56; }/* naranja */ 
 .pokemonSuperResistente {background-color:  #4CAF50;  } /* verde */
@@ -253,7 +259,7 @@ select option:disabled {
 
 
 
-/* ///// 🎨 Tema oscuro ////*/
+/* ///// 🎨 Tema oscuro //// */
 .dark-theme {
   background-color: #121212;
   color: #f1f1f1;
@@ -307,17 +313,6 @@ select option:disabled {
   border-color: #888;
 }
 
-/* Estilo oscuro para los botones primarios */
-.dark-theme .btn-primary {
-  background-color: #1976d2;
-  border-color: #1976d2;
-}
-
-/* Estilo oscuro para los botones rojos */
-.dark-theme .btn-danger {
-  background-color: #d32f2f;
-  border-color: #d32f2f;
-}
 
 
 
@@ -382,6 +377,31 @@ select option:disabled {
 /* Fondo de las celdas de datos cuando es neutro */
 .dark-theme .pokemonNeutro { background-color:#3b3b3b; }  /* gris claro */
 
+/* Colores contador total efectividades y resistencias */
+.dark-theme .contadorEfectivos {
+  font-weight: bold;
+  background-color: #f8f8f8;
+  border-left: 2px solid #999;
+  color: #000;
+}
+.dark-theme .contadorEfectivosTotal1 {
+  font-weight: bold;
+  background-color:  #72ff77; /* verde mu claro */
+  border-left: 2px solid #999;
+  color: #000;
+ } 
+.dark-theme .contadorEfectivosTotal2 {  
+  font-weight: bold;
+  background-color:  #65d368; /* verde claro*/
+  border-left: 2px solid #999;  
+  color: #000;
+} 
+.dark-theme .contadorEfectivosTotal3 {  
+  font-weight: bold;
+  background-color:  #4CAF50; /* verde */
+  border-left: 2px solid #999;
+  color: #000;
+  } 
 
 /* === Diseño para formulario de login === */
 .dark-theme .modal-content {
@@ -405,4 +425,72 @@ select option:disabled {
   filter: invert(1);
 }
 
+/* css para cuando hay una pantalla de móvil */
+@media (max-width: 768px) {
 
+
+  .row {
+    display: flex;
+    flex-direction: column; /* apila los elementos */
+  }
+  .col-md-4 { 
+    order: -1; /* pone el formulario antes que el pc */
+  }
+
+  /* Medidas para las cajas de pc */
+  .box-grid {
+    grid-template-columns: repeat(6, minmax(50px, 1fr));
+    grid-auto-rows: repeat(5, minmax(50px, 1fr));
+  }
+
+  /*slot de una caja del pc */
+  .slot {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+  }
+
+  /* imágenes del pokémon en la caja */
+  .slot img {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  #pokemonFormContainer {
+    margin-bottom: 1rem;
+  }
+
+  /* Inputs de nombre de pokémon y forma */
+  #speciesInput, #formasSelect {
+    max-width: 100%;
+  }
+
+  /* Grid 2x2 para selects de movimientos */
+  .moves-grid {
+    grid-template-columns: 1fr; /* una columna por fila */
+  }
+
+  /* Recuadro del equipo actual */
+  .recuadroEquipo {
+    width: 90px;
+  }
+
+  /*Imágenes del pokémon en el equipo actual */
+  .recuadroEquipo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* div de las tablas */
+  .tablas-container {
+    gap: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* más flexible */
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+}

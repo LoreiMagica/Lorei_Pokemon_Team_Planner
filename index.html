@@ -18,26 +18,27 @@
 
 <body class="container-fluid p-4">
   <div class="d-flex justify-content-end mb-3">
-  <div class="d-flex justify-content-end mb-3 gap-2">
-  <!-- Texto dinámico del usuario -->
-  <span id="userGreeting" class="me-2 fw-bold text-primary d-none"></span>
+    <div class="d-flex justify-content-end mb-3 gap-2">
+      <!-- Texto dinámico del usuario -->
+      <span id="userGreeting" class="me-2 fw-bold text-primary d-none" data-i18n="helloUser" data-vars='{"email"}'></span>
 
-  <!-- Icono para guardar datos-->
-  <button id="guardarCajasbtn" class="btn btn-success  d-none" title="Guardar cajas">
-    <i class="bi bi-cloud-upload-fill"></i>
-  </button>
-  <!-- Botón de login/logout -->
-  <button id="authButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#authModal">
-    Iniciar Sesión
-  </button>
+      <!-- Icono para guardar datos-->
+      <button id="guardarCajasbtn" class="btn btn-success  d-none" title="Guardar cajas" data-i18n-title="save_boxes">
+        <i class="bi bi-cloud-upload-fill"></i>
+      </button>
+      <!-- Botón de login/logout -->
+      <button id="authButton" class="btn btn-primary me-5" data-bs-toggle="modal" data-bs-target="#authModal" data-i18n="login">
+        Iniciar Sesión
+      </button>
+      <button id="languageToggle" class="btn btn-outline-secondary">
+        ES/EN
+      </button>
+      <button id="themeToggle" class="btn btn-outline-dark" title="Cambiar tema de colores" data-i18n-title="change_theme">
+        <i id="themeIcon" class="bi bi-moon-fill"></i>
+      </button>
+    </div>
+  </div>
 
-    <button id="themeToggle" class="btn btn-outline-dark">
-    <i id="themeIcon" class="bi bi-moon-fill"></i>
-  </button>
-
-</div>
-
-</div>
   <div class="row">
     <!-- Columna izquierda: Caja Pokémon -->
     <div class="col-md-8">
@@ -50,105 +51,125 @@
       </div>
       <div class="box-grid" id="boxGrid"></div>
       <div class="mt-3">
-        <button id="addBox" class="btn btn-success">+ Agregar Caja</button>
-
+        <button id="addBox" class="btn btn-success" data-i18n="anadirCaja" >+ Agregar Caja</button>
       </div>
     </div>
 
     <!-- Columna derecha: Formulario -->
     <div class="col-md-4">
-      <h4>Crear Pokémon</h4>
-      <form id="pokemonForm">
-
-        <!-- Imagen del Pokémon elegido -->
-        <div class="mb-2 text-center">
-          <img id="pokemonImage" src="images/pokemon-model/0.png" 
-              alt="Imagen del Pokémon" 
+      <h4 data-i18n="createPokemon">Crear Pokémon</h4>
+    
+      <button  id="botonOcultarFormulario" class="btn btn-primary d-md-none mb-2" type="button" data-bs-toggle="collapse"
+        data-bs-target="#pokemonFormContainer" aria-expanded="false" aria-controls="pokemonFormContainer">
+        <i id="iconoOcultarFormulario" class="bi bi-eye-fill"></i>
+      </button>
+    
+      <div class="collapse d-md-block" id="pokemonFormContainer">
+        <form id="pokemonForm">
+    
+          <!-- Imagen del Pokémon elegido -->
+          <div class="mb-2 text-center">
+            <img id="pokemonImage" src="images/pokemon-model/0.png" alt="Imagen del Pokémon" data-i18n="imagePokemon" 
               style="width:100px; height:100px; object-fit:contain; border:1px solid #ccc; border-radius:8px;">
-        </div>
-
-        <!-- Selector de especie pokémon y forma -->
-        <div class="mb-3">
-            <label for="speciesInput" class="form-label">Especie</label>
+          </div>
+    
+          <!-- Selector de especie pokémon y forma -->
+          <div class="mb-3">
+            <label for="speciesInput" class="form-label" data-i18n="speciesTitle" >Especie</label>
             <div class="d-flex gap-2">
-                <!-- Input text con autocompletado -->
-                <input class="form-control" list="speciesList" id="speciesInput" placeholder="Nombre" required>
-                <datalist id="speciesList"></datalist>
-
-                <!-- Select para las formas del pokémon elegido -->
-                <select id="formasSelect" class="form-select" style="max-width: 200px;">
-                  <option value="">-- Formas --</option>
-                </select>
+              <!-- Input text con autocompletado -->
+              <input class="form-control" list="speciesList" id="speciesInput" placeholder="Nombre" data-i18n="name" required>
+              <datalist id="speciesList"></datalist>
+    
+              <!-- Select para las formas del pokémon elegido -->
+              <select id="formasSelect" class="form-select" style="max-width: 200px;">
+                <option value="" data-i18n="formName">-- Formas --</option>
+              </select>
+            </div>
+          </div>
+    
+    
+          <!-- Selects para los movimientos del Pokémon -->
+          <div class="mb-3">
+            <label class="form-label" data-i18n="moveTitle">Movimientos</label>
+            <div class="moves-grid">
+              <div class="d-flex align-items-center gap-2">
+                <input id="move1" list="movesList" class="form-control" required>
+                <img id="icon1" src="images/types/mystery.svg" alt="Tipo movimiento 1" data-i18n="moveType1" class="type-icon"
+                  style="width:32px; height:32px;">
               </div>
-          
-        </div>
-
-
-    <!-- Selects para los movimientos del Pokémon -->
-    <div class="mb-3">
-      <label class="form-label">Movimientos</label>
-  <div class="moves-grid">
-    <div class="d-flex align-items-center gap-2">
-      <select id="move1" class="form-select" required></select>
-      <img id="icon1" src="images/types/mystery.svg" alt="tipo movimiento 1" class="type-icon" style="width:32px; height:32px;">
-    </div>
-    <div class="d-flex align-items-center gap-2">
-      <select id="move2" class="form-select" ></select>
-      <img id="icon2" src="images/types/mystery.svg" alt="tipo movimiento 2" class="type-icon" style="width:32px; height:32px;">
-    </div>
-    <div class="d-flex align-items-center gap-2">
-      <select id="move3" class="form-select" ></select>
-      <img id="icon3" src="images/types/mystery.svg" alt="tipo movimiento 3" class="type-icon" style="width:32px; height:32px;">
-    </div>
-    <div class="d-flex align-items-center gap-2">
-      <select id="move4" class="form-select" ></select>
-      <img id="icon4" src="images/types/mystery.svg" alt="tipo movimiento 4" class="type-icon" style="width:32px; height:32px;">
-    </div>
-  </div>
-    </div>
-
-    <!-- Select para elegir la habilidad del Pokémon -->
-    <div class="mb-3">
-      <label for="ability" class="form-label">Habilidad</label>
-      <select class="form-select" id="ability">
-
-      </select>
-    </div>
-
-    <!-- Botón para agregar el nuevo/editado pokémon -->
-        <button type="submit" id="crearPokemonBtn" class="btn btn-primary">Añadir a la Caja</button>
-
-        
-        <!-- Botón para limpiar el formulario de pokémon manualmente-->
-        <button type="button" class="btn btn-secondary" id="limpiarFormularioBtn">Limpiar formulario</button>
-        
-        <!-- Botón para eliminar el pokémon -->
-        <button type="button" id="deletePokemon" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
-      </form>
-      <div id="saveNotice" class="text small mt-2"></div> <!-- Mensaje de aviso -->
-
-
-
+              <div class="d-flex align-items-center gap-2">
+                <input id="move2" list="movesList" class="form-control">
+                <img id="icon2" src="images/types/mystery.svg" alt="Tipo movimiento 2" data-i18n="moveType2" class="type-icon"
+                  style="width:32px; height:32px;">
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <input id="move3" list="movesList" class="form-control">
+                <img id="icon3" src="images/types/mystery.svg" alt="Tipo movimiento 3" data-i18n="moveType3" class="type-icon"
+                  style="width:32px; height:32px;">
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <input id="move4" list="movesList" class="form-control">
+                <img id="icon4" src="images/types/mystery.svg" alt="Tipo movimiento 4" data-i18n="moveType4" class="type-icon"
+                  style="width:32px; height:32px;">
+              </div>
+            </div>
+          </div>
+          <!-- 🔹 Datalist compartido para todos -->
+          <datalist id="movesList"></datalist>
+    
+          <!-- Select para elegir la habilidad del Pokémon -->
+          <div class="mb-3">
+            <label for="ability" class="form-label" data-i18n="abilitiesTitle">Habilidad</label>
+            <select class="form-select" id="ability">
+    
+            </select>
+          </div>
+    
+          <!-- Botón para agregar el nuevo/editado pokémon -->
+          <button type="submit" id="crearPokemonBtn" class="btn btn-primary" data-i18n="add_to_box" >Añadir a la Caja</button>
+    
+    
+          <!-- Botón para limpiar el formulario de pokémon manualmente-->
+          <button type="button" class="btn btn-secondary" id="limpiarFormularioBtn" data-i18n="cleanForm" >Limpiar formulario</button>
+    
+          <!-- Botón para eliminar el pokémon -->
+          <button type="button" id="deletePokemon" class="btn btn-danger" title="Eliminar pokémon" data-i18n-title="erasePokemon" ><i
+              class="bi bi-trash3-fill"></i></button>
+        </form>
+        <div id="saveNotice" class="text small mt-2"></div> <!-- Mensaje de aviso -->
+      </div>
     </div>
   </div>
 
   <!-- Contenedor de recuadros para añadir Pokémon seleccionados -->
-
   <div class="equipo-container text-center mt-5">
-  <h4>Equipo Pokémon</h4>
-  <div id="recuadrosEquipoContainer" class="d-flex flex-wrap gap-3 justify-content-center">
-    <!-- Los recuadros se generarán con javascript -->
-  </div>
+    <h4 data-i18n="pokemonTeamTitle">Equipo Pokémon</h4>
+    <div id="equiposControls" class="d-flex justify-content-center align-items-center gap-2 my-3 flex-wrap">
+      <button id="guardarEquipoBtn" class="btn btn-primary btn-sm me-5" title="Guardar equipo" data-i18n-title="saveTeam"><i
+          class="bi bi-floppy-fill"></i></button> <!-- Guardar equipo-->
+      <select id="listaEquipos" class="form-select form-select-sm w-auto"> <!-- Select para elegir equipo guardado-->
+        <option value="" data-i18n="selectTeam">-- Selecciona un equipo --</option>
+      </select>
+      <button id="cargarEquipoBtn" class="btn btn-success btn-sm" title="Cargar equipo" data-i18n-title="loadTeam"><i
+          class="bi bi-folder-fill"></i></button> <!-- Botón para cargar equipo del select -->
+      <button id="eliminarEquipoBtn" class="btn btn-danger btn-sm" title="Eliminar equipo" data-i18n-title="deleteTeam"><i
+          class="bi bi-trash3-fill"></i></button> <!-- Eliminar equipo del select y de la base de datos-->
+  
+    </div>
+    <div id="recuadrosEquipoContainer" class="d-flex flex-wrap gap-3 justify-content-center">
+      <!-- Los recuadros se generarán con javascript -->
+    </div>
   </div>
 
 <div class="tipo-tablas mt-5">
   <div class="tablas-container">
     <div class="tabla-col">
-      <h4 class="text-start mb-3">Efectividad de Movimientos</h4>
+      <h4 class="text-start mb-3" data-i18n="tableMovesTitle">Efectividad de Movimientos</h4>
       <div id="tablaColoresContainer"></div>
     </div>
     <div class="tabla-col">
-      <h4 class="text-start mb-3">Resistencia de Pokémon</h4>
+      <h4 class="text-start mb-3" data-i18n="tableResistTitle">Resistencia de Pokémon</h4>
       <div id="tablaNumerosContainer"></div>
     </div>
   </div>
@@ -160,7 +181,7 @@
   <div class="modal-dialog">
     <div class="modal-content rounded-4 shadow">
       <div class="modal-header">
-        <h5 class="modal-title" id="authModalLabel">Iniciar Sesión</h5>
+        <h5 class="modal-title" id="authModalLabel" data-i18n="login">Iniciar Sesión</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
@@ -168,19 +189,19 @@
         <!-- Formulario -->
         <form id="authForm">
           <div class="mb-3">
-            <label for="emailInput" class="form-label">Correo electrónico</label>
+            <label for="emailInput" class="form-label" data-i18n="email">Correo electrónico</label>
             <input type="email" class="form-control" id="emailInput" required>
           </div>
           <div class="mb-3">
-            <label for="passwordInput" class="form-label">Contraseña</label>
+            <label for="passwordInput" class="form-label" data-i18n="password">Contraseña</label>
             <input type="password" class="form-control" id="passwordInput" required>
           </div>
           <div id="authError" class="text-danger small"></div>
-          <button type="submit" class="btn btn-primary w-100">Entrar</button>
+          <button type="submit" class="btn btn-primary w-100" data-i18n="enter">Entrar</button>
         </form>
 
         <div class="text-center mt-3">
-          <small>¿No tienes cuenta? 
+          <small data-i18n="notAccount">¿No tienes cuenta? 
             <a href="#" id="toggleRegister">Regístrate</a>
           </small>
         </div>
@@ -191,13 +212,16 @@
 
 
     <!-- Scripts -->
+  <script type="module" src="js/i18n.js"></script>
   <script type="module" src="js/firebaseConfig.js"></script>
   <script type="module" src="js/firebaseSubirDatos.js"></script>
   <script type="module" src="js/firebaseCargarDatos.js"></script>
   <script type="module" src="js/cajasPc.js"></script>
-  <script src="js/scriptsUsuario.js"></script>
+  <script type="module" src="js/scriptsUsuario.js"></script>
   <script type="module"src="js/loginUsuario.js"></script>
+  <script type="module" src="js/cargarDatosUsuario.js"></script>
   <script type="module" src="js/organizarEquipo.js"></script>
+
 
 
 
@@ -205,7 +229,12 @@
     //Cargamos las funciones de firebaseDatos para llenar el formulario
     import { subirNombresPokedex, subirFormas, subirMovimientos, subirHabilidades } from "./js/firebaseSubirDatos.js";
     import { cargarPokedex, cargarFormas, cargarMovimientos, cargarHabilidades } from "./js/firebaseCargarDatos.js";
-    import { actualizarImagenPokemon,  pokedex  } from "./js/cajasPc.js"
+    import { actualizarImagenPokemon  } from "./js/cajasPc.js"
+    import { pokedex  } from "./js/firebaseCargarDatos.js"
+
+
+    let formularioCerrado = true;
+    
 
     // Cuando el usuario elige un pokémon, se cargan las formas disponibles de este pokémon
     speciesInput.addEventListener("change", () => {
@@ -224,6 +253,19 @@
       // Actualizar la imagen del Pokémon al cambiar la especie o forma
       speciesInput.addEventListener("change", actualizarImagenPokemon); 
       formasSelect.addEventListener("change", actualizarImagenPokemon);
+
+    });
+
+    botonOcultarFormulario.addEventListener("click", () => {
+      if (formularioCerrado) {
+        iconoOcultarFormulario.classList.remove("bi-eye-fill"); //Quitamos el icono de ojo abierto
+        iconoOcultarFormulario.classList.add("bi-eye-slash"); //Ponemos el icono de ojo cerrado
+        formularioCerrado = false;
+      } else {
+        iconoOcultarFormulario.classList.remove("bi-eye-slash"); //Quitamos el icono de ojo cerrado
+        iconoOcultarFormulario.classList.add("bi-eye-fill"); //Ponemos el icono de ojo abierto
+        formularioCerrado = true;
+      }
 
     });
   </script>

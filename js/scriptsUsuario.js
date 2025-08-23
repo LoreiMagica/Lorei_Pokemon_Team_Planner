@@ -1,3 +1,4 @@
+
 const themeToggle = document.getElementById("themeToggle"); // Botón de cambiar tema
 const themeIcon = document.getElementById("themeIcon"); //Icono de sol y luna
 

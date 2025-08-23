@@ -22,7 +22,7 @@ export async function subirNombresPokedex() {
 
   //Nos aseguramos que el número de pokémon y tipos es el mismo para evitar liarla
   if (nombres.length !== tipos.length) {
-    console.error("Los ficheros no tienen el mismo número de líneas");
+    console.error("❌ Los ficheros no tienen el mismo número de líneas");
     return;
   }
 
@@ -57,7 +57,7 @@ export async function subirFormas() {
       });
       console.log(`✔ Insertado: ${nombres[i]}`);
     } catch (e) {
-      console.error("Error añadiendo documento:", e);
+      console.error("❌ Error añadiendo documento:", e);
     }
   }
 }
@@ -71,7 +71,7 @@ export async function subirMovimientos() {
 
     //Nos aseguramos que el número de pokémon y tipos es el mismo para evitar liarla
   if (nombres.length !== tipos.length || nombres.length !== categorias.length) {
-    console.error("Los ficheros no tienen la misma cantidad de líneas");
+    console.error("❌ Los ficheros no tienen la misma cantidad de líneas");
     return;
   }
 
@@ -87,7 +87,7 @@ export async function subirMovimientos() {
       categoria: categorias[i]
     });
 
-    console.log(`Insertado movimiento #${id}: ${nombres[i]}`);
+    console.log(`✔ Insertado movimiento #${id}: ${nombres[i]}`);
     await delay(50);
 
   }

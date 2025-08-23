@@ -1,6 +1,6 @@
 import { movesData, abilitiesData } from "./firebaseCargarDatos.js"; //Array de movimientos y habilidades
 import { equipoTabla } from "./organizarEquipo.js";  //Equipo actual 
-import { pokedex } from "./cajasPc.js"; //Lista de pokémon completa
+import { pokedex } from "./firebaseCargarDatos.js"; //Lista de pokémon completa
 
 
 // Array con tipos elementales

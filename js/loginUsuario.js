@@ -2,7 +2,9 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import { app, auth } from "./firebaseConfig.js";  
 import { guardarCajasEnDB } from "./guardarDatosUsuario.js"; // Función para guardar datos del usuario
-import { cargarCajasDesdeDB } from "./cargarDatosUsuario.js";  // Función para cargar los datos de usuario guardados
+import { cargarCajasDesdeDB, cargarListaEquipos } from "./cargarDatosUsuario.js";  // Función para cargar los datos de usuario guardados
+import { changeLanguage, currentLang } from "./i18n.js";
+
 
 
 // Elementos html del cuadro de inicio de sesión
@@ -17,9 +19,9 @@ let isRegister = false;
 toggleRegister.addEventListener("click", (e) => {
   e.preventDefault();
   isRegister = !isRegister; //Mirar si está en modo registrar o logear
-  document.getElementById("authModalLabel").textContent = isRegister ? "Registrarse" : "Iniciar Sesión";
-  authForm.querySelector("button[type=submit]").textContent = isRegister ? "Crear Cuenta" : "Entrar";
-  toggleRegister.textContent = isRegister ? "¿Ya tienes cuenta? Inicia sesión" : "¿No tienes cuenta? Regístrate";
+  document.getElementById("authModalLabel").textContent = isRegister ? t("register") : t("login");
+  authForm.querySelector("button[type=submit]").textContent = isRegister ? t("createAccount") : t("enter");
+  toggleRegister.textContent = isRegister ? t("alreadyAccount") : t("notAccount");
 });
 
 // Enviar formulario
@@ -34,11 +36,11 @@ authForm.addEventListener("submit", async (e) => {
     if (isRegister) {
         //Si se está registrando correctamente
       await createUserWithEmailAndPassword(auth, email, password);
-      authError.textContent = "✅ Registro exitoso. Ya puedes usar la app.";
+      authError.textContent = t("registerSucess");
     } else {
         //Si se está logeando
       await signInWithEmailAndPassword(auth, email, password);
-      authError.textContent = "✅ Sesión iniciada.";
+      authError.textContent = t("loginSucess");
     }
 
     //Borramos el mensaje de error si hubiese
@@ -52,7 +54,7 @@ authForm.addEventListener("submit", async (e) => {
   } catch (err) {
     //Si da error, avisa por un texto en el cuadro
     if (err.message == "Firebase: Error (auth/invalid-credential).") {
-        authError.textContent = "Error: Usuario o contraseña incorrectos" 
+        authError.textContent = "❌ Error: Usuario o contraseña incorrectos" 
     } else {
     authError.textContent = err.message;
     }
@@ -63,7 +65,7 @@ authForm.addEventListener("submit", async (e) => {
 authButton.addEventListener("click", async () => {
   if (auth.currentUser) {
     //Confirmamos si de verdad desea cerrar sesión
-    const confirmar = confirm("¿Seguro que deseas cerrar sesión?");
+    const confirmar = confirm(t("sureCloseSession"));
     if (confirmar) {
       await signOut(auth);
     }
@@ -74,11 +76,17 @@ authButton.addEventListener("click", async () => {
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // Mostramos al usuario con qué correo se ha logeado
-    userGreeting.textContent = `¡Hola ${user.email}!`;
+    userGreeting.textContent = tv("helloUser", { email: user.email });
     userGreeting.classList.remove("d-none");
+    userGreeting.setAttribute("data-i18n", "helloUser");
+    userGreeting.setAttribute("data-vars", JSON.stringify({ email: user.email }));
+    userGreeting.classList.remove("d-none");
+    
+    // Inicializa el texto según idioma actual
+    changeLanguage(currentLang);
 
     //Cambiamos a la opción de cerrar sesión
-    authButton.textContent = "Cerrar Sesión";
+    authButton.textContent = t("logout");
     authButton.classList.remove("btn-primary");
     authButton.classList.add("btn-danger");
 
@@ -88,6 +96,8 @@ onAuthStateChanged(auth, (user) => {
 
     // Usuario logueado: cargar cajas 
     cargarCajasDesdeDB();
+    cargarListaEquipos();
+
     
     // Mostrar icono de guardar manualmente
     guardarCajasbtn.classList.remove("d-none");
@@ -97,7 +107,7 @@ onAuthStateChanged(auth, (user) => {
     userGreeting.classList.add("d-none");
 
     //Ponemos el botón de iniciar sesión
-    authButton.textContent = "Iniciar Sesión";
+    authButton.textContent = t("login");
     authButton.classList.remove("btn-danger");
     authButton.classList.add("btn-primary");
 

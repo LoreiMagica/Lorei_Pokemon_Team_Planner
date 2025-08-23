@@ -1,8 +1,11 @@
 //Función para actualizar el icono del movimiento al clickar un pokémon
-import { actualizarIcono,  pokemonFormas, cargarFormas } from "./firebaseCargarDatos.js";
-import { Pokemon } from "./DataModel/Pokemon.js"; // Importamos la clase Pokemon
-import { guardarCajasEnDB } from "./guardarDatosUsuario.js";
+import { actualizarIcono,  pokemonFormas, movesData } from "./firebaseCargarDatos.js";
 import { auth } from "./firebaseConfig.js";
+import { Pokemon } from "./DataModel/Pokemon.js"; // Importamos la clase Pokemon
+import { guardarCajasEnDB } from "./guardarDatosUsuario.js"; //Función para guardar las cajas en firebase realtimeDatabase
+import { actualizarBotonesAnadir } from "./organizarEquipo.js"; //Función para habilitar y deshabilitar los botones de añadir pok´emon al equipo
+import { pokedex } from "./firebaseCargarDatos.js"; //Función para habilitar y deshabilitar los botones de añadir pok´emon al equipo
+
 
 
 //Buscamos todos los elementos html de index.html
@@ -16,13 +19,12 @@ const nextBoxBtn = document.getElementById("nextBox");
 const speciesInput = document.getElementById("speciesInput"); //El input de nombre de pokémon
 const formSelect = document.getElementById("formasSelect"); //El input de formas pokemon
 
-const crearPokemonBtn = document.getElementById("crearPokemonBtn"); //Botón de eliminar el pokémon
+const crearPokemonBtn = document.getElementById("crearPokemonBtn"); //Botón de crear el pokémon
 const limpiarFormularioBtn = document.getElementById("limpiarFormularioBtn"); //Botón para limpiar el formulario
 const deleteBtn = document.getElementById("deletePokemon"); //Botón de eliminar el pokémon
 
 
 export let selectedSlotIndex = null; // índice del slot seleccionado
-export let pokedex = []; //Array de nombres e IDs de pokémon para luego buscar sus formas
 export let boxes = []; //Array para almacenar las cajas de Pokémon
 export let currentBoxIndex = 0; //Caja que se está mostrando ahora mismo
 
@@ -39,7 +41,7 @@ const moveIcons = [
 ];
 
 // Crear nueva caja
-function createEmptyBox(name = `Caja ${boxes.length + 1}`) {
+function createEmptyBox(name = tv("boxName", { boxes: boxes.length + 1 })) {
   return { name, slots: Array(30).fill(null) };
 }
 
@@ -73,22 +75,26 @@ export function renderBox() {
       // Marcar este nuevo slot
       slot.classList.add("selected");
       selectedSlotIndex = i;
+      actualizarBotonesAnadir() //Actualizamos los botones de equipo
+
 
       // Si hay un Pokémon, rellenamos el formulario
       if (pokemon) {
         //console.log(`Seleccionado Pokémon: ${pokemon.species} en la ranura ${i}`);
         pokemon.fillForm(actualizarIcono);
-        crearPokemonBtn.textContent = "Editar Pokémon"; // Cambiar texto del botón
+        crearPokemonBtn.textContent = t("edit_pokemon"); // Cambiar texto del botón
 
         // Seteamos la imagen guardada del pokémon
             pokemonImage.src = pokemon.renderImage(pokedex).src
       } else {
-        crearPokemonBtn.textContent = "Añadir a la Caja"; // Reiniciar texto del botón
+        crearPokemonBtn.textContent = t("add_to_box"); // Reiniciar texto del botón
       }
     });
-
+    actualizarBotonesAnadir()
     boxGrid.appendChild(slot);
   });
+  selectedSlotIndex = null;  // reiniciamos el puntero al renderizar
+  actualizarBotonesAnadir() //Actualizamos los botones de equipo
 }
 
 // Inicialización
@@ -114,7 +120,6 @@ prevBoxBtn.addEventListener("click", () => {
   if (currentBoxIndex > 0) {
     currentBoxIndex--;
     renderBox();
-    selectedSlotIndex = null;
   }
 });
 
@@ -123,7 +128,6 @@ nextBoxBtn.addEventListener("click", () => {
   if (currentBoxIndex < boxes.length - 1) {
     currentBoxIndex++;
     renderBox();
-    selectedSlotIndex = null;
   }
 });
 
@@ -157,23 +161,16 @@ pokemonForm.addEventListener("submit", (e) => {
     tipo2 = entry?.tipo2 || "";
   }
   
+  // Ids y nombres de movimientos que conoce ahora mismo
+  const moves = ["move1", "move2", "move3", "move4"]
+    .map(id => {
+      const val = document.getElementById(id).value;
+      return movesData.find(m => m.nombre === val) || null;
+    })
+    .filter(Boolean);
 
-  // Ids de movimientos que conoce ahora mismo
-  const moveIds = [
-    document.getElementById("move1").value,
-    document.getElementById("move2").value,
-    document.getElementById("move3").value,
-    document.getElementById("move4").value,
-  ].filter(m => m); // quita los vacíos
-
-
-  // Nombres de movimientos que conoce ahora mismo
-const moveNames = ["move1", "move2", "move3", "move4"]
-  .map(id => {
-    const sel = document.getElementById(id);
-    return sel.value ? sel.options[sel.selectedIndex].text : null;
-  })
-  .filter(Boolean); // quita nulls
+  const moveIds = moves.map(m => m.id);
+  const moveNames = moves.map(m => m.nombre);
 
   //Id de habilidad aprendida
   const ability = document.getElementById("ability").value;
@@ -191,12 +188,12 @@ const moveNames = ["move1", "move2", "move3", "move4"]
     // Si hay espacio en la caja, añadimos el Pokémon
   if (targetIndex  !== -1) {
   currentBox.slots[targetIndex] = new Pokemon(idPokemon, species, forma, tipo1, tipo2, moveIds, moveNames, ability, abilityName);
-    console.log( currentBox.slots[targetIndex])
+    //console.log( currentBox.slots[targetIndex])
     renderBox();
     guardarCajasEnDB();
       // Si no hay usuario logueado, notificamos 
       if (!auth.currentUser) {
-        saveNotice.textContent = "Inicia sesión para guardar tus pokémon de manera permanente";
+        saveNotice.textContent = t("login_to_save_pokemon");
         return; // Salimos sin guardar
       }
 
@@ -208,14 +205,14 @@ const moveNames = ["move1", "move2", "move3", "move4"]
       }) 
     } else {
       // Si no hay espacio, mostramos un mensajede error
-      alert("La caja está llena.");
+      alert(t("box_full"));
     }
 
 
 
   crearPokemonBtn.textContent = "Añadir a la Caja"; // Reiniciar texto del botón
   selectedSlotIndex = null;
-
+  actualizarBotonesAnadir() //Actualizamos los botones de equipo
 });
 
   // Limpiar el formulario a petición del usuario
@@ -226,14 +223,14 @@ limpiarFormularioBtn.addEventListener("click", () =>  {
     icono.src = `images/types/mystery.svg`;  // Reiniciar iconos de movimientos
     
   })
-  crearPokemonBtn.textContent = "Añadir a la Caja"; // Reiniciar texto del botón 
+  crearPokemonBtn.textContent = t("add_to_box"); // Reiniciar texto del botón 
 
 })
 
 //Función para borrar un pokémon guardado en la caja
 deleteBtn.addEventListener("click", () => {
   if (selectedSlotIndex === null) {
-    alert("Selecciona un Pokémon de la caja para eliminarlo.");
+    alert(t("select_pokemon_to_remove"));
     return;
   }
 
@@ -245,7 +242,7 @@ deleteBtn.addEventListener("click", () => {
     console.log(pokemon);
     if(pokemon != null) {
     // Confirmación opcional
-    const confirmDelete = confirm(`¿Seguro que quieres eliminar este ${pokemon.species}${pokemon.forma} ?`);
+    const confirmDelete = confirm(tv("confirm_pokemon_delete", { pokemon: pokemon.species }));
     if (!confirmDelete) return;
 
     // Vaciar el slot
@@ -254,6 +251,7 @@ deleteBtn.addEventListener("click", () => {
     // Resetear formulario y selección
     pokemonForm.reset();
     selectedSlotIndex = null;
+    actualizarBotonesAnadir() //Actualizamos los botones de equipo
     pokemonImage.src = "images/pokemon-model/0.png"; // Reiniciar imagen del Pokémon
     moveIcons.forEach(icono => {
       icono.src = `images/types/mystery.svg`;  // Reiniciar iconos de movimientos
@@ -266,7 +264,7 @@ deleteBtn.addEventListener("click", () => {
     }
 
   } else {
-    alert("Ese slot ya está vacío.");
+    alert(t("slot_empty"));
   }
 });
 
@@ -294,12 +292,8 @@ export function actualizarImagenPokemon() {
   }else{
   
     //Si el usuario escribe el nombre mal, lo notifica, y pone la imagen por defecto
-    console.error(`No se encontró la imagen para el Pokémon: ${speciesName}`);
+    console.error(`❌ No se encontró la imagen para el Pokémon: ${speciesName}`);
     pokemonImage.src = "images/pokemon-model/0.png";
   }
 
 }
-
-
-
-

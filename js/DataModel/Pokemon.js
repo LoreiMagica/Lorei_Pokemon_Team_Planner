@@ -1,5 +1,5 @@
 import { cargarFormas } from "../firebaseCargarDatos.js";
-import { pokedex } from "../cajasPc.js"; //Lista de pokémon completa
+import { pokedex } from "../firebaseCargarDatos.js"; //Lista de pokémon completa
 
 export class Pokemon {
   constructor(id = 0, species, forma = "", tipo1 = "", tipo2 = "", moveIds = [], moveNames = [], ability = "", abilityName = "") {
@@ -29,8 +29,8 @@ export class Pokemon {
     const img = document.createElement("img");
     img.src = `images/pokemon-model/${this.getImageFile(pokedex)}.png`;
     img.alt = this.species;
-    img.style.width = "70px";
-    img.style.height = "70px";
+    img.style.width = "100%";
+    img.style.height = "100%";
     img.style.objectFit = "contain";
     return img;
   }
@@ -47,7 +47,7 @@ export class Pokemon {
 
     document.getElementById("ability").value = this.ability;
 
-    const [m1, m2, m3, m4] = this.moveIds;
+    const [m1, m2, m3, m4] = this.moveNames;
     document.getElementById("move1").value = m1 || "";
     document.getElementById("move2").value = m2 || "";
     document.getElementById("move3").value = m3 || "";

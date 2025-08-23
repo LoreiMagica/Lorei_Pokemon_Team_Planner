@@ -1,14 +1,19 @@
 //Importamos el slot y caja seleccionado para leer el Pokémon
-import { selectedSlotIndex, boxes, currentBoxIndex, pokedex } from "./cajasPc.js";
+import { selectedSlotIndex, boxes, currentBoxIndex } from "./cajasPc.js";
 import { Pokemon } from "./DataModel/Pokemon.js";
 import { movesData } from "./firebaseCargarDatos.js";
 import { generarTablaColores, generarTablaNumeros } from "./organizarTablas.js";
+import { pokedex } from "./firebaseCargarDatos.js";
+import { t} from "./i18n.js";
+
+
+
 
 
 // crear recuadros para los pokémon
 const recuadrosEquipoContainer = document.getElementById("recuadrosEquipoContainer");
 const numRecuadros = 6;
-const recuadros = [];
+export let recuadros = [];
 
 // Array con tus Pokémon del equipo para mostrar en las tablas
 export const equipoTabla = [new Pokemon, new Pokemon, new Pokemon, new Pokemon, new Pokemon, new Pokemon];
@@ -22,10 +27,19 @@ for (let i = 0; i < numRecuadros; i++) {
 
   // Botón para añadir el Pokémon del slot seleccionado
   const addBtn = document.createElement("button");
-  addBtn.textContent = "Añadir Pokémon";
+  addBtn.setAttribute("data-i18n", "addPokemonTeam"); // <-- clave de traducción
+  addBtn.textContent = t("addPokemonTeam");
   addBtn.id = `equipoPokemon${i}`;
   addBtn.classList.add("btn", "btn-sm", "btn-success");
+  addBtn.disabled = true;
   recuadro.appendChild(addBtn);
+
+    // Nuevo botón para limpiar el recuadro
+  const clearBtn = document.createElement("button");
+  clearBtn.setAttribute("data-i18n", "cleanPokemonTeam"); // <-- clave de traducción
+  clearBtn.textContent = t("cleanPokemonTeam");
+  clearBtn.classList.add("btn", "btn-sm", "btn-secondary");
+  recuadro.appendChild(clearBtn);
 
   // Contenedor de datos del Pokémon
   const img = document.createElement("img");
@@ -49,7 +63,7 @@ for (let i = 0; i < numRecuadros; i++) {
   // Evento del botón: añade el Pokémon del slot seleccionado
   addBtn.addEventListener("click", (event) => {
     if (selectedSlotIndex === null) {
-      alert("Selecciona un Pokémon de la caja primero.");
+      alert(t("selectPokemonFirst"));
       return;
     }
 
@@ -58,7 +72,7 @@ for (let i = 0; i < numRecuadros; i++) {
 
     //Si no hay pokémon en el puntero, lo notificamos
     if (!pokemon) {
-      alert("No hay Pokémon en el slot seleccionado.");
+      alert(t("noPokemonInSlot"));
       return;
     }
 
@@ -104,7 +118,7 @@ for (let i = 0; i < numRecuadros; i++) {
     for (let j = 0; j < 6; j++) {
       if (id === `equipoPokemon${j}`) {
         equipoTabla[j] = pokemon
-        //console.log(`Pokémon añadido al equipo en la ranura ${j}:`, pokemon);
+        //console.log(`✅ Pokémon añadido al equipo en la ranura ${j}:`, pokemon);
         //console.log("Equipo actual:", equipoTabla);
       }
     }
@@ -114,9 +128,40 @@ for (let i = 0; i < numRecuadros; i++) {
 
   });
 
+    // Evento del nuevo botón “Limpiar cuadro”
+  clearBtn.addEventListener("click", () => {
+    // Reset imagen
+    img.src = "images/pokemon-model/0.png";
+
+    // Reset ataques
+    [ataque1, ataque2, ataque3, ataque4].forEach(a => {
+      a.textContent = "";
+      a.className = "ataque";
+    });
+
+    // Reset habilidad
+    habilidad.textContent = "";
+    habilidad.className = "";
+
+    // Reset el array de equipo
+    equipoTabla[i] = new Pokemon();
+
+    // Actualizar tablas de colores y números
+    generarTablaColores();
+    generarTablaNumeros();
+  });
+
   //Y lo añadimos al contenedor
   recuadrosEquipoContainer.appendChild(recuadro);
   recuadros.push(recuadro);
+}
+
+
+export function actualizarBotonesAnadir() {
+  recuadros.forEach(recuadro => {
+    const btn = recuadro.querySelector("button");
+    btn.disabled = selectedSlotIndex === null;
+  });
 }
 
 // Ejecutar generación de tablas

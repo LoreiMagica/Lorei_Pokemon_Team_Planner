@@ -22,6 +22,9 @@ const moveIcons = [
   document.getElementById("icon4"),
 ];
 
+export let pokedex = []; //Array de nombres e IDs de pokémon para luego buscar sus formas
+
+
 //Array de formas de pokémon
 export const pokemonFormas = []; // Array global de formas
 //Array de movimientos de pokémon 
@@ -56,7 +59,7 @@ export async function cargarPokedex(speciesDatalist, pokedex) {
 
 // 🔹 Función para cargar formas de un pokémon en el formulario
 export async function cargarFormas(pokemonName, pokedex, formSelect) {
-  formSelect.innerHTML = '<option value="">-- Formas --</option>';
+  formSelect.innerHTML = `<option value="">${t("formName")}</option>`;
   //Buscamos el pokémon en el array
   const entry = pokedex.find(p => p.nombre === pokemonName);
   
@@ -98,6 +101,9 @@ export async function cargarMovimientos() {
   try {
     const snapshot = await getDocs(collection(db, "pokedex_moves"));
 
+    //Limpiamos el array por si acaso
+    movesData.length = 0;
+
     //Por cada movimiento obtenido, lo añadimos al array de movimientos
     snapshot.forEach((doc) => {
       const data = doc.data();
@@ -107,57 +113,58 @@ export async function cargarMovimientos() {
                 data.tipo,
                 data.categoria
           )
-  );
-        });
+        );
+      });
 
     // 🔹 Ordenamos alfabéticamente por nombre
     movesData.sort((a, b) => a.nombre.toLowerCase().localeCompare(b.nombre));
 
-    // Llenar cada select
-    moveSelects.forEach(select => {
-      select.innerHTML = `<option value="">-- Selecciona movimiento --</option>`;
+    // 🔹 Llenamos el datalist (una sola vez)
+    const dataList = document.getElementById("movesList");
+    dataList.innerHTML = "";
+    movesData.forEach(move => {
+      const option = document.createElement("option");
+      option.value = move.nombre; // el texto visible
+      option.dataset.id = move.id; // guardamos el id como extra
+      dataList.appendChild(option);
+    });
 
-      //Creamos un option para cada movimiento
-      movesData.forEach(move => {
-        const option = document.createElement("option");
-        option.value = move.id;    //Valor del option
-        option.textContent = move.nombre;  //Nombre a mostrar en el select
-        select.appendChild(option);
+    // Eventos de cambio en cada input
+    moveSelects.forEach((input, idx) => {
+      input.addEventListener("change", () => {
+        validarMovimiento(input);
+        actualizarOpciones();  
+        actualizarIcono(idx, input.value);
       });
     });
 
-    // Evitar duplicados
-    moveSelects.forEach((select, idx) => {
-      select.addEventListener("change", () => {
-        actualizarOpciones();
-        actualizarIcono(idx, select.value);
-
-      });
-    });
 
   } catch (err) {
-    console.error("Error cargando movimientos:", err);
+    console.error("❌ Error cargando movimientos:", err);
   }
 }
 
 // 🔹 Función para actualizar las opciones disponibles en los selects de movimientos
 function actualizarOpciones() {
-  // obtener movimientos ya seleccionados
-  const seleccionados = moveSelects.map(s => s.value).filter(v => v !== "");
+  const seleccionados = moveSelects
+    .map(input => input.value.trim())
+    .filter(v => v !== "");
 
-  moveSelects.forEach(select => {
-    [...select.options].forEach(opt => {
-      if (opt.value === "") return; // dejar la opción vacía siempre
-      opt.disabled = seleccionados.includes(opt.value) && select.value !== opt.value;
-    });
+  const movesList = document.getElementById("movesList");
+  [...movesList.options].forEach(opt => {
+    if (seleccionados.includes(opt.value)) {
+      opt.disabled = true;  // evita repetir
+    } else {
+      opt.disabled = false;
+    }
   });
 }
-
 // 🔹 Función para actualizar el icono al lado del movimiento seleccionado
 export function actualizarIcono(index, moveId) {
 
   //Buscamos el movimiento en el array de movimientos
-  const move = movesData.find(m => m.id === moveId);
+  const move = movesData.find(m => m.nombre === moveId);
+
   if (move) {
     //Si lo encuentra, ponemos el icono del respectivo tipo
     moveIcons[index].src = `images/types/${move.tipo.toLowerCase()}.svg`;
@@ -168,12 +175,27 @@ export function actualizarIcono(index, moveId) {
   }
 }
 
+function validarMovimiento(input) {
+  const movesList = document.getElementById("movesList");
+  const valido = [...movesList.options].some(opt => opt.value === input.value);
+
+  if (!valido) {
+    input.setCustomValidity("Debes seleccionar un movimiento válido");
+    input.reportValidity();
+    input.value = ""; // limpiar si no es válido
+  } else {
+    input.setCustomValidity("");
+  }
+  input.setCustomValidity("");
+
+}
+
 // 🔹 Función para cargar las habilidades disponibles que modifican las debilidades o resistencias de tipos
 export async function cargarHabilidades(speciesDatalist, pokedex) {
   const querySnapshot = await getDocs(collection(db, "pokedex_abilities"));
 
   // Limpiamos el select antes de llenarlo
-  abilitySelect.innerHTML = `<option value="">-- Selecciona habilidad --</option>`;
+  abilitySelect.innerHTML = `<option value="">${t("abilitiesName")}</option>`;
 
 
   //Por cada habilidad obtenida, lo añadimos al array de habilidades (No son muchas)
@@ -199,4 +221,17 @@ export async function cargarHabilidades(speciesDatalist, pokedex) {
     option.textContent = ability.nombre;  //Nombre a mostrar en el select
     abilitySelect.appendChild(option);
   });
+}
+
+export async function recargarDatos(speciesList, pokedex) {
+  // vaciar arrays
+  pokedex.length = 0;
+  pokemonFormas.length = 0;
+  movesData.length = 0;
+  abilitiesData.length = 0;
+
+  // recargar desde Firebase
+  await cargarPokedex(speciesList, pokedex);
+  await cargarMovimientos();
+  await cargarHabilidades(speciesList, pokedex);
 }
