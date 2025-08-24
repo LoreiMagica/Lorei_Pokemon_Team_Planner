@@ -56,24 +56,28 @@ currentLang = lang;
     }
   });
 
-    await recargarDatos(speciesList, pokedex);
-
 }
 
+//Onclick del botón de cambiar idioma
 document.getElementById("languageSelect").addEventListener("change", async (e) => {
   const newLang = e.target.value;
   currentLang = e.target.value;
 
   changeLanguage(newLang);
 
+  //Recargamos las listas de nombres
+  await recargarDatos(speciesList, pokedex);
+
   // Guardamos en localStorage
   localStorage.setItem("lang", newLang);
 });
 
-export function setLang(loadLang) {
-  currentLang = loadLang;
-  document.getElementById("languageSelect").value = loadLang;
+
+//Función para setear el idioma guardado en localStorage
+export async function setLang(loadLang) {
+  //speciesDatalist.innerHTML = '';
   changeLanguage(loadLang);
+  await recargarDatos(speciesList, pokedex);
 
 }
 

@@ -36,14 +36,20 @@ export const abilitiesData = [];
 // Obtenemos el select de habilidades del html
 const abilitySelect = document.getElementById("ability");
 
+const speciesList = document.getElementById("speciesList");
+
+
 
 // 🔹 Función para cargar pokedex en el datalist para mostrarlo en el formulario
 export async function cargarPokedex(speciesDatalist, pokedex) {
-    speciesDatalist.innerHTML = '';
-    pokedex.length = []
-        console.log(currentLang)
+  console.log(currentLang)
 
-  const querySnapshot = await getDocs(collection(db, "pokedex"));
+  const querySnapshot = await getDocs(collection(db, "pokedex"))
+
+  //Vaciamos las listas con nombres de pokémon para evitar duplicados
+  speciesList.innerHTML = ''
+  pokedex.length = []
+
   querySnapshot.forEach((docSnap) => {
     const data = docSnap.data();
 
@@ -263,7 +269,7 @@ export async function recargarDatos(speciesList, pokedex) {
   pokemonFormas.length = 0;
   movesData.length = 0;
   abilitiesData.length = 0;
-  speciesList.innerHTML = ''
+
 
   // recargar desde Firebase
   await cargarPokedex(speciesList, pokedex);

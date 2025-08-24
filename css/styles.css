@@ -486,11 +486,19 @@ select option:disabled {
 
   /* div de las tablas */
   .tablas-container {
+    padding-left: 50px;
     gap: 0.5rem;
     display: flex;
     justify-content: center;
     gap: 1rem; /* más flexible */
     flex-wrap: wrap;
-    padding: 0 1rem;
   }
+  
+  /* Imágenes en cabecera de columnas */
+.tipo-tablas th.imgEquipoTablas img {
+  width: 40px;
+  height: 40px;
+}
+
+
 }

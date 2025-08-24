@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Título e icono de la página -->
-  <title>Lorei Team Planner</title>
+  <title>Lorei Pokemon Team Planner</title>
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
   <!-- Estilos de Bootstrap y CSS personalizado -->
@@ -19,7 +19,7 @@
 <body class="container-fluid p-4">
   <div class="d-flex justify-content-end mb-3">
     <div class="d-flex justify-content-end mb-3 gap-2">
-      <!-- Texto dinámico del usuario -->
+      <!-- Texto dinámico de saludar al usuario -->
       <span id="userGreeting" class="me-2 fw-bold text-primary d-none" data-i18n="helloUser" data-vars='{"email"}'></span>
 
       <!-- Icono para guardar datos-->
@@ -30,6 +30,8 @@
       <button id="authButton" class="btn btn-primary me-5" data-bs-toggle="modal" data-bs-target="#authModal" data-i18n="login">
         Iniciar Sesión
       </button>
+
+      <!-- Select para cambiar el idioma de la web-->
       <select id="languageSelect" class="form-select form-select-sm w-auto d-inline">
         <option value="es" data-icon="🇪🇸">🇪🇸</option>
         <option value="en" data-icon="🇬🇧">🇬🇧</option>
@@ -37,6 +39,8 @@
         <option value="it" data-icon="🇮🇹">🇮🇹</option>
         <option value="de" data-icon="🇩🇪">🇩🇪</option>
       </select>
+
+      <!-- Botón para cambiar de tema -->
       <button id="themeToggle" class="btn btn-outline-dark" title="Cambiar tema de colores" data-i18n-title="change_theme">
         <i id="themeIcon" class="bi bi-moon-fill"></i>
       </button>
@@ -222,8 +226,8 @@
   <script type="module" src="js/cajasPc.js"></script>
   <script type="module" src="js/scriptsUsuario.js"></script>
   <script type="module"src="js/loginUsuario.js"></script>
-  <script type="module" src="js/cargarDatosUsuario.js"></script>
-  <script type="module" src="js/organizarEquipo.js"></script>
+  <!--script type="module" src="js/cargarDatosUsuario.js"></script>
+  <script-- type="module" src="js/organizarEquipo.js"></script-->
 
 
 
@@ -249,7 +253,6 @@
     
     // Al cargar la página, carga los nombres de pokémon en el formulario
     window.addEventListener("DOMContentLoaded", () => {
-      speciesList.innerHTMl
       //cargarPokedex(speciesList, pokedex);
       cargarMovimientos();
       cargarHabilidades();
@@ -259,13 +262,15 @@
       //subirHabilidades();
 
       //Cargamos el idioma de la página guardado en localStorage (Si lo hubiese)
-        const savedLang = localStorage.getItem("lang");
+        let savedLang = localStorage.getItem("lang");
         if (!savedLang) {
-          currentLang = "en"; // idioma por defecto
+          savedLang = "en"; // idioma por defecto
         }
+
+        //Llamamos a la función para setear el idioma
         setLang(savedLang)
-            let element = document.getElementById(id);
-            element.value = valueToSelect;
+            let element = document.getElementById("languageSelect");
+            element.value = savedLang;
 
       // Actualizar la imagen del Pokémon al cambiar la especie o forma
       speciesInput.addEventListener("change", actualizarImagenPokemon); 
