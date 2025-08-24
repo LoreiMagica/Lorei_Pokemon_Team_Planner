@@ -1,0 +1,229 @@
+Mega-Bisaflor
+Mega-Glurak X
+Mega-Glurak Y
+Mega-Turtok
+Mega-Bibor
+Mega-Tauboss
+Alola-Rattfratz
+Alola-Rattikarl
+Kappen-Pikachu
+Alola-Raichu
+Alola-Sandan
+Alola-Sandamer
+Alola-Vulpix
+Alola-Vulnona
+Alola-Digda
+Alola-Digdri
+Alola-Mauzi
+Galar-Mauzi
+Alola-Snobilikat
+Hisui-Fukano
+Hisui-Arkani
+Mega-Simsala
+Alola-Kleinstein
+Alola-Georok
+Alola-Geowaz
+Galar-Ponita
+Galar-Gallopa
+Galar-Flegmon
+Mega-Lahmus
+Galar-Lahmus
+Galar-Porenta
+Alola-Sleima
+Alola-Sleimok
+Mega-Gengar
+Hisui-Voltobal
+Hisui-Lektrobal
+Alola-Kokowei
+Alola-Knogga
+Galar-Smogmog
+Mega-Kangama
+Galar-Pantimos
+Tauros Gefechtvariante
+Tauros Flammenvariante
+Tauros Flutenvariante
+Mega-Pinsir
+Mega-Garados
+Mega-Aerodactyl
+Galar-Arktos
+Galar-Zapdos
+Galar-Lavados
+Mega-Mewtu X
+Mega-Mewtu Y
+Hisui-Tornupto
+Mega-Ampharos
+Paldea-Felino
+Galar-Laschoking
+Mega-Stahlos
+Hisui-Baldorfish
+Mega-Scherox
+Mega-Skaraborn
+Hisui-Sniebel
+Galar-Corasonn
+Mega-Hundemon
+Mega-Despotar
+Mega-Gewaldro
+Mega-Lohgock
+Mega-Sumpex
+Galar-Zigzachs
+Galar-Geradaks
+Mega-Guardevoir
+Mega-Zobiris
+Mega-Flunkifer
+Mega-Stolloss
+Mega-Meditalis
+Mega-Voltenso
+Mega-Tohaido
+Mega-Camerupt
+Mega-Altaria
+Formeo Sonnenform
+Formeo Regenform
+Formeo Schneeform
+Mega-Zobiris
+Mega-Absol
+Mega-Firnontor
+Mega-Firnontor
+Mega-Metagross
+Mega-Latias
+Mega-Latios
+Proto-Kyogre
+Proto-Groudon
+Mega-Rayquaza
+Deoxys Normalform
+Deoxys Angriffsform
+Deoxys Verteidigungsform
+Deoxys Initiativeform
+Burmy Pflanzenumhang
+Burmy Sandumhang
+Burmy Lumpenumhang
+Wormadam Pflanzenumhang
+Wormadam Sandumhang
+Wormadam Lumpenumhang
+Mega-Schlapor
+Mega-Knakrack
+Mega-Lucario
+Mega-Rexblisar
+Mega-Galagladi
+Rotom Hitze-Form
+Rotom Wasch-Form
+Rotom Frost-Form
+Rotom Wirbel-Form
+Rotom Schneid-Form
+Dialga Wandelform
+Dialga Urform
+Palkia Wandelform
+Palkia Urform
+Giratina Wandelform
+Giratina Urform
+Shaymin Landform
+Shaymin Zenitform
+Arceus Stahl-Form
+Arceus Wasser-Form
+Arceus Boden-Form
+Arceus Drache-Form
+Arceus Elektro-Form
+Arceus Geist-Form
+Arceus Feuer-Form 
+Arceus Fee-Form
+Arceus Eis-Form
+Arceus Kampf-Form
+Arceus Pflanze-Form
+Arceus Psycho-Form
+Arceus Boden-Form 
+Arceus Unlicht-Form
+Arceus Boden-Form
+Arceus Gift-Form
+Arceus Flug-Form
+Hisui-Admurai
+Mega-Ohrdoch
+Hisui-Dressella
+Barschuft Rotlinige
+Barschuft Blaulinige
+Barschuft Weißlinige
+Galar-Flampion
+Flampivian Normalmodus
+Flampivian Trance-Modus 
+Galar-Flampivian Normalmodus 
+Galar-Flampivian Trance-Modus
+Galar-Makabaja
+Hisui-Zorua
+Hisui-Zoroark
+Galar-Flunschlik
+Hisui-Washakwil
+Boreos Inkarnationsform
+Boreos Tiergeistform
+Voltolos Inkarnationsform
+Voltolos Tiergeistform
+Demeteros  Inkarnationsform
+Demeteros  Tiergeistform
+Weißes Kyurem
+Schwarzes Kyurem
+Keldeo Resolutform
+Meloetta Gesangsform
+Meloetta Tanzform
+Psiaugon männlich
+Psiaugon weiblich
+Hisui-Viscargot
+Hisui-Viscogon
+Hisui-Arktilas
+Mega-Diancie
+Hoopa Gebannte 
+Hoopa Entfesselte 
+Hisui-Silvarro
+Choreogel Flamenco-Stil 
+Choreogel Cheerleading-Stil
+Choreogel Hula-Stil
+Choreogel Buyo-Stil
+Wolwerock Tagform
+Wolwerock Nachtform
+Wolwerock Zwielichtform
+Lusardin Einzelform
+Lusardin Schwarmform
+Amigento Stahl-Form
+Amigento Wasser-Form
+Amigento Boden-Form
+Amigento Drache-Form
+Amigento Elektro-Form
+Amigento Geist-Form
+Amigento Feuer-Form 
+Amigento Fee-Form
+Amigento Eis-Form
+Amigento Kampf-Form
+Amigento Pflanze-Form
+Amigento Psycho-Form
+Amigento Boden-Form 
+Amigento Unlicht-Form
+Amigento Boden-Form
+Amigento Gift-Form
+Amigento Flug-Form
+Abendmähne Necrozma	
+Morgenschwingen Necrozma
+Ultra Necrozma
+Riffex Hoch-Form	
+Riffex Tief-Form
+Servol männlich
+Servol weiblich
+Morpeko Pappsattmuster
+Morpeko Kohldampfmuster
+Wulaosu	Fokussierter Stil	
+Wulaosu	Fließender Stil
+Calyrex	Schimmelreiter
+Calyrex Rappenreiter
+Ursaluna Blutmond
+Salmagnis männlich
+Salmagnis weiblich
+Cupidos Inkarnationsform
+Cupidos Tiergeistform
+Fragrunz männlich
+Fragrunz weiblich
+Krawalloro Grüngefiedert
+Krawalloro Blaugefiedert
+Krawalloro Gelbgefiedert
+Krawalloro Weißgefiedert
+Palafin Heldenform
+Ogerpon	Türkisgrüne Maske
+Ogerpon Brunnenmaske
+Ogerpon Ofenmaske
+Ogerpon	Fundamentmaske
+Terapagos Terakristall-Form
+Terapagos Stellarform

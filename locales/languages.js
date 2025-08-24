@@ -5,8 +5,10 @@ export const texts = {
     logout: "Cerrar Sesión",
     register: "Registrarse",
     createAccount: "Crear Cuenta",
-    alreadyAccount: "¿Ya tienes cuenta? Inicia sesión",
-    notAccount: "¿No tienes cuenta? Regístrate",
+    alreadyAccount: "¿Ya tienes cuenta? ",
+    notAccount: "¿No tienes cuenta? ",
+    loginLink: "Inicia sesión",
+    registerLink: "Regístrate",
     sureCloseSession: "¿Seguro que deseas cerrar sesión?",
     helloUser:"¡Hola {email} !",
     registerSucess: "✅ Registro exitoso. Ya puedes iniciar sesión.",
@@ -86,10 +88,12 @@ export const texts = {
     //Cosas de iniciar sesión y registro
     login: "Log in",
     logout: "Log out",
-    register: "Register",
+    register: "Sign up",
     createAccount: "Create Account",
-    alreadyAccount: "Already have an account? Log in",
-    notAccount: "Don’t have an account? Sign up",
+    alreadyAccount: "Already have an account?",
+    notAccount: "Don’t have an account?",
+    loginLink: "Log in",
+    registerLink: "Sign up",
     sureCloseSession: "Are you sure you want to log out?",
     helloUser:"Hello {email} !",
     registerSucess: "✅ Register success. Now you can login.",
@@ -131,7 +135,7 @@ export const texts = {
     confirm_pokemon_delete: `Are you sure you want to delete this {pokemon}?`,
     slot_empty: "That slot is already empty.",
 
-    // Current Pokémon team
+    //Equipo pokémon actual
     pokemonTeamTitle: "Pokémon Team",
     saveTeam: "Save team",
     selectTeam: "-- Select a team --",
@@ -162,6 +166,255 @@ export const texts = {
     // Tablas
     tableMovesTitle: "Move Effectiveness",
     tableResistTitle: "Pokémon Resistance",
-}
+  },
+  fr: {
+    //Cosas de iniciar sesión y registro
+    login: "Se connecter",
+    logout: "Se déconnecter",
+    register: "S’inscrire",
+    createAccount: "Créer un compte",
+    alreadyAccount: "Vous avez déjà un compte ? ",
+    notAccount: "Vous n’avez pas de compte ? ",
+    loginLink: "Connectez-vous",
+    registerLink: "Inscrivez-vous",
+    sureCloseSession: "Êtes-vous sûr de vouloir vous déconnecter ?",
+    helloUser: "Bonjour {email} !",
+    registerSucess: "✅ Inscription réussie. Vous pouvez maintenant vous connecter.",
+    loginSuccess: "✅ Connexion réussie.",
+    email: "E-mail",
+    password: "Mot de passe",
+    enter: "Entrer",
+
+    //Botones superiores de la página
+    save_boxes: "Enregistrer les boîtes",
+    change_theme: "Changer le thème de couleur",
+
+    //Caja Pc
+    anadirCaja: "+ Ajouter une boîte",
+
+    //Formulario de crear pokémon
+    createPokemon: "Créer un Pokémon",
+    imagenPokemon: "Image du Pokémon",
+    speciesTitle: "Espèce",
+    name: "Nom",
+    formName: "-- Formes --",
+    moveTitle: "Capacités",
+    moveType1: "Capacité 1",
+    moveType2: "Capacité 2",
+    moveType3: "Capacité 3",
+    moveType4: "Capacité 4",
+    abilitiesTitle: "Talent",
+    abilitiesName: "-- Sélectionner un talent --",
+    add_to_box: "Ajouter à la boîte",
+    edit_pokemon: "Modifier le Pokémon",
+    cleanForm: "Effacer le formulaire",
+    erasePokemon: "Supprimer le Pokémon",
+
+    // CajasPc.js
+    boxName: "Boîte {boxes} ",
+    login_to_save_pokemon: "Connectez-vous pour sauvegarder vos Pokémon de façon permanente",
+    box_full: "❌ La boîte est pleine.",
+    select_pokemon_to_remove: "Sélectionnez un Pokémon de la boîte à retirer.",
+    confirm_pokemon_delete: "Êtes-vous sûr de vouloir supprimer ce {pokemon} ?",
+    slot_empty: "Cet emplacement est déjà vide.",
+
+    //Equipo pokémon actual
+    pokemonTeamTitle: "Équipe Pokémon",
+    saveTeam: "Enregistrer l’équipe",
+    selectTeam: "-- Sélectionner une équipe --",
+    loadTeam: "Charger l’équipe",
+    deleteTeam: "Supprimer l’équipe",
+    addPokemonTeam: "Ajouter un Pokémon",
+    cleanPokemonTeam: "Vider l’emplacement",
+    selectPokemonFirst: "Sélectionnez d’abord un Pokémon depuis la boîte.",
+    noPokemonInSlot: "Il n’y a pas de Pokémon dans l’emplacement sélectionné.",
+    
+    //Guardar y cargar equipos
+    must_login_to_load_team: "Vous devez être connecté pour charger une équipe.",
+    first_select_a_team: "Sélectionnez d’abord une équipe.",
+    team_doesnt_exists: "❌ Cette équipe n’existe pas.",
+    error_loading_team: "❌ Erreur lors du chargement de l’équipe.",
+    must_login_to_save_team: "Vous devez être connecté pour enregistrer une équipe.",
+    add_pokemon_to_save: "Ajoutez des Pokémon à l’équipe pour l’enregistrer.",
+    enter_team_name: "Entrez un nom pour l’équipe :",
+    operation_cancelled: "Opération annulée",
+    team_saved: "✅ Équipe « {nombreEquipo} » enregistrée avec succès.",
+    error_saving_team: "❌ Erreur lors de l’enregistrement de l’équipe.",
+    select_team_to_erase: "Sélectionnez une équipe à supprimer.",
+    sure_erase: "Êtes-vous sûr de vouloir supprimer l’équipe « {nombreEquipo} » ? (Cela n’affectera pas les Pokémon stockés dans les boîtes)",
+    erase_team_correct: "✅ Équipe « {nombreEquipo} » supprimée avec succès.",
+    erase_team_fail: "❌ Erreur lors de la suppression de l’équipe. Réessayez.",
+    must_login_to_erase: "Vous devez être connecté pour supprimer des équipes.",
+    
+    //Tablas
+    tableMovesTitle: "Efficacité des capacités",
+    tableResistTitle: "Résistance des Pokémon",
+  },
+  it: {
+    //Cosas de iniciar sesión y registro
+    login: "Accedi",
+    logout: "Disconnettersi",
+    register: "Registrati",
+    createAccount: "Crea account",
+    alreadyAccount: "Hai già un account? Accedi",
+    notAccount: "Non hai un account? Registrati",
+    loginLink: "Accedi",
+    registerLink: "Registrati",
+    sureCloseSession: "Sei sicuro di voler uscire?",
+    helloUser: "Ciao {email} !",
+    registerSucess: "✅ Registrazione riuscita. Ora puoi accedere.",
+    loginSuccess: "✅ Accesso riuscito.",
+    email: "Email",
+    password: "Password",
+    enter: "Entra",
+
+    //Botones superiores de la página
+    save_boxes: "Salva scatole",
+    change_theme: "Cambia tema colore",
+
+    //Caja Pc
+    anadirCaja: "+ Aggiungi scatola",
+
+    //Formulario de crear pokémon
+    createPokemon: "Crea Pokémon",
+    imagenPokemon: "Immagine del Pokémon",
+    speciesTitle: "Specie",
+    name: "Nome",
+    formName: "-- Forme --",
+    moveTitle: "Mosse",
+    moveType1: "Mossa 1",
+    moveType2: "Mossa 2",
+    moveType3: "Mossa 3",
+    moveType4: "Mossa 4",
+    abilitiesTitle: "Abilità",
+    abilitiesName: "-- Seleziona abilità --",
+    add_to_box: "Aggiungi alla scatola",
+    edit_pokemon: "Modifica Pokémon",
+    cleanForm: "Pulisci modulo",
+    erasePokemon: "Elimina Pokémon",
+
+    // CajasPc.js
+    boxName: "Scatola {boxes} ",
+    login_to_save_pokemon: "Accedi per salvare i tuoi Pokémon in modo permanente",
+    box_full: "❌ La scatola è piena.",
+    select_pokemon_to_remove: "Seleziona un Pokémon dalla scatola da rimuovere.",
+    confirm_pokemon_delete: "Sei sicuro di voler eliminare questo {pokemon}?",
+    slot_empty: "Quello slot è già vuoto.",
+
+    //Equipo pokémon actual
+    pokemonTeamTitle: "Squadra Pokémon",
+    saveTeam: "Salva squadra",
+    selectTeam: "-- Seleziona una squadra --",
+    loadTeam: "Carica squadra",
+    deleteTeam: "Elimina squadra",
+    addPokemonTeam: "Aggiungi Pokémon",
+    cleanPokemonTeam: "Svuota slot",
+    selectPokemonFirst: "Seleziona prima un Pokémon dalla scatola.",
+    noPokemonInSlot: "Non c’è alcun Pokémon nello slot selezionato.",
+    
+    // Guardar y cargar equipos
+    must_login_to_load_team: "Devi accedere per caricare una squadra.",
+    first_select_a_team: "Seleziona prima una squadra.",
+    team_doesnt_exists: "❌ Quella squadra non esiste.",
+    error_loading_team: "❌ Errore durante il caricamento della squadra.",
+    must_login_to_save_team: "Devi accedere per salvare una squadra.",
+    add_pokemon_to_save: "Aggiungi dei Pokémon alla squadra per salvarla.",
+    enter_team_name: "Inserisci un nome per la squadra:",
+    operation_cancelled: "Operazione annullata",
+    team_saved: "✅ Squadra \"{nombreEquipo}\" salvata con successo.",
+    error_saving_team: "❌ Errore durante il salvataggio della squadra.",
+    select_team_to_erase: "Seleziona una squadra da eliminare.",
+    sure_erase: "Sei sicuro di voler eliminare la squadra \"{nombreEquipo}\"? (Questo non influirà sui Pokémon salvati nelle scatole)",
+    erase_team_correct: "✅ Squadra \"{nombreEquipo}\" eliminata con successo.",
+    erase_team_fail: "❌ Errore durante l’eliminazione della squadra. Riprova.",
+    must_login_to_erase: "Devi accedere per eliminare squadre.",
+    
+    // Tablas
+    tableMovesTitle: "Efficacia delle mosse",
+    tableResistTitle: "Resistenza dei Pokémon",
+  },
+  de: {
+    //Cosas de iniciar sesión y registro
+    login: "Anmelden",
+    logout: "Abmelden",
+    register: "Registrieren",
+    createAccount: "Konto erstellen",
+    alreadyAccount: "Hast du schon ein Konto? Anmelden",
+    notAccount: "Hast du kein Konto? Registrieren",
+    loginLink: "Anmelden",
+    registerLink: "Registrieren",
+    sureCloseSession: "Bist du sicher, dass du dich abmelden möchtest?",
+    helloUser: "Hallo {email} !",
+    registerSucess: "✅ Registrierung erfolgreich. Du kannst dich jetzt anmelden.",
+    loginSuccess: "✅ Anmeldung erfolgreich.",
+    email: "E-Mail",
+    password: "Passwort",
+    enter: "Eingeben",
+
+    //Botones superiores de la página
+    save_boxes: "Boxen speichern",
+    change_theme: "Farbschema ändern",
+
+    //Caja Pc
+    anadirCaja: "+ Box hinzufügen",
+
+    //Equipo pokémon actual
+    createPokemon: "Pokémon erstellen",
+    imagenPokemon: "Pokémon-Bild",
+    speciesTitle: "Spezies",
+    name: "Name",
+    formName: "-- Formen --",
+    moveTitle: "Attacken",
+    moveType1: "Attacke 1",
+    moveType2: "Attacke 2",
+    moveType3: "Attacke 3",
+    moveType4: "Attacke 4",
+    abilitiesTitle: "Fähigkeit",
+    abilitiesName: "-- Fähigkeit auswählen --",
+    add_to_box: "Zur Box hinzufügen",
+    edit_pokemon: "Pokémon bearbeiten",
+    cleanForm: "Formular löschen",
+    erasePokemon: "Pokémon löschen",
+
+    // CajasPc.js
+    boxName: "Box {boxes} ",
+    login_to_save_pokemon: "Melde dich an, um deine Pokémon dauerhaft zu speichern",
+    box_full: "❌ Die Box ist voll.",
+    select_pokemon_to_remove: "Wähle ein Pokémon aus der Box zum Entfernen.",
+    confirm_pokemon_delete: "Bist du sicher, dass du dieses {pokemon} löschen möchtest?",
+    slot_empty: "Dieser Slot ist bereits leer.",
+
+    //Equipo pokémon actual
+    pokemonTeamTitle: "Pokémon-Team",
+    saveTeam: "Team speichern",
+    selectTeam: "-- Team auswählen --",
+    loadTeam: "Team laden",
+    deleteTeam: "Team löschen",
+    addPokemonTeam: "Pokémon hinzufügen",
+    cleanPokemonTeam: "Slot leeren",
+    selectPokemonFirst: "Wähle zuerst ein Pokémon aus der Box.",
+    noPokemonInSlot: "Im ausgewählten Slot befindet sich kein Pokémon.",
+    
+    //Guardar y cargar equipos
+    must_login_to_load_team: "Du musst angemeldet sein, um ein Team zu laden.",
+    first_select_a_team: "Wähle zuerst ein Team aus.",
+    team_doesnt_exists: "❌ Dieses Team existiert nicht.",
+    error_loading_team: "❌ Fehler beim Laden des Teams.",
+    must_login_to_save_team: "Du musst angemeldet sein, um ein Team zu speichern.",
+    add_pokemon_to_save: "Füge Pokémon zum Team hinzu, um es zu speichern.",
+    enter_team_name: "Gib einen Namen für das Team ein:",
+    operation_cancelled: "Vorgang abgebrochen",
+    team_saved: "✅ Team \"{nombreEquipo}\" erfolgreich gespeichert.",
+    error_saving_team: "❌ Fehler beim Speichern des Teams.",
+    select_team_to_erase: "Wähle ein Team zum Löschen aus.",
+    sure_erase: "Bist du sicher, dass du das Team \"{nombreEquipo}\" löschen möchtest? (Dies wirkt sich nicht auf die in den Boxen gespeicherten Pokémon aus)",
+    erase_team_correct: "✅ Team \"{nombreEquipo}\" erfolgreich gelöscht.",
+    erase_team_fail: "❌ Fehler beim Löschen des Teams. Versuche es erneut.",
+    must_login_to_erase: "Du musst angemeldet sein, um Teams zu löschen.",
+    
+    //Tablas
+    tableMovesTitle: "Attacken-Effektivität",
+    tableResistTitle: "Pokémon-Widerstände",
+  }
 
 };

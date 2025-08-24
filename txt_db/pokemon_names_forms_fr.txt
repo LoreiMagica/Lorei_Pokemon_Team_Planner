@@ -1,0 +1,229 @@
+Méga-Florizarre
+Méga-Dracaufeu X
+Méga-Dracaufite Y
+Méga-Tortank
+Méga-Dardargnan
+Méga-Roucarnage
+Rattata Alola
+Rattatac Alola
+Pikachu casquette
+Raichu Alola
+Sabelette Alola
+Sablaireau Alola
+Goupix Alola
+Feunard Alola
+Taupiqueur Alola
+Triopikeur Alola
+Miaouss Alola
+Miaouss Galar
+Persian Alola
+Caninos Hisui
+Arcanin Hisui
+Méga-Alakazam
+Racaillou Alola
+Gravalanch Alola
+Grolem Alola
+Ponyta Galar
+Galopa Galar
+Ramoloss Galar
+Méga-Flagadoss
+Flagadoss Galar
+Canarticho Galar
+Tadmorv Alola
+Grotadmorv Alola
+Méga-Ectoplasma
+Voltorbe Hisui
+Électrode Hisui
+Noadkoko Alola
+Ossatueur Alola
+Smogogo Galar
+Méga-Kangourex
+M. Mime Galar
+Tauros Combative 
+Tauros Flamboyante 
+Tauros Aquatique
+Méga-Scarabrute
+Méga-Léviator
+Méga-Ptéra
+Artikodin Galar
+Électhor Galar
+Sulfura Galar
+Méga-Mewtwo X
+Méga-Mewtwo Y
+Typhlosion Hisui
+Méga-Pharamp
+Axoloto Paldea
+Roigada Galar
+Méga-Steelix
+Qwilfish Hisui
+Méga-Cizayox
+Méga-Scarhino
+Farfuret Hisui
+Corayon Galar
+Méga-Démolosse
+Méga-Tyranocif
+Méga-Jungko
+Méga-Braségali
+Méga-Laggron
+Zigzaton Galar
+Linéon Galar
+Méga-Gardevoir
+Méga-Ténéfix
+Méga-Mysdibule
+Méga-Galeking
+Méga-Charmina
+Méga-Élecsprint
+Méga-Sharpedo
+Méga-Camérupt
+Méga-Altaria
+Morphéo Solaire
+Morphéo Eau
+Morphéo Blizzard
+Méga-Branette
+Méga-Absol
+Méga-Oniglali
+Méga-Drattak
+Méga-Métalosse
+Méga-Latias
+Méga-Latios
+Primo-Kyogre
+Primo-Groudon
+Méga-Rayquaza
+Deoxys Normale
+Deoxys Attaque
+Deoxys Défense
+Deoxys Vitesse
+Cheniti Plante
+Cheniti Sable
+Cheniti Déchet
+Cheniselle Cape Plante
+Cheniselle Cape Sable
+Cheniselle Cape Déchet
+Méga-Lockpin
+Méga-Carchacrok
+Méga-Lucario
+Méga-Blizzaroi
+Méga-Gallame
+Motisma Chaleur	
+Motisma Lavage	
+Motisma Froid	
+Motisma Hélice	
+Motisma Tonte
+Dialga Alternative
+Dialga Originelle
+Palkia Alternative
+Dialga Originelle
+Giratina Alternative
+Giratina Originelle
+Shaymin Terrestre
+Shaymin Céleste
+Arceus Acier 
+Arceus Eau
+Arceus Insecte
+Arceus Dragon
+Arceus Électrik 
+Arceus Spectre  
+Arceus Feu 
+Arceus Fée 
+Arceus Glace 
+Arceus Combat  
+Arceus Plante 
+Arceus Psy
+Arceus Roche 
+Arceus Ténèbres 
+Arceus Sol 
+Arceus Poison 
+Arceus Vol
+Clamiral Hisui
+Méga-Nanméouïe
+Fragilady Hisui
+Bargantua Rouge
+Bargantua Bleu
+Bargantua Blanc
+Darumarond Galar
+Darumacho Normal
+Darumacho Transe 
+Darumacho Normal Galar
+Darumacho Transe Galar
+Tutafeh Galar
+Zorua Hisui
+Zoroark Hisui
+Limonde Galar
+Gueriaigle Hisui
+Boréas Avatar
+Boréas Totémique
+Fulguris Avatar
+Fulguris Totémique
+Démétéros Avatar
+Démétéros Totémique
+Kyurem Blanc	
+Kyurem Noir
+Aspect Décidé
+Meloetta Chant 
+Meloetta Danse 
+Mistigrix Mâle
+Mistigrix Femelle
+Colimucus Hisui
+Muplodocus Hisui
+Séracrawl Hisui
+Méga-Diancie
+Hoopa Enchaîné	
+Hoopa Déchaîné
+Archéduc Hisui
+Plumeline Flamenco
+Plumeline Pom-Pom
+Plumeline Hula
+Plumeline Buyō
+Lougaroc Diurne
+Lougaroc Nocturne
+Lougaroc Crépusculaire
+Froussardine Solitaire
+Froussardine Banc
+Silvallié Acier 
+Silvallié Eau
+Silvallié Insecte
+Silvallié Dragon
+Silvallié Électrik 
+Silvallié Spectre  
+Silvallié Feu 
+Silvallié Fée 
+Silvallié Glace 
+Silvallié Combat  
+Silvallié Plante 
+Silvallié Psy
+Silvallié Roche 
+Silvallié Ténèbres 
+Silvallié Sol 
+Silvallié Poison 
+Silvallié Vol
+Necrozma Couchant 
+Necrozma Aurore 
+Ultra Necrozma
+Salarsen Aigüe
+Salarsen Grave
+Wimessir Mâle
+Wimessir Femelle
+Morpeko Rassasié
+Morpeko Affamé
+Shifours Final
+Shifours Mille
+Sylveroy Froid
+Sylveroy Effroi
+Ursaking Vermeille
+Paragruel Mâle
+Paragruel Femelle
+Amovénus Avatar
+Amovénus Totémique
+Fragroin Mâle
+Fragroin Femelle
+Tapatoès Vert
+Tapatoès Bleu
+Tapatoès Jaune
+Tapatoès Blanc
+Superdofin Super
+Ogerpon	Turquoise 
+Ogerpon Puits 
+Ogerpon Fourneau 
+Ogerpon	Pierre 
+Terapagos Téracristal
+Terapagos Stellaire

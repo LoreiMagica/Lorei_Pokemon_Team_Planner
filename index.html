@@ -30,9 +30,13 @@
       <button id="authButton" class="btn btn-primary me-5" data-bs-toggle="modal" data-bs-target="#authModal" data-i18n="login">
         Iniciar Sesión
       </button>
-      <button id="languageToggle" class="btn btn-outline-secondary">
-        ES/EN
-      </button>
+      <select id="languageSelect" class="form-select form-select-sm w-auto d-inline">
+        <option value="es" data-icon="🇪🇸">🇪🇸</option>
+        <option value="en" data-icon="🇬🇧">🇬🇧</option>
+        <option value="fr" data-icon="🇫🇷">🇫🇷</option>
+        <option value="it" data-icon="🇮🇹">🇮🇹</option>
+        <option value="de" data-icon="🇩🇪">🇩🇪</option>
+      </select>
       <button id="themeToggle" class="btn btn-outline-dark" title="Cambiar tema de colores" data-i18n-title="change_theme">
         <i id="themeIcon" class="bi bi-moon-fill"></i>
       </button>
@@ -201,9 +205,8 @@
         </form>
 
         <div class="text-center mt-3">
-          <small data-i18n="notAccount">¿No tienes cuenta? 
-            <a href="#" id="toggleRegister">Regístrate</a>
-          </small>
+          <small data-i18n="notAccount" id="registerText">¿No tienes cuenta? </small>
+            <a href="#" id="toggleRegister" data-i18n="register" >Regístrate</a>
         </div>
       </div>
     </div>
@@ -215,7 +218,7 @@
   <script type="module" src="js/i18n.js"></script>
   <script type="module" src="js/firebaseConfig.js"></script>
   <script type="module" src="js/firebaseSubirDatos.js"></script>
-  <script type="module" src="js/firebaseCargarDatos.js"></script>
+  <!--script type="module" src="js/firebaseCargarDatos.js"></script-->
   <script type="module" src="js/cajasPc.js"></script>
   <script type="module" src="js/scriptsUsuario.js"></script>
   <script type="module"src="js/loginUsuario.js"></script>
@@ -230,7 +233,9 @@
     import { subirNombresPokedex, subirFormas, subirMovimientos, subirHabilidades } from "./js/firebaseSubirDatos.js";
     import { cargarPokedex, cargarFormas, cargarMovimientos, cargarHabilidades } from "./js/firebaseCargarDatos.js";
     import { actualizarImagenPokemon  } from "./js/cajasPc.js"
-    import { pokedex  } from "./js/firebaseCargarDatos.js"
+    import { pokedex } from "./js/firebaseCargarDatos.js"
+    import { setLang } from "./js/i18n.js"
+
 
 
     let formularioCerrado = true;
@@ -244,11 +249,23 @@
     
     // Al cargar la página, carga los nombres de pokémon en el formulario
     window.addEventListener("DOMContentLoaded", () => {
-      cargarPokedex(speciesList, pokedex);
+      speciesList.innerHTMl
+      //cargarPokedex(speciesList, pokedex);
       cargarMovimientos();
       cargarHabilidades();
+      //subirNombresPokedex();
+      //subirFormas();
       //subirMovimientos();
       //subirHabilidades();
+
+      //Cargamos el idioma de la página guardado en localStorage (Si lo hubiese)
+        const savedLang = localStorage.getItem("lang");
+        if (!savedLang) {
+          currentLang = "en"; // idioma por defecto
+        }
+        setLang(savedLang)
+            let element = document.getElementById(id);
+            element.value = valueToSelect;
 
       // Actualizar la imagen del Pokémon al cambiar la especie o forma
       speciesInput.addEventListener("change", actualizarImagenPokemon); 

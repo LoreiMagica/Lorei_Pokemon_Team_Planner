@@ -4,6 +4,7 @@ import { collection, getDocs, query, where } from "https://www.gstatic.com/fireb
 import { PokemonForma } from "./DataModel/PokemonForma.js"; //Objeto para guardar las formas de los pokémon
 import { Movimiento } from "./DataModel/Movimiento.js";  //Objeto para los movimientos de pokémon
 import { Habilidad } from "./DataModel/Habilidad.js";  //Objeto para crear habilidades
+import { currentLang } from "./i18n.js";  //Objeto para crear habilidades
 
 
 // Obtenemos los movimientos del formulario
@@ -38,18 +39,30 @@ const abilitySelect = document.getElementById("ability");
 
 // 🔹 Función para cargar pokedex en el datalist para mostrarlo en el formulario
 export async function cargarPokedex(speciesDatalist, pokedex) {
+    speciesDatalist.innerHTML = '';
+    pokedex.length = []
+        console.log(currentLang)
+
   const querySnapshot = await getDocs(collection(db, "pokedex"));
   querySnapshot.forEach((docSnap) => {
     const data = docSnap.data();
 
+
     // Si el documento tiene un nombre de pokémon, lo añadimos al datalist
     if (data.nombre) {
+      // tomamos el nombre en el idioma actual o, por defecto, en inglés
+      let nombre = data[currentLang] ?? data["en"];
+
+      //Como soy mu lista y puse la columna de nombre español como "nombre", he de hacerle un if especial pa él
+      if (currentLang == "es") {nombre = data.nombre}
+
+      //Y ahora seteamos
       const option = document.createElement("option");
-      option.value = data.nombre;
+      option.value = nombre;
       speciesDatalist.appendChild(option);
       pokedex.push({
         id: parseInt(docSnap.id),
-        nombre: data.nombre,
+        nombre, //Seteamos el nombre que hemos obtenido
         tipo1: data.tipo1,
         tipo2: data.tipo2
       });
@@ -76,6 +89,12 @@ export async function cargarFormas(pokemonName, pokedex, formSelect) {
   querySnapshot.forEach((docSnap) => {
     const data = docSnap.data();
 
+      // tomamos el nombre en el idioma actual o, por defecto, en inglés
+      let nombre = data[currentLang] ?? data["en"];
+
+      //Como soy mu lista y puse la columna de nombre español como "nombre", he de hacerle un if especial pa él
+      if (currentLang == "es") {nombre = data.nombre}
+
     // 🔹 Almacenar objeto PokemonForma en su array
     pokemonFormas.push( new PokemonForma(
       data.no,
@@ -89,7 +108,7 @@ export async function cargarFormas(pokemonName, pokedex, formSelect) {
     if (data.nombre) {
       const option = document.createElement("option");
       option.value = data.forma;
-      option.textContent = data.nombre;
+      option.textContent = nombre;//Seteamos el nombre que hemos obtenido
       formSelect.appendChild(option);
     }
   });
@@ -107,9 +126,16 @@ export async function cargarMovimientos() {
     //Por cada movimiento obtenido, lo añadimos al array de movimientos
     snapshot.forEach((doc) => {
       const data = doc.data();
+
+      // tomamos el nombre en el idioma actual o, por defecto, en inglés
+      let nombre = data[currentLang] ?? data["en"];
+
+      //Como soy mu lista y puse la columna de nombre español como "nombre", he de hacerle un if especial pa él
+      if (currentLang == "es") {nombre = data.nombre}
+
         movesData.push( new Movimiento(
                 doc.id,
-                data.nombre,
+                nombre,
                 data.tipo,
                 data.categoria
           )
@@ -122,6 +148,8 @@ export async function cargarMovimientos() {
     // 🔹 Llenamos el datalist (una sola vez)
     const dataList = document.getElementById("movesList");
     dataList.innerHTML = "";
+
+    
     movesData.forEach(move => {
       const option = document.createElement("option");
       option.value = move.nombre; // el texto visible
@@ -191,7 +219,7 @@ function validarMovimiento(input) {
 }
 
 // 🔹 Función para cargar las habilidades disponibles que modifican las debilidades o resistencias de tipos
-export async function cargarHabilidades(speciesDatalist, pokedex) {
+export async function cargarHabilidades() {
   const querySnapshot = await getDocs(collection(db, "pokedex_abilities"));
 
   // Limpiamos el select antes de llenarlo
@@ -202,9 +230,15 @@ export async function cargarHabilidades(speciesDatalist, pokedex) {
   querySnapshot.forEach((doc) => {
     const data = doc.data();
 
+          // tomamos el nombre en el idioma actual o, por defecto, en inglés
+      let nombre = data[currentLang] ?? data["en"];
+
+      //Como soy mu lista y puse la columna de nombre español como "nombre", he de hacerle un if especial pa él
+      if (currentLang == "es") {nombre = data.nombre}
+
     abilitiesData.push(new Habilidad(
         doc.id,
-        data.nombre,
+        nombre,  //El nombre en el idioma que hemos seteado
         data.resistencia || [],
         data.debilidad || [],
         data.inmunidad || []
@@ -229,9 +263,10 @@ export async function recargarDatos(speciesList, pokedex) {
   pokemonFormas.length = 0;
   movesData.length = 0;
   abilitiesData.length = 0;
+  speciesList.innerHTML = ''
 
   // recargar desde Firebase
   await cargarPokedex(speciesList, pokedex);
   await cargarMovimientos();
-  await cargarHabilidades(speciesList, pokedex);
+  await cargarHabilidades();
 }

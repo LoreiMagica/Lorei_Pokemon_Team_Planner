@@ -1,0 +1,23 @@
+Absorbe-Eau
+Absorbe-Volt
+Torche
+Prisme-Armure
+Lavabo
+Motorisé
+Filtre
+Herbivore
+Lévitation
+Paratonnerre
+Solide Roc
+Isograisse
+Ignifugé
+Peau Sèche
+Garde Mystik
+Boule de Poils
+Absorbe-Terre
+Sel Purificateur
+Aquabulle
+Bien Cuit
+Souffle Delta
+Terre Finale
+Mer Primaire

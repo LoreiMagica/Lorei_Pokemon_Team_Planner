@@ -89,9 +89,9 @@ for (let i = 0; i < numRecuadros; i++) {
     }
 
     // Llenamos los recuadros de detalles del pokémon con los nombres de los movimientos y habilidad
-    const entry = pokedex.find(p => p.nombre === pokemon.species);
+    const entry = pokedex.find(p => p.id === pokemon.id);
     if (entry) {
-      img.src = `images/pokemon-model/${entry.id}${pokemon.forma?.toLowerCase() || ""}.png`;
+      img.src = `images/pokemon-model/${pokemon.id}${pokemon.forma?.toLowerCase() || ""}.png`;
     }
     ataque1.textContent = pokemon.moveNames[0] || "";
     ataque1.classList.add(`${tipoMovimiento[0]}_type` || "mystery_type");

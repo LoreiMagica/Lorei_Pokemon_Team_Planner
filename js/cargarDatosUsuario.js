@@ -62,7 +62,8 @@ export async function cargarCajasDesdeDB() {
     renderBox();
   });
   console.log("✅ Cajas cargadas desde Realtime Database");
-  cargarPokedex(speciesList, pokedex);}
+  //cargarPokedex(speciesList, pokedex);
+  }
 
 
 
@@ -84,7 +85,7 @@ export async function cargarListaEquipos() {
     //Si encuentra un equipo, lo agrega al select como opción para elegfir
       Object.keys(equipos).forEach(nombre => {
         const option = document.createElement("option");
-        option.setAttribute("data-i18n", "selectTeam");
+        //option.setAttribute("data-i18n", "selectTeam");
         option.value = nombre;
         option.textContent = nombre;
         listaEquipos.appendChild(option);

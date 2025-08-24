@@ -10,6 +10,7 @@ import { changeLanguage, currentLang } from "./i18n.js";
 // Elementos html del cuadro de inicio de sesión
 const authForm = document.getElementById("authForm");
 const toggleRegister = document.getElementById("toggleRegister");
+const registerText = document.getElementById("registerText");
 const authError = document.getElementById("authError");
 const authButton = document.getElementById("authButton");
 const userGreeting = document.getElementById("userGreeting");
@@ -21,7 +22,9 @@ toggleRegister.addEventListener("click", (e) => {
   isRegister = !isRegister; //Mirar si está en modo registrar o logear
   document.getElementById("authModalLabel").textContent = isRegister ? t("register") : t("login");
   authForm.querySelector("button[type=submit]").textContent = isRegister ? t("createAccount") : t("enter");
-  toggleRegister.textContent = isRegister ? t("alreadyAccount") : t("notAccount");
+  registerText.textContent = isRegister ? t("alreadyAccount") : t("notAccount");
+  toggleRegister.textContent = isRegister ? t("registerLink") : t("loginLink");
+
 });
 
 // Enviar formulario
@@ -86,6 +89,7 @@ onAuthStateChanged(auth, (user) => {
     changeLanguage(currentLang);
 
     //Cambiamos a la opción de cerrar sesión
+    authButton.setAttribute("data-i18n", "logout");
     authButton.textContent = t("logout");
     authButton.classList.remove("btn-primary");
     authButton.classList.add("btn-danger");
@@ -107,6 +111,7 @@ onAuthStateChanged(auth, (user) => {
     userGreeting.classList.add("d-none");
 
     //Ponemos el botón de iniciar sesión
+    authButton.setAttribute("data-i18n", "login");
     authButton.textContent = t("login");
     authButton.classList.remove("btn-danger");
     authButton.classList.add("btn-primary");

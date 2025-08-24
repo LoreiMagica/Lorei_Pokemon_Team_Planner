@@ -9,7 +9,7 @@ const speciesList = document.getElementById("speciesList");
 
 
 // Función para traducir
-export function changeLanguage(lang) {
+export async function changeLanguage(lang) {
 currentLang = lang;
 
   // Textos normales
@@ -55,15 +55,27 @@ currentLang = lang;
       el.setAttribute("alt", texts[lang][key]);
     }
   });
+
+    await recargarDatos(speciesList, pokedex);
+
 }
 
-document.getElementById("languageToggle").addEventListener("click", async () => {
-  const newLang = currentLang === "es" ? "en" : "es";
+document.getElementById("languageSelect").addEventListener("change", async (e) => {
+  const newLang = e.target.value;
+  currentLang = e.target.value;
+
   changeLanguage(newLang);
 
-  await recargarDatos(speciesList, pokedex);
-
+  // Guardamos en localStorage
+  localStorage.setItem("lang", newLang);
 });
+
+export function setLang(loadLang) {
+  currentLang = loadLang;
+  document.getElementById("languageSelect").value = loadLang;
+  changeLanguage(loadLang);
+
+}
 
 export function t(key) {
   return texts[currentLang][key] || key;

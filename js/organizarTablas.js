@@ -57,9 +57,7 @@ export function generarTablaColores() {
     if (pokemon.species != null) {
 
       //Lo escribe en la tabla
-      const entry = pokedex.find(p => p.nombre === pokemon.species);
-      //console.log("Pokémon encontrado:", entry);
-      html += `<th class="imgEquipoTablas"><img src="images/pokemon-model/${entry.id}${pokemon.forma?.toLowerCase() || ""}.png" alt="${pokemon.species}"></th>`
+      html += `<th class="imgEquipoTablas"><img src="images/pokemon-model/${pokemon.id}${pokemon.forma?.toLowerCase() || ""}.png" alt="${pokemon.species}"></th>`
     } else {
       // Si no hay Pokémon en esa ranura, ponemos la imagen por defecto
       //console.log("No hay Pokémon en esa ranura");
@@ -169,9 +167,7 @@ export function generarTablaNumeros() {
     if (pokemon.species != null) {
 
       //Lo escribe en la tabla
-      const entry = pokedex.find(p => p.nombre === pokemon.species);
-      //console.log("Pokémon encontrado:", entry);
-      html += `<th class="imgEquipoTablas"><img src= "images/pokemon-model/${entry.id}${pokemon.forma?.toLowerCase() || ""}.png" alt="${pokemon.species}"></th>`
+      html += `<th class="imgEquipoTablas"><img src= "images/pokemon-model/${pokemon.id}${pokemon.forma?.toLowerCase() || ""}.png" alt="${pokemon.species}"></th>`
     } else {
       // Si no hay Pokémon en esa ranura, ponemos la imagen por defecto
       html += `<th class="imgEquipoTablas"><img src= "images/pokemon-model/0.png" alt="Ninguno"></th>`;

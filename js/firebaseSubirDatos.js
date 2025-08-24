@@ -108,6 +108,7 @@ export async function readFileLines(path) {
 // 🔹 Función para subir habilidades que modifican las debilidades y resistencias a firebase
 export async function subirHabilidades() {
     // 🔹 Cargamos los 4 ficheros
+    const listaIds = await readFileLines("../txt_db/pokemon_abilities_id.txt");
     const nombres = await readFileLines("../txt_db/pokemon_abilities_names.txt");
     const resistencias = await readFileLines("../txt_db/pokemon_abilities_resist.txt");
     const debilidades = await readFileLines("../txt_db/pokemon_abilities_weakness.txt");
@@ -121,9 +122,9 @@ export async function subirHabilidades() {
     const inmunidad = inmunidades[i] ? inmunidades[i].split(",").map(x => x.trim()).filter(x => x) : [];
 
     // Crear documento con ID incremental (empezando en 1)
-    const id = i + 1; // id autoincremental
+    const id = listaIds[i]; // id autoincremental
     
-    const docRef = doc(db, "pokedex_abilities", String(i + 1));
+    const docRef = doc(db, "pokedex_abilities", id);
 
     //Seteamos el documento con los datos de la habilidad
     await setDoc(docRef, {

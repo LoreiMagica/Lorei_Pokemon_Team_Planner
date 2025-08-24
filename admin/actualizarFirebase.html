@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Actualizar Firebase con TXT</title>
+  <script type="module">
+    // 🔹 Importar Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import { getFirestore, collection, doc, getDocs, updateDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+    // 🔹 Configuración Firebase
+    import { db } from "../js/firebaseConfig.js";
+
+
+    // 🔹 Delay para evitar bloqueos de Firebase
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // 🔹 Leer fichero local seleccionado por el usuario
+    function leerFicheroUsuario(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const lineas = event.target.result.split(/\r?\n/).map(l => l.trim());
+          resolve(lineas);
+        };
+        reader.onerror = reject;
+        reader.readAsText(file);
+      });
+    }
+
+        // 🔹 Función auxiliar para leer fichero y devolver array de líneas (hecho pa las habilidades)
+    export async function readFileLines(path) {
+    const respuesta = await fetch(path);
+    const texto = await respuesta.text();
+    //console.log(`Leyendo fichero: `+ texto.split("\n").map(l => l.trim()));
+    return texto.split("\n").map(l => l.trim());
+    }
+
+    // 🔹 Lógica principal: actualizar Firebase
+    async function actualizarDocsFormulario(event) {
+      event.preventDefault();
+
+      const coleccion = document.getElementById("coleccion").value.trim();
+      const columna = document.getElementById("columna").value.trim();
+      const fileInput = document.getElementById("txtFile");
+
+      if (!coleccion || !columna || fileInput.files.length === 0) {
+        alert("⚠ Debes completar todos los campos y seleccionar un archivo");
+        return;
+      }
+
+      const file = fileInput.files[0];
+
+      try {
+        const valores = await leerFicheroUsuario(file);
+
+        // 🔹 Obtener documentos de la colección
+        const snapshot = await getDocs(collection(db, coleccion));
+        const docs = snapshot.docs;
+
+        if (docs.length === 0) {
+          alert("❌ La colección está vacía");
+          return;
+        }
+
+        // 🔹 Buscar el doc.id máximo (numérico)
+        const maxId = Math.max(...docs.map(d => Number(d.id)));
+
+        // 🔹 Guardar los IDs que realmente existen en la colección
+        const idsExistentes = new Set(docs.map(d => d.id));
+
+        
+        let actualizados = 0;
+        let saltados = 0;
+
+        // 🔹 Caso especial: pokedex_forms
+        if (coleccion === "pokedex_forms") {
+          const nombresForms = await readFileLines("../txt_db/pokemon_names_forms.txt");
+          const snapshot = await getDocs(collection(db, coleccion));
+
+          let actualizados = 0;
+          let noEncontrados = 0;
+
+          for (let i = 0; i < nombresForms.length; i++) {
+            const nombre = nombresForms[i];
+            const valor = valores[i];
+
+            // Buscar doc cuyo campo "nombre" coincida con el de la línea
+            const docEncontrado = snapshot.docs.find(d => d.data().nombre === nombre);
+
+            if (docEncontrado) {
+              const ref = doc(db, coleccion, docEncontrado.id);
+              await updateDoc(ref, { [columna]: valor });
+              console.log(`✔ Actualizado "${nombre}" con ${columna}: ${valor}`);
+              actualizados++;
+            } else {
+              console.warn(`⚠ No encontrado en Firebase: ${nombre}`);
+              noEncontrados++;
+            }
+
+            await delay(50);
+            }
+        //Si la colección es pokedex_abilities, lee los ficheros de otra manera
+        } else if (coleccion == "pokedex_abilities") {
+            const ListaIds = await readFileLines("../txt_db/pokemon_abilities_id.txt");
+
+            // 🔹 Actualizar cada documento
+            for (let i = 0; i <= maxId; i++) {
+            const id = ListaIds[i]; // asumiendo que la línea corresponde a ese id
+            if (idsExistentes.has(id)) {
+                const ref = doc(db, coleccion, id);
+                await updateDoc(ref, { [columna]: valores[i] });
+                console.log(`✔ Doc ${id} actualizado con ${columna}: ${valores[i]}`);
+                actualizados++;
+            } else {
+                console.warn(`⚠ Saltado: No existe doc con id ${id}`);
+                saltados++;
+            }
+            await delay(50);
+            }
+
+
+            //Sino, leemos de la manera original
+        } else {
+        // 🔹 Validar coincidencia de líneas y maxId
+        if (valores.length !== maxId) {
+          alert(`❌ El archivo tiene ${valores.length} líneas, pero el doc.id más alto es ${maxId}`);
+          return;
+        }
+
+        // 🔹 Actualizar cada documento
+        for (let i = 0; i <= maxId; i++) {
+          const id = String(i + 1); // asumiendo que la línea corresponde a ese id
+          if (idsExistentes.has(id)) {
+            const ref = doc(db, coleccion, id);
+            await updateDoc(ref, { [columna]: valores[i] });
+            console.log(`✔ Doc ${id} actualizado con ${columna}: ${valores[i]}`);
+            actualizados++;
+          } else {
+            console.warn(`⚠ Saltado: No existe doc con id ${id}`);
+            saltados++;
+          }
+          await delay(50);
+        }
+        }
+
+        alert("✅ Actualización completada correctamente");
+
+      } catch (error) {
+        console.error("❌ Error:", error);
+        alert("Hubo un error al actualizar los documentos");
+      }
+    }
+
+    // Asociar la función al formulario
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("formulario").addEventListener("submit", actualizarDocsFormulario);
+    });
+  </script>
+</head>
+<body>
+  <h2>Actualizar colección de Firebase con TXT</h2>
+  <form id="formulario">
+    <label>Nombre de la colección:</label><br>
+    <input type="text" id="coleccion" placeholder="Ej: pokedex"><br><br>
+
+    <label>Nombre de la nueva columna:</label><br>
+    <input type="text" id="columna" placeholder="Ej: altura"><br><br>
+
+    <label>Selecciona archivo TXT:</label><br>
+    <input type="file" id="txtFile" accept=".txt"><br><br>
+
+    <button type="submit">Actualizar</button>
+  </form>
+</body>
+</html>

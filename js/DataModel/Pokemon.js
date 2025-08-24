@@ -16,7 +16,7 @@ export class Pokemon {
 
   // 🖼️ Devuelve el nombre del archivo de imagen
   getImageFile(pokedex) {
-    const entry = pokedex.find(p => p.nombre === this.species);
+    const entry = pokedex.find(p => p.id === this.id);
     if (!entry) return "0";
     let file = entry.id;
     if (this.forma) file += this.forma;
