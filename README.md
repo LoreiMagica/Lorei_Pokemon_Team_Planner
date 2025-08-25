@@ -46,13 +46,13 @@ You can visit and make normal use of all the functions of this website here:
 Lorei Pokémon Team Planner is a web app that lets you create and organize your favorite Pokémon from the games and easily plan your teams for adventures or competitive play.
 
 The site features a simple form where you can search for any Pokémon from the official games, including alternate forms. You’ll also find a full list of moves and abilities that can affect a Pokémon’s resistances to enemy attacks.
-[](/gif_readme/gif_form_en.gif)
+![](/gif_readme/gif_form_en.gif)
 
 
 All Pokémon created in the form are stored in the box on the left. You can create multiple boxes, rename them, and organize, edit, or delete your Pokémon however you like.
-[](/gif_readme/png_boxes_en.png)
+![](/gif_readme/png_boxes_en.png)
 
-You can build a team by dragging Pokémon from your boxes into the team slots below. The app will automatically calculate move effectiveness, resistances, and weaknesses for your team in real time.
+You can build a team by dragging Pokémon from your boxes into the team slots below. The app will automatically calculate move effectiveness, resistances, and weaknesses for your team in real time.!
 [](/gif_readme/png_team_en.png)
 
 
