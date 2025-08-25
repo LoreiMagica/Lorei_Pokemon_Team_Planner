@@ -53,7 +53,7 @@ All Pokémon created in the form are stored in the box on the left. You can crea
 ![](/gif_readme/png_boxes_en.png)
 
 You can build a team by dragging Pokémon from your boxes into the team slots below. The app will automatically calculate move effectiveness, resistances, and weaknesses for your team in real time.!
-[](/gif_readme/png_team_en.png)
+![](/gif_readme/png_team_en.png)
 
 
 Users can register to save their Pokémon and teams permanently, allowing access from any device.
