@@ -1,3 +1,4 @@
 Thanks to [PokéAPI](https://github.com/PokeAPI/sprites) for pokemon sprites
 Thanks to [Pokemondb](https://pokemondb.net/tools/text-list) for all pokémon names list and all pokémon types database
-Thanks to [Wikidex](https://www.wikidex.net/wiki/WikiDex) and [Bulbapedia](https://bulbagarden.net/home) for all pokémon moves and abilities info and database
+Thanks to [Wikidex](https://www.wikidex.net/wiki/WikiDex), [Bulbapedia](https://bulbagarden.net/home), [Poképedia](https://www.pokepedia.fr/Portail:Accueil), [Pokecentral](https://wiki.pokemoncentral.it) and [Pokewiki](https://www.pokewiki.de/Hauptseite) for all pokémon names, forms,  moves and abilities info and database
+Thanks to @camunza for the favicon for my web

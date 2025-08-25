@@ -33,8 +33,6 @@
   border: 2px solid #3b4cca52;
 }
 
-
-
 /* === Estilos para el formulario de creación de Pokémon === */
 /* Color gris de placeholder por defecto) */
 .form-control::placeholder {
@@ -257,6 +255,26 @@ select option:disabled {
 .pokemonInmune { background-color:#cccccc; }  /* gris claro */
 .pokemonNeutro { background-color:#f0f0f0; }  /* blanquillo para color neutro */
 
+/* Footer general */
+.footer {
+  border-top: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  padding: 1rem 0;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color:  #6c757d;
+}
+
+.footer a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
 
 
 /* ///// 🎨 Tema oscuro //// */
@@ -425,6 +443,29 @@ select option:disabled {
   filter: invert(1);
 }
 
+
+/* Footer general */
+.dark-theme .footer {
+  border-top: 1px solid#333333;
+  background-color: #1a1a1a;
+  padding: 1rem 0;
+}
+
+.dark-theme .footer-text {
+  font-size: 0.85rem;
+  color: #cccccc;
+}
+
+.dark-theme .footer a {
+  color:#66b2ff;
+  text-decoration: none;
+}
+
+.dark-theme .footer a:hover {
+  text-decoration: underline;
+}
+
+
 /* css para cuando hay una pantalla de móvil */
 @media (max-width: 768px) {
 
@@ -486,7 +527,6 @@ select option:disabled {
 
   /* div de las tablas */
   .tablas-container {
-    padding-left: 50px;
     gap: 0.5rem;
     display: flex;
     justify-content: center;
