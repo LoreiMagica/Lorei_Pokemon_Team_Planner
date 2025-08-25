@@ -61,6 +61,6 @@ export class Pokemon {
 
   // 📜 Devuelve el cuadrito de info para mostrar en el slot
   getTooltip() {
-    return `${this.species}\nAtaques: ${this.moveNames.join(", ")}\nHabilidad: ${this.abilityName}`;
+  return `${this.species}\n${t("attackName")} ${this.moveNames.join(", ")}\n${t("abilityName")} ${this.abilityName}`;
   }
 }

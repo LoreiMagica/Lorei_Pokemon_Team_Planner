@@ -43,12 +43,14 @@ export const texts = {
     erasePokemon: "Eliminar pokémon",
 
     //CajasPc.js
-    boxName: "Caja \"{boxes}\" ",
+    boxName: "Caja {boxes} ",
     login_to_save_pokemon: "Inicia sesión para guardar tus pokémon de manera permanente",
     box_full: "❌ La caja está llena.",
     select_pokemon_to_remove: "Selecciona un Pokémon de la caja para eliminarlo.",
     confirm_pokemon_delete: "¿Seguro que quieres eliminar este {pokemon}?",
     slot_empty: "Ese slot ya está vacío.",
+    attackName: "Ataques: ",
+    abilityName: "Habilidad: ",
 
     //Equipo pokémon actual
     pokemonTeamTitle: "Equipo Pokémon",
@@ -134,6 +136,8 @@ export const texts = {
     select_pokemon_to_remove: "Select a Pokémon from the box to remove.",
     confirm_pokemon_delete: `Are you sure you want to delete this {pokemon}?`,
     slot_empty: "That slot is already empty.",
+    attackName: "Attacks: ",
+    abilityName: "Ability: ",
 
     //Equipo pokémon actual
     pokemonTeamTitle: "Pokémon Team",
@@ -217,6 +221,8 @@ export const texts = {
     select_pokemon_to_remove: "Sélectionnez un Pokémon de la boîte à retirer.",
     confirm_pokemon_delete: "Êtes-vous sûr de vouloir supprimer ce {pokemon} ?",
     slot_empty: "Cet emplacement est déjà vide.",
+    attackName: "Capacités: ",
+    abilityName: "Talent: ",
 
     //Equipo pokémon actual
     pokemonTeamTitle: "Équipe Pokémon",
@@ -300,6 +306,8 @@ export const texts = {
     select_pokemon_to_remove: "Seleziona un Pokémon dalla scatola da rimuovere.",
     confirm_pokemon_delete: "Sei sicuro di voler eliminare questo {pokemon}?",
     slot_empty: "Quello slot è già vuoto.",
+    attackName: "Mosse: ",
+    abilityName: "Abilità: ",
 
     //Equipo pokémon actual
     pokemonTeamTitle: "Squadra Pokémon",
@@ -383,6 +391,8 @@ export const texts = {
     select_pokemon_to_remove: "Wähle ein Pokémon aus der Box zum Entfernen.",
     confirm_pokemon_delete: "Bist du sicher, dass du dieses {pokemon} löschen möchtest?",
     slot_empty: "Dieser Slot ist bereits leer.",
+    attackName: "Attacken: ",
+    abilityName: "Fähigkeit: ",
 
     //Equipo pokémon actual
     pokemonTeamTitle: "Pokémon-Team",
