@@ -78,12 +78,15 @@ authButton.addEventListener("click", async () => {
 // Detectar cambios de sesión
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // Mostramos al usuario con qué correo se ha logeado
-    userGreeting.textContent = tv("helloUser", { email: user.email });
-    userGreeting.classList.remove("d-none");
-    userGreeting.setAttribute("data-i18n", "helloUser");
-    userGreeting.setAttribute("data-vars", JSON.stringify({ email: user.email }));
-    userGreeting.classList.remove("d-none");
+      document.querySelectorAll(".userGreetingMobile, .userGreetingDesktop")
+    .forEach(el => {
+      el.classList.remove("d-none");
+          // Mostramos al usuario con qué correo se ha logeado
+    el.textContent = tv("helloUser", { email: user.email });
+    el.setAttribute("data-i18n", "helloUser");
+    el.setAttribute("data-vars", JSON.stringify({ email: user.email }));
+    });
+
     
     // Inicializa el texto según idioma actual
     changeLanguage(currentLang);
@@ -107,8 +110,12 @@ onAuthStateChanged(auth, (user) => {
     guardarCajasbtn.classList.remove("d-none");
   } else {
     // Usuario no logueado, quitamos el mensaje de saludo
-    userGreeting.textContent = "";
-    userGreeting.classList.add("d-none");
+    document.querySelectorAll(".userGreetingMobile, .userGreetingDesktop")
+    .forEach(el => {
+    el.textContent = "";
+    el.classList.add("d-none");
+    });
+
 
     //Ponemos el botón de iniciar sesión
     authButton.setAttribute("data-i18n", "login");

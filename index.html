@@ -17,35 +17,46 @@
 </head>
 
 <body class="container-fluid p-4">
-  <div class="d-flex justify-content-end mb-3">
-    <div class="d-flex justify-content-end mb-3 gap-2">
-      <!-- Texto dinámico de saludar al usuario -->
-      <span id="userGreeting" class="me-2 fw-bold text-primary d-none" data-i18n="helloUser" data-vars='{"email"}'></span>
+<div id="holi">
+  <!-- Texto dinámico de saludar al usuario (para móvil) -->
+  <span class="userGreetingMobile me-2 fw-bold text-primary d-none" 
+        data-i18n="helloUser" 
+        data-vars='{"email"}'></span>
+</div>
 
-      <!-- Icono para guardar datos-->
-      <button id="guardarCajasbtn" class="btn btn-success  d-none" title="Guardar cajas" data-i18n-title="save_boxes">
-        <i class="bi bi-cloud-upload-fill"></i>
-      </button>
-      <!-- Botón de login/logout -->
-      <button id="authButton" class="btn btn-primary me-5" data-bs-toggle="modal" data-bs-target="#authModal" data-i18n="login">
-        Iniciar Sesión
-      </button>
+<div class="d-flex justify-content-end mb-3">
+  <div class="d-flex justify-content-end mb-3 gap-2">
+    <!-- Texto dinámico de saludar al usuario (para PC) -->
+    <span class="userGreetingDesktop me-2 fw-bold text-primary d-none" 
+          data-i18n="helloUser" 
+          data-vars='{"email"}'></span>
 
-      <!-- Select para cambiar el idioma de la web-->
-      <select id="languageSelect" class="form-select form-select-sm w-auto d-inline">
-        <option value="es" data-icon="🇪🇸">🇪🇸</option>
-        <option value="en" data-icon="🇬🇧">🇬🇧</option>
-        <option value="fr" data-icon="🇫🇷">🇫🇷</option>
-        <option value="it" data-icon="🇮🇹">🇮🇹</option>
-        <option value="de" data-icon="🇩🇪">🇩🇪</option>
-      </select>
+    <!-- Icono para guardar datos-->
+    <button id="guardarCajasbtn" class="btn btn-success d-none" title="Guardar cajas" data-i18n-title="save_boxes">
+      <i class="bi bi-cloud-upload-fill"></i>
+    </button>
 
-      <!-- Botón para cambiar de tema -->
-      <button id="themeToggle" class="btn btn-outline-dark" title="Cambiar tema de colores" data-i18n-title="change_theme">
-        <i id="themeIcon" class="bi bi-moon-fill"></i>
-      </button>
-    </div>
+    <!-- Botón de login/logout -->
+    <button id="authButton" class="btn btn-primary me-5" data-bs-toggle="modal" data-bs-target="#authModal" data-i18n="login">
+      Iniciar Sesión
+    </button>
+
+    <!-- Select para cambiar el idioma de la web-->
+    <select id="languageSelect" class="form-select form-select-sm w-auto d-inline">
+      <option value="es" data-icon="🇪🇸">🇪🇸</option>
+      <option value="en" data-icon="🇬🇧">🇬🇧</option>
+      <option value="fr" data-icon="🇫🇷">🇫🇷</option>
+      <option value="it" data-icon="🇮🇹">🇮🇹</option>
+      <option value="de" data-icon="🇩🇪">🇩🇪</option>
+    </select>
+
+    <!-- Botón para cambiar de tema -->
+    <button id="themeToggle" class="btn btn-outline-dark" title="Cambiar tema de colores" data-i18n-title="change_theme">
+      <i id="themeIcon" class="bi bi-moon-fill"></i>
+    </button>
   </div>
+</div>
+
 
   <div class="d-flex justify-content-center align-items-start gap-4 flex-wrap">
     <!-- Columna izquierda: Caja Pokémon -->
@@ -205,8 +216,16 @@
         for Pokémon names, forms, moves and abilities info
       </p>
       <p class="mb-0">
-        Thanks to <span class="fw-bold">@camunza</span> for the favicon for my web
+        Thanks <span class="fw-bold">@camunza</span> for the favicon for my web
       </p>
+
+          <!-- 🔗 Enlace a GitHub con icono -->
+    <a href="https://github.com/LoreiMagica/Lorei_Pokemon_Team_Planner" 
+       target="_blank" 
+       class="text-decoration-none fs-4" 
+       title="Ver en GitHub">
+      <i class="bi bi-github"></i>
+    </a>
     </div>
   </footer>
 

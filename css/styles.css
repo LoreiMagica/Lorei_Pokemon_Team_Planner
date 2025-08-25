@@ -1,3 +1,8 @@
+/* === Botones superiores === */
+/* Por defecto en escritorio */
+.userGreetingMobile { display: none !important; }
+.userGreetingDesktop { display: inline-block !important; }
+
 /* === Estilo para las cajas donde se guardan los pokémon === */
 /*Formato de cajas pokémon*/
 .box-grid {
@@ -468,7 +473,26 @@ select option:disabled {
 
 /* css para cuando hay una pantalla de móvil */
 @media (max-width: 768px) {
+  /* === Botones superiores === */
+    /* En móvil */
+  @media (max-width: 768px) {
+    .userGreetingMobile { display: inline-block !important; }
+    .userGreetingDesktop { display: none !important; }
+  }
 
+  #userGreeting {
+    display: block !important;   /* que ocupe toda la línea */
+    width: 100%;                 /* que se expanda horizontalmente */
+    text-align: center;          /* centrado */
+    margin-bottom: 0.5rem;       /* espacio con los botones */
+  }
+
+  /* El contenedor de botones pasa a columna */
+  #holi{
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   .row {
     display: flex;
