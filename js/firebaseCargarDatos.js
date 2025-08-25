@@ -227,6 +227,7 @@ function validarMovimiento(input) {
 // 🔹 Función para cargar las habilidades disponibles que modifican las debilidades o resistencias de tipos
 export async function cargarHabilidades() {
   const querySnapshot = await getDocs(collection(db, "pokedex_abilities"));
+  abilitiesData.length = 0;
 
   // Limpiamos el select antes de llenarlo
   abilitySelect.innerHTML = `<option value="">${t("abilitiesName")}</option>`;
