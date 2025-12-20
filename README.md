@@ -9,15 +9,15 @@ Lorei Pokémon Team Planner es una web donde puedes crear y recopilar tus mejore
 
 En esta web tendrás un sencillo formulario donde podrás encontrar cualquier pokémon existente en los videojuegos oficiales, junto a sus formas alternativas, también ofrece la lista completa de ataques existentes, y otra lista donde elegir habilidades que modifican la resistencia del pokémon frente a ataques enemigos
 
-[](/gif_readme/gif_formulario_es.gif)
+![](/gif_readme/gif_formulario_es.gif)
 
 Todos los pokémon creados en el formulario, se almacenarán en la caja a la izquierda. Podrás crear múltiples cajas y renombrarlas a tu gusto para organizar, editar, y eliminar tus pokémon como desees
 
-[](/gif_readme/png_cajas_es.png)
+![](/gif_readme/png_cajas_es.png)
 
 Junto a todo esto, podrás crear un equipo pokemon pulsando sobre tus pokémon creados en las cajas, y colocándolos en el slot de equipo debajo de las cajas. La web se encargará de calcular las efectividades de los movimientos de tu equipo, las resistencias, y debilidades de estos al instante
 
-[](/gif_readme/png_equipo_es.png)
+![](/gif_readme/png_equipo_es.png)
 
 La web permite que los usuarios se registren para guardar permanentemente sus datos de pokémon, sus equipos creados, y poder consultarlos desde cualquier dispositivo
 
@@ -53,7 +53,7 @@ All Pokémon created in the form are stored in the box on the left. You can crea
 ![](/gif_readme/png_boxes_en.png)
 
 You can build a team by dragging Pokémon from your boxes into the team slots below. The app will automatically calculate move effectiveness, resistances, and weaknesses for your team in real time.!
-[](/gif_readme/png_team_en.png)
+![](/gif_readme/png_team_en.png)
 
 
 Users can register to save their Pokémon and teams permanently, allowing access from any device.
