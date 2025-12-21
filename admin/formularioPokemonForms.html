@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Actualizar Firebase con TXT</title>
+  <script type="module">
+    // 🔹 Importar Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import { getFirestore, collection, doc, getDocs, updateDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    import { subirNuevasFormasDesdeFormulario } from "../js/firebaseSubirDatos.js";
+
+
+    // 🔹 Configuración Firebase
+    import { db } from "../js/firebaseConfig.js";
+
+
+    // 🔹 Delay para evitar bloqueos de Firebase
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    const form = document.getElementById('form-nueva-forma');
+
+    form.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Evita el submit clásico
+
+    const de = document.getElementById('de').value.trim();
+    const en = document.getElementById('en').value.trim();
+    const forma = document.getElementById('forma').value.trim();
+    const fr = document.getElementById('fr').value.trim();
+    const it = document.getElementById('it').value.trim();
+    const no = Number(document.getElementById('no').value);
+    const nombre = document.getElementById('nombre').value.trim();
+    const tipo1 = document.getElementById('tipo1').value;
+    const tipo2Raw = document.getElementById('tipo2').value;
+    const tipo2 = tipo2Raw === '' ? null : tipo2Raw;
+
+    await subirNuevasFormasDesdeFormulario(
+        de,
+        en,
+        forma,
+        fr,
+        it,
+        no,
+        nombre,
+        tipo1,
+        tipo2,
+    );
+
+    // Opcional: limpiar formulario después de guardar
+    form.reset();
+    });
+
+    const btnBulkUnown = document.getElementById('btn-bulk-unown');
+    btnBulkUnown.addEventListener('click', async () => {
+        console.log('🚀 Iniciando inserción masiva de Unown...');
+        try {
+            for (let code = 65; code <= 92; code++) {
+                let letter = String.fromCharCode(code); 
+
+                if (letter === '[') {
+                    await subirNuevasFormasDesdeFormulario(
+                        `Icognito !`,
+                        `Unown !`,
+                        `-exclamation`, // -b, -c, -d, ...
+                        `Zarbi !`,
+                        `Unown !`,
+                        201,
+                        `Unown !`,
+                        'Psychic',
+                        null
+                    );
+                } else if (letter === '\\') {
+                    await subirNuevasFormasDesdeFormulario(
+                        `Icognito ?`,
+                        `Unown ?`,
+                        `-question`, // -b, -c, -d, ...
+                        `Zarbi ?`,
+                        `Unown ?`,
+                        201,
+                        `Unown ?`,
+                        'Psychic',
+                        null
+                    );
+                } else if (letter === 'A'){
+                    await subirNuevasFormasDesdeFormulario(
+                        `Icognito ${letter}`,
+                        `Unown ${letter}`,
+                        ``, 
+                        `Zarbi ${letter}`,
+                        `Unown ${letter}`,
+                        201,
+                        `Unown ${letter}`,
+                        'Psychic',
+                        null
+                    );
+                } else {
+                    await subirNuevasFormasDesdeFormulario(
+                        `Icognito ${letter}`,
+                        `Unown ${letter}`,
+                        `-${letter.toLowerCase()}`, // -b, -c, -d, ...
+                        `Zarbi ${letter}`,
+                        `Unown ${letter}`,
+                        201,
+                        `Unown ${letter}`,
+                        'Psychic',
+                        null
+                    );
+                }
+            }
+            console.log('✔ Inserción masiva de Unown completada');
+        } catch (e) {
+            console.error('❌ Error en inserción masiva:', e);
+        }
+    });
+  </script>
+</head>
+<body>
+<form id="form-nueva-forma">
+  <label for="de">de:</label>
+  <input type="text" id="de" name="de" required>
+
+  <label for="en">en:</label>
+  <input type="text" id="en" name="en" required>
+
+  <label for="forma">forma:</label>
+  <input type="text" id="forma" name="forma" required>
+
+  <label for="fr">fr:</label>
+  <input type="text" id="fr" name="fr" required>
+
+  <label for="it">it:</label>
+  <input type="text" id="it" name="it" required>
+
+  <label for="no">no:</label>
+  <input type="number" id="no" name="no" required>
+
+  <label for="nombre">nombre:</label>
+  <input type="text" id="nombre" name="nombre" required>
+
+  <label for="tipo1">tipo1:</label>
+  <select id="tipo1" name="tipo1" required>
+    <option value="" selected disabled>Selecciona un tipo</option>
+    <option value="Normal">Normal</option>
+    <option value="Fire">Fire</option>
+    <option value="Water">Water</option>
+    <option value="Electric">Electric</option>
+    <option value="Grass">Grass</option>
+    <option value="Ice">Ice</option>
+    <option value="Fighting">Fighting</option>
+    <option value="Poison">Poison</option>
+    <option value="Ground">Ground</option>
+    <option value="Flying">Flying</option>
+    <option value="Psychic">Psychic</option>
+    <option value="Bug">Bug</option>
+    <option value="Rock">Rock</option>
+    <option value="Ghost">Ghost</option>
+    <option value="Dragon">Dragon</option>
+    <option value="Dark">Dark</option>
+    <option value="Steel">Steel</option>
+    <option value="Fairy">Fairy</option>
+  </select>
+
+  <label for="tipo2">tipo2 (opcional):</label>
+  <select id="tipo2" name="tipo2">
+    <option value="" selected>Sin segundo tipo</option>
+    <option value="Normal">Normal</option>
+    <option value="Fire">Fire</option>
+    <option value="Water">Water</option>
+    <option value="Electric">Electric</option>
+    <option value="Grass">Grass</option>
+    <option value="Ice">Ice</option>
+    <option value="Fighting">Fighting</option>
+    <option value="Poison">Poison</option>
+    <option value="Ground">Ground</option>
+    <option value="Flying">Flying</option>
+    <option value="Psychic">Psychic</option>
+    <option value="Bug">Bug</option>
+    <option value="Rock">Rock</option>
+    <option value="Ghost">Ghost</option>
+    <option value="Dragon">Dragon</option>
+    <option value="Dark">Dark</option>
+    <option value="Steel">Steel</option>
+    <option value="Fairy">Fairy</option>
+  </select>
+
+  <button type="submit">Guardar</button>
+
+</form>
+    <!-- Botón extra: inserta todos los Unown de golpe -->
+  <button type="button" id="btn-bulk-unown">
+    Insertar todos los Unown
+  </button>
+</body>
+</html>

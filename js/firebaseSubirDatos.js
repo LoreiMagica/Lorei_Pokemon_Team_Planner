@@ -61,6 +61,29 @@ export async function subirFormas() {
     }
   }
 }
+
+// 🔹 Función para insertar formas de pokémon en firebase desde el formulario
+export async function subirNuevasFormasDesdeFormulario(de, en, forma, fr, it, no, nombre, tipo1, tipo2) {
+
+    try {
+        //Agrego los nombres de las formas junto con datos por defecto 
+        // para crear cada documento con las columnas requeridas
+      await addDoc(collection(db, "pokedex_forms"), {
+        de: de,
+        en: en,
+        forma: forma,
+        fr: fr,
+        it: it,
+        no: no,
+        nombre: nombre,
+        tipo1: tipo1,
+        tipo2: tipo2,
+        });
+      console.log(`✔ Insertado: ${nombre}`);
+    } catch (e) {
+      console.error("❌ Error añadiendo documento:", e);
+    }
+}
 // 🔹 Función para insertar movimientos en firebase
 export async function subirMovimientos() {
     // Leemos los ficheros de movimientos, tipos y categorías para prepararlos para su inserción
