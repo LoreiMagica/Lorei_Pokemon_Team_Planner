@@ -78,7 +78,8 @@ export async function cargarPokedex(speciesDatalist, pokedex) {
 
 // 🔹 Función para cargar formas de un pokémon en el formulario
 export async function cargarFormas(pokemonName, pokedex, formSelect) {
-  formSelect.innerHTML = `<option value="">${t("formName")}</option>`;
+  // siempre empezamos limpiando
+  formSelect.innerHTML = "";
   //Buscamos el pokémon en el array
   const entry = pokedex.find(p => p.nombre === pokemonName);
   
@@ -86,11 +87,26 @@ export async function cargarFormas(pokemonName, pokedex, formSelect) {
   const no = entry ? entry.id : null;
   
   //Si no encuentra id, sale del método
-  if (!no) return;
+  if (!no) {
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = t("formName"); // texto según idioma
+    formSelect.appendChild(placeholder);
+    return;
+  };
 
   //Comparamos el número del pokémon elegido por el usuario con las formas en la colección "pokedex_forms"
   const q = query(collection(db, "pokedex_forms"), where("no", "==", no));
   const querySnapshot = await getDocs(q);
+
+  // si NO hay ninguna forma en Firestore → solo placeholder
+  if (querySnapshot.empty) {
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = t("formName");
+    formSelect.appendChild(placeholder);
+    return;
+  }
 
   querySnapshot.forEach((docSnap) => {
     const data = docSnap.data();
@@ -116,6 +132,11 @@ export async function cargarFormas(pokemonName, pokedex, formSelect) {
       option.value = data.forma;
       option.textContent = nombre;//Seteamos el nombre que hemos obtenido
       formSelect.appendChild(option);
+
+      //Marcamos por defecto la forma normal
+      if (data.forma === "") {
+        formSelect.value = "";
+      }
     }
   });
 }
