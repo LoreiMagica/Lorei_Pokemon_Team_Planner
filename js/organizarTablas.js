@@ -30,7 +30,24 @@ const effectiveness = {
 };
 
 // Función que calcula la efectividad 
-function calcularEfectividad(movimiento, tipoObjetivo) {
+function calcularEfectividad(movimiento, tipoObjetivo, habilidad) {
+  debugger;
+    //Agregamos la excepción de Intrépido (id 113),ataques normales y lucha afectan a fantasma
+  if (habilidad == 113 && tipoObjetivo == "Ghost" && (movimiento == "Normal" || movimiento == "Fighting")) return 1;
+  //Agregamos la excepción de Piel feérica (id 182), vuelve ataques normales en tipo hada
+  if (habilidad == 182 && movimiento == "Normal") movimiento = "Fairy";
+
+  //Agregamos la excepción de Piel helada (id 174), vuelve ataques normales en tipo hielo
+  if (habilidad == 174 && movimiento == "Normal") movimiento = "Ice";
+
+  //Agregamos la excepción de Piel celeste (id 184), vuelve ataques normales en tipo volador
+  if (habilidad == 184 && movimiento == "Normal") movimiento = "Flying";
+
+  //Agregamos la excepción de Piel eléctrica (id 206), vuelve ataques normales en tipo eléctrico
+  if (habilidad == 206 && movimiento == "Normal") movimiento = "Electric";
+  
+  //Agregamos la excepción de Normalidad (id 96), vuelve cualquier ataque tipo normal
+  if (habilidad == 96) movimiento.tipo = "Normal";
   // Devuelve 2 = super efectivo, 1 = normal, 0.5 = resistente, 0 = inmune
     let resultado = 1; // default neutral
 
@@ -86,8 +103,7 @@ export function generarTablaColores() {
 
       //Agregamos la excepción de Liofinización, que es un ataque tipo hielo fuerte contra agua
       if (movimiento.id == 573 && tipoFila == "Water") return 2
-
-      return calcularEfectividad(movimiento.tipo, tipoFila) > 1;
+      return calcularEfectividad(movimiento.tipo, tipoFila, pokemon.ability) > 1;
     });
 
       let esNeutro = pokemon.moveIds.some(mov =>  {
@@ -95,7 +111,8 @@ export function generarTablaColores() {
 
          // Ignoramos movimientos de tipo Status
         if (!movimiento || movimiento.categoria === "Status") return false;
-        calcularEfectividad(movesData.find(m => m.id === mov).tipo, tipoFila) === 1
+
+        calcularEfectividad(movesData.find(m => m.id === mov).tipo, tipoFila, pokemon.ability) === 1
     });
 
     let esResistente = pokemon.moveIds.some(mov => {
@@ -103,7 +120,8 @@ export function generarTablaColores() {
 
         // Ignoramos movimientos de tipo Status
       if (!movimiento || movimiento.categoria === "Status") return false;
-      return calcularEfectividad(movimiento.tipo, tipoFila) < 1 && calcularEfectividad(movimiento.tipo, tipoFila) > 0;
+
+      return calcularEfectividad(movimiento.tipo, tipoFila, pokemon.ability) < 1 && calcularEfectividad(movimiento.tipo, tipoFila, pokemon.ability) > 0;
     });
 
     let esInmune = pokemon.moveIds.some(mov => {
@@ -111,10 +129,9 @@ export function generarTablaColores() {
 
         // Ignoramos movimientos de tipo Status
       if (!movimiento || movimiento.categoria === "Status") return false;
-      return calcularEfectividad(movimiento.tipo, tipoFila) === 0;
-    });
-      //console.log(esEfectivo, + " "+ esInmune);
 
+      return calcularEfectividad(movimiento.tipo, tipoFila, pokemon.ability) === 0;
+    });
       //Y tras eso lo escribimos en la tabla
         let icono = "";
         if (esInmune) {
